@@ -1,0 +1,13 @@
+.card_body {
+  width: 166.67px;
+  height: 150px;
+  border: 1px solid #cdd8ea;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+.card_body img {
+  width: 80%;
+}

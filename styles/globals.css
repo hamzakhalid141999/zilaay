@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  font-family: "p-r";
+}
+
+:root {
+  --blue: #0060fd;
+  --footer-color: #1f1f1f;
+}
+
+input:focus {
+  outline: none;
+}
+
+input {
+  padding-left: 15px;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+a {
+  font-family: "p-r";
+  margin-bottom: 0;
+}
+h1 {
+  margin-bottom: 0 !important;
+}
+
+.btn {
+  width: fit-content;
+  height: 43px;
+  background: #025bff;
+  border-radius: 5px;
+  padding-left: 14px;
+  padding-right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in-out 200s;
+}
+.btn:hover {
+  background: #528fff;
+  cursor: pointer;
+}
+.btn p {
+  font-size: 14px;
+  line-height: 15px;
+  color: white;
+}
+
+.landing_page_heading {
+  font-size: 22px;
+  line-height: 36px;
+  color: #151515;
+  font-family: "p-m";
+}
+.heading_container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.landing_page_colored_container {
+  width: 100%;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.colored_container {
+  width: 97%;
+  height: 100%;
+  border-radius: 50px 50px 0px 0px;
+  max-width: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@font-face {
+  font-family: "p-l";
+  src: url("../public/fonts/poppins/Poppins-Light.ttf");
+}
+
+@font-face {
+  font-family: "p-t";
+  src: url("../public/fonts/poppins/Poppins-Thin.ttf");
+}
+
+@font-face {
+  font-family: "p-m";
+  src: url("../public/fonts/poppins/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: "p-r";
+  src: url("../public/fonts/poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "p-sb";
+  src: url("../public/fonts/poppins/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "p-b";
+  src: url("../public/fonts/poppins/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: "p-eb";
+  src: url("../public/fonts/poppins/Poppins-ExtraBold.ttf");
+}
