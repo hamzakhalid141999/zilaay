@@ -55,12 +55,17 @@
   border-top-left-radius: 25px;
   background-color: white;
 }
+.map_section iframe {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
 .properties_section_container {
   width: 45%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-top-right-radius: 25px;
 }
 .properties_section {
   width: 96%;
