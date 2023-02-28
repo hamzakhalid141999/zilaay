@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Banner from "../components/homepage/banner";
+import Blogs from "../components/homepage/blogs";
 import EliteDevelopers from "../components/homepage/elite-developers";
 import FeaturedDevelopers from "../components/homepage/featured-developers";
 import HotProjects from "../components/homepage/hot-projects";
@@ -12,7 +13,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Zilow</title>
+        <title>Zilaay: Real Estate</title>
       </Head>
       <Banner />
       <Map />
@@ -28,6 +29,7 @@ export default function Home() {
         title={"Properties For Sharing"}
         color={"rgba(100, 160, 231, 1"}
       />
+      <Blogs />
     </div>
   );
 }
