@@ -4,6 +4,7 @@ import Banner from "../components/homepage/banner";
 import Blogs from "../components/homepage/blogs";
 import EliteDevelopers from "../components/homepage/elite-developers";
 import FeaturedDevelopers from "../components/homepage/featured-developers";
+import ForumsAndNewsletters from "../components/homepage/forums-newsletters";
 import HotProjects from "../components/homepage/hot-projects";
 import Map from "../components/homepage/map";
 import ListedProperties from "../components/homepage/properties-for-sale";
@@ -13,7 +14,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Zilaay: Real Estate</title>
+        <title>Zilaay | Real Estate Portal</title>
       </Head>
       <Banner />
       <Map />
@@ -30,6 +31,7 @@ export default function Home() {
         color={"rgba(100, 160, 231, 1"}
       />
       <Blogs />
+      <ForumsAndNewsletters />
     </div>
   );
 }
