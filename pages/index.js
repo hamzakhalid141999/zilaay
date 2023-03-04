@@ -8,6 +8,7 @@ import ForumsAndNewsletters from "../components/homepage/forums-newsletters";
 import HotProjects from "../components/homepage/hot-projects";
 import Map from "../components/homepage/map";
 import ListedProperties from "../components/homepage/properties-for-sale";
+import TrendingLinks from "../components/trending-links";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -32,6 +33,7 @@ export default function Home() {
       />
       <Blogs />
       <ForumsAndNewsletters />
+      <TrendingLinks />
     </div>
   );
 }

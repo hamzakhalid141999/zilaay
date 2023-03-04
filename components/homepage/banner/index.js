@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./banner.module.css";
 import banner_image from "../../../public/assets/landing-page-assets/banner-image.png";
 import time_icon from "../../../public/assets/landing-page-assets/time_icon.svg";
@@ -8,6 +8,35 @@ import profile_placeholder from "../../../public/assets/landing-page-assets/prof
 import blue_pattern from "../../../public/assets/landing-page-assets/blue-pattern.png";
 
 function Banner() {
+  const tabs = [
+    {
+      id: 1,
+      title: "Buy",
+    },
+    {
+      id: 2,
+      title: "Rent",
+    },
+    {
+      id: 3,
+      title: "PG / Shared Living",
+    },
+    {
+      id: 4,
+      title: "Co-Working",
+    },
+    {
+      id: 5,
+      title: "Invest",
+    },
+  ];
+
+  const [selectedTabId, setSelectedTabId] = useState(tabs[0]?.id);
+
+  const handleSelectTab = async (id) => {
+    setSelectedTabId(id);
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.top_panel}>
@@ -21,7 +50,54 @@ function Banner() {
             <p>Discover</p>
           </div>
         </div>
-        <div className={classes.search_bar_container}></div>
+        <div className={classes.search_bar_wrapper}>
+          <div className={classes.search_bar_container}>
+            <div className={classes.btns_container}>
+              <div className={classes.tabs_container}>
+                {tabs?.map((tab, index) => (
+                  <p
+                    onClick={() => {
+                      handleSelectTab(tab?.id);
+                    }}
+                    className={
+                      selectedTabId === tab?.id
+                        ? classes.single_tab_selected
+                        : classes.single_tab
+                    }
+                    key={index}
+                  >
+                    {tab?.title}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className={classes.lower_panel}>
+              <div className={classes.drop_down_container}></div>
+              <div className={classes.search_input_container}>
+                <input
+                  type="text"
+                  placeholder="Search 3 BHK for sale, rent or invest in pakistan..."
+                />
+              </div>
+            </div>
+            <div className={classes.filter_panel}>
+              <div className={classes.filter_btn_container}>
+                <div className={classes.left_panel}>
+                  <p>More Options</p>
+                </div>
+
+                <div className={classes.right_panel}>
+                  <p>Change Currency</p>
+                  <p style={{ color: "black" }}>|</p>
+                  <p>Change Area Unit</p>
+                  <p style={{ color: "black" }}>|</p>
+                  <p>Reset Search</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className={classes.bottom_panel}>
         <img src={grey_pattern.src} className={classes.pattern_bg} />

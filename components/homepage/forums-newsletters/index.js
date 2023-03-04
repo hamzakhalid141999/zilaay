@@ -51,6 +51,17 @@ function ForumsAndNewsletters() {
           <div className={classes.newsletter_panel}>
             <div className={classes.newsletter_content}>
               <p className={classes.newsletter_title}>Newsletter</p>
+              <p className={classes.newsletter_description}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                rhoncus.
+              </p>
+              <input placeholder="Enter your email" />
+              <div
+                style={{ width: "88%", borderRadius: "100px" }}
+                className="btn"
+              >
+                <p>Subscribe</p>
+              </div>
             </div>
           </div>
         </div>
