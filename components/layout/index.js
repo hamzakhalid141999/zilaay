@@ -32,9 +32,9 @@ function Layout({ children }) {
           <>
             <Navbar />
             <div className={classes.main}>
-              <div className={classes.coming_soon_overlay}>
+              {/* <div className={classes.coming_soon_overlay}>
                 <h2>Coming Soon</h2>
-              </div>
+              </div> */}
               {children}
             </div>
             <Footer />
