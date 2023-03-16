@@ -3,10 +3,14 @@ import classes from "./map-section.card.module.css";
 import bg from "../../../public/assets/component-assets/map-card-assets/map-card-bg.png";
 import developer_logo from "../../../public/assets/component-assets/map-card-assets/developer-logo.svg";
 import Image from "next/image";
+import hot_tag from "../../../public/assets/tags/hot-ribbon.svg";
+import whatsapp_blue from "../../../public/assets/icons/whatsapp_blue.svg";
+import whatsapp_color from "../../../public/assets/icons/whatsapp_color.svg";
 
 function MapSectionCard() {
   return (
     <div className={classes.card_body}>
+      <img src={hot_tag.src} className={classes.tag} />
       <div className={classes.card_img}>
         <Image className={classes.img} fill src={bg} />
       </div>
@@ -30,12 +34,16 @@ function MapSectionCard() {
           </p>
 
           <div className={classes.btns_container}>
-            <div style={{ height: "23px" }} className="btn">
-              <p style={{ fontSize: "10px" }}>Call</p>
+            <div className={classes.non_primary_btns}>
+              <div style={{ height: "23px" }} className="btn_secondary">
+                <p style={{ fontSize: "10px" }}>Call</p>
+              </div>
+              <div style={{ height: "23px" }} className="btn_secondary">
+                <p style={{ fontSize: "10px" }}>WhatsApp</p>
+                <img src={whatsapp_blue.src} />
+              </div>
             </div>
-            <div style={{ height: "23px" }} className="btn">
-              <p style={{ fontSize: "10px" }}>Whatsapp</p>
-            </div>
+
             <div style={{ height: "23px" }} className="btn">
               <p style={{ fontSize: "10px" }}>Email</p>
             </div>

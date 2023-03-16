@@ -7,6 +7,32 @@
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  transition: ease-in-out 200ms;
+  animation: shake 1.2s ease-out infinite;
+}
+
+@keyframes shake {
+  0% {
+    border: 1px solid #dddbdb;
+  }
+  50% {
+    border: 1px solid #ff0404;
+  }
+  100% {
+    border: 1px solid #dddbdb;
+  }
+}
+.card_body:hover {
+  transform: translate3d(0px, -3px, 0px);
+  box-shadow: 0 5px 30px 10px rgba(8, 72, 146, 0.24);
+}
+.tag {
+  position: absolute;
+  top: -11px;
+  left: 15px;
+  width: 50px;
+  z-index: 20;
 }
 .card_img {
   height: 150px;
@@ -76,10 +102,17 @@
   font-family: "p-l";
   margin-bottom: 10px;
 }
-.btns_container {
+.non_primary_btns {
   width: 85%;
   height: fit-content;
   display: flex;
   flex-direction: row;
   column-gap: 10px;
+}
+.btns_container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

@@ -5,8 +5,24 @@ import register_panel_bg from "../../../public/assets/landing-page-assets/regist
 import video_bg from "../../../public/assets/landing-page-assets/video-bg.png";
 import pause from "../../../public/assets/landing-page-assets/pause.svg";
 import newsletter_bg from "../../../public/assets/landing-page-assets/newsletter_bg.svg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import Next from "../../reactSlickButtons/next";
+import Prev from "../../reactSlickButtons/prev";
 
 function ForumsAndNewsletters() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    // centerMode: true,
+    nextArrow: <Next />,
+    prevArrow: <Prev />,
+  };
   return (
     <div className={classes.container}>
       <div className={classes.content_container}>
@@ -18,34 +34,32 @@ function ForumsAndNewsletters() {
             </div>
           </div>
           <div className={classes.cards_container}>
-            <ForumCard />
-            <ForumCard />
-            <ForumCard />
-            <ForumCard />
+            <Slider arrows={true} {...settings}>
+              <ForumCard />
+              <ForumCard />
+              <ForumCard />
+              <ForumCard />
+              <ForumCard />
+              <ForumCard />
+              <ForumCard />
+              <ForumCard />
+            </Slider>
           </div>
         </div>
 
         <div className={classes.newsletter_section}>
-          <div className={classes.register_panel}>
-            <img src={register_panel_bg.src} />
-            <div className={classes.content}>
-              <h2 className={classes.heading}>Are you Property Owner?</h2>
-              <p className={classes.sub_heading}>
-                Do you want to sell or rent your property in all over Pakistan?
-              </p>
-              <div className={classes.btn}>
-                <p>Register Here</p>
-              </div>
-              <p className={classes.sub_heading}>
-                Already a member? Login Here
-              </p>
-            </div>
-          </div>
           <div className={classes.zilaay_video_panel}>
             <img className={classes.video_bg} src={video_bg.src} />
             <div className={classes.video_content}>
-              <img className={classes.pause_btn} src={pause.src} />
-              <p>Zilaay Tutorial Video</p>
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/u31qwQUeGuM"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
             </div>
           </div>
           <div className={classes.newsletter_panel}>

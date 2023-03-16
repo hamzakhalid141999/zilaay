@@ -2,8 +2,23 @@ import React from "react";
 import MapSectionCard from "../../cards/map-section-card";
 import PropertyCard from "../../cards/property-card";
 import classes from "./map.module.css";
+import drop_down_icon from "../../../public/assets/icons/drop_down.svg";
+import Slider from "react-slick";
+import Link from "next/link";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 function Map() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    centerMode: true,
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.main_container}>
@@ -12,29 +27,58 @@ function Map() {
             <div className={classes.filter_bar}>
               <input
                 placeholder="Address, neighborhood, or ZIP"
-                style={{ width: "19%" }}
+                style={{ width: "130%" }}
                 className={classes.input_field}
               />
 
-              <input placeholder="Buy" className={classes.input_field} />
+              <div style={{ width: "60%" }} className="select_input_container">
+                <select className={classes.input_field}>
+                  <option>Buy</option>
+                </select>
+                <img src={drop_down_icon.src} />
+              </div>
 
-              <input
-                placeholder="Property Type"
-                className={classes.input_field}
-              />
+              <div style={{ width: "120%" }} className="select_input_container">
+                <select className={classes.input_field}>
+                  <option>Property Type</option>
+                </select>
+                <img src={drop_down_icon.src} />
+              </div>
 
-              <input placeholder="Area (Sqt)" className={classes.input_field} />
+              <div style={{ width: "100%" }} className="select_input_container">
+                <select className={classes.input_field}>
+                  <option>Area (Sqt)</option>
+                </select>
+                <img src={drop_down_icon.src} />
+              </div>
 
-              <input placeholder="Price" className={classes.input_field} />
+              <div style={{ width: "100%" }} className="select_input_container">
+                <select className={classes.input_field}>
+                  <option>Price</option>
+                </select>
+                <img src={drop_down_icon.src} />
+              </div>
 
-              <input placeholder="Beds" className={classes.input_field} />
+              <div style={{ width: "100%" }} className="select_input_container">
+                <select className={classes.input_field}>
+                  <option>Beds</option>
+                </select>
+                <img src={drop_down_icon.src} />
+              </div>
 
-              <input placeholder="Bath" className={classes.input_field} />
+              <div style={{ width: "100%" }} className="select_input_container">
+                <select className={classes.input_field}>
+                  <option>Baths</option>
+                </select>
+                <img src={drop_down_icon.src} />
+              </div>
 
-              <input
-                placeholder="More Options"
-                className={classes.input_field}
-              />
+              <div style={{ width: "100%" }} className="select_input_container">
+                <select className={classes.input_field}>
+                  <option>More Options</option>
+                </select>
+                <img src={drop_down_icon.src} />
+              </div>
             </div>
 
             <div className="btn">
@@ -58,6 +102,9 @@ function Map() {
             <div className={classes.properties_section_container}>
               <div className={classes.property_title_bar}>
                 <h2>Karachi, Defence DHA Houses for Sale</h2>
+                <select className={classes.sort_by_input}>
+                  <option>Sort By</option>
+                </select>
               </div>
 
               <div className={classes.properties_section}>

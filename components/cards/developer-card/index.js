@@ -3,10 +3,13 @@ import classes from "./developer-card.module.css";
 import logo from "../../../public/assets/component-assets/developer-card-assets/logo.svg";
 import property_bg from "../../../public/assets/component-assets/developer-card-assets/property-bg.png";
 import Image from "next/image";
+import elite_tag from "../../../public/assets/icons/elite_tag.svg";
 
 function DeveloperCard() {
   return (
     <div className={classes.card_body}>
+      <img src={elite_tag.src} className={classes.tag} />
+
       <div className={classes.content_container}>
         <div className={classes.developer_info_container}>
           <div className={classes.logo_container}>

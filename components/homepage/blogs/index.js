@@ -1,8 +1,25 @@
 import React from "react";
 import BlogCard from "../../cards/blog-card";
 import classes from "./blogs.module.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import Next from "../../reactSlickButtons/next";
+import Prev from "../../reactSlickButtons/prev";
 
 function Blogs() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    // centerMode: true,
+    nextArrow: <Next />,
+    prevArrow: <Prev />,
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.blogs_content_container}>
@@ -13,10 +30,16 @@ function Blogs() {
           </div>
         </div>
         <div className={classes.blogs_container}>
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
+          <Slider arrows={true} {...settings}>
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+          </Slider>
         </div>
       </div>
     </div>

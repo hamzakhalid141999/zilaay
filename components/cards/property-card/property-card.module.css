@@ -1,15 +1,19 @@
 .card_body {
   width: 100%;
-  max-width: 327px;
+  max-width: 287px;
   min-width: 267px;
-
-  height: 360px;
+  height: 340px;
   background: #ffffff;
   border: 1px solid #dddbdb;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  transition: ease-in-out 200ms;
+}
+.card_body:hover {
+  transform: translate3d(0px, -3px, 0px);
+  box-shadow: 0 5px 30px 10px rgba(8, 72, 146, 0.24);
 }
 .card_img {
   height: 180px;
@@ -85,7 +89,7 @@
   margin-bottom: 10px;
 }
 .btns_container {
-  width: 85%;
+  width: 100%;
   height: fit-content;
   display: flex;
   flex-direction: row;
@@ -103,4 +107,11 @@
 }
 .single_detail img {
   width: 20px;
+}
+.non_primary_btns {
+  width: 85%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
 }

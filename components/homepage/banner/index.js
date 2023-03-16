@@ -6,8 +6,26 @@ import grey_pattern from "../../../public/assets/landing-page-assets/grey-patter
 import feature_cards_bg from "../../../public/assets/landing-page-assets/feature_cards_bg.png";
 import profile_placeholder from "../../../public/assets/landing-page-assets/profile_placeholder.svg";
 import blue_pattern from "../../../public/assets/landing-page-assets/blue-pattern.png";
+import drop_down_icon from "../../../public/assets/icons/drop_down.svg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import Next from "../../reactSlickButtons/next";
+import Prev from "../../reactSlickButtons/prev";
 
 function Banner() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    // centerMode: true,
+    nextArrow: <Next />,
+    prevArrow: <Prev />,
+  };
+
   const tabs = [
     {
       id: 1,
@@ -32,10 +50,20 @@ function Banner() {
   ];
 
   const [selectedTabId, setSelectedTabId] = useState(tabs[0]?.id);
+  const [isInputFocused, setIsInputFocused] = useState(false);
 
   const handleSelectTab = async (id) => {
     setSelectedTabId(id);
   };
+
+  const handleFocus = () => {
+    setIsInputFocused(true);
+  };
+  const handleBlur = () => {
+    setIsInputFocused(false);
+  };
+
+  console.log(isInputFocused);
 
   return (
     <div className={classes.container}>
@@ -73,26 +101,54 @@ function Banner() {
             </div>
 
             <div className={classes.lower_panel}>
-              <div className={classes.drop_down_container}></div>
+              <div className={classes.drop_down_container}>
+                <div
+                  style={{ width: "75%" }}
+                  className="select_input_container"
+                >
+                  <select className={classes.hollow_input}>
+                    <option> All Residential</option>
+                  </select>
+                  <img src={drop_down_icon.src} />
+                </div>
+              </div>
               <div className={classes.search_input_container}>
                 <input
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  className={classes.hollow_input}
                   type="text"
                   placeholder="Search 3 BHK for sale, rent or invest in pakistan..."
                 />
               </div>
             </div>
-            <div className={classes.filter_panel}>
-              <div className={classes.filter_btn_container}>
-                <div className={classes.left_panel}>
-                  <p>More Options</p>
-                </div>
+            <div
+              className={
+                !isInputFocused
+                  ? classes.filter_panel_container_hidden
+                  : classes.filter_panel_container
+              }
+            >
+              <div className={classes.angled_div} />
+              <div className={classes.filter_panel}>
+                <div className={classes.filter_btn_container}>
+                  <div
+                    style={{ width: "25%" }}
+                    className="select_input_container"
+                  >
+                    <select className={classes.hollow_input}>
+                      <option>More Options</option>
+                    </select>
+                    <img src={drop_down_icon.src} />
+                  </div>
 
-                <div className={classes.right_panel}>
-                  <p>Change Currency</p>
-                  <p style={{ color: "black" }}>|</p>
-                  <p>Change Area Unit</p>
-                  <p style={{ color: "black" }}>|</p>
-                  <p>Reset Search</p>
+                  <div className={classes.right_panel}>
+                    <p>Change Currency</p>
+                    <p style={{ color: "black" }}>|</p>
+                    <p>Change Area Unit</p>
+                    <p style={{ color: "black" }}>|</p>
+                    <p>Reset Search</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -122,32 +178,54 @@ function Banner() {
       </div>
 
       <div className={classes.features_container}>
-        <div className={classes.card_body}>
-          <img src={feature_cards_bg.src} />
-          <div className={classes.overlay}>
-            <p>Find Properties To Buy Near me!</p>
-            <div className={classes.card_btn}>
-              <p>Explore More</p>
+        <div className={classes.cards_container}>
+          <Slider arrows={true} {...settings}>
+            <div className={classes.card_body}>
+              <img src={feature_cards_bg.src} />
+              <div className={classes.overlay}>
+                <p>Find Properties To Buy Near me!</p>
+                <div className={classes.card_btn}>
+                  <p>Explore More</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={classes.card_body}>
-          <img src={feature_cards_bg.src} />
-          <div className={classes.overlay}>
-            <p>Find Properties To Buy Near me!</p>
-            <div className={classes.card_btn}>
-              <p>Explore More</p>
+            <div className={classes.card_body}>
+              <img src={feature_cards_bg.src} />
+              <div className={classes.overlay}>
+                <p>Find Properties To Buy Near me!</p>
+                <div className={classes.card_btn}>
+                  <p>Explore More</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={classes.card_body}>
-          <img src={feature_cards_bg.src} />
-          <div className={classes.overlay}>
-            <p>Find Properties To Buy Near me!</p>
-            <div className={classes.card_btn}>
-              <p>Explore More</p>
+            <div className={classes.card_body}>
+              <img src={feature_cards_bg.src} />
+              <div className={classes.overlay}>
+                <p>Find Properties To Buy Near me!</p>
+                <div className={classes.card_btn}>
+                  <p>Explore More</p>
+                </div>
+              </div>
             </div>
-          </div>
+            <div className={classes.card_body}>
+              <img src={feature_cards_bg.src} />
+              <div className={classes.overlay}>
+                <p>Find Properties To Buy Near me!</p>
+                <div className={classes.card_btn}>
+                  <p>Explore More</p>
+                </div>
+              </div>
+            </div>
+            <div className={classes.card_body}>
+              <img src={feature_cards_bg.src} />
+              <div className={classes.overlay}>
+                <p>Find Properties To Buy Near me!</p>
+                <div className={classes.card_btn}>
+                  <p>Explore More</p>
+                </div>
+              </div>
+            </div>
+          </Slider>
         </div>
 
         <div className={classes.my_activity_container}>

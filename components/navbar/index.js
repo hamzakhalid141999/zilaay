@@ -6,7 +6,13 @@ import logo from "../../public/assets/navbar-assets/zilaay-logo.svg";
 import down_icon from "../../public/assets/navbar-assets/down-icon.svg";
 import home_icon from "../../public/assets/navbar-assets/home.svg";
 import search_icon from "../../public/assets/navbar-assets/search.svg";
+import search_icon_white from "../../public/assets/navbar-assets/search_white.svg";
 import user_icon from "../../public/assets/navbar-assets/user.svg";
+import logo_white from "../../public/assets/navbar-assets/logo_white.svg";
+import setting_white from "../../public/assets/navbar-assets/setting.svg";
+import bell_white from "../../public/assets/navbar-assets/bell.svg";
+import setting_blue from "../../public/assets/navbar-assets/setting_blue.svg";
+import bell_blue from "../../public/assets/navbar-assets/bell_blue.svg";
 
 function Navbar() {
   const router = useRouter();
@@ -19,45 +25,61 @@ function Navbar() {
   const [panelSize, setPanelSize] = useState(60);
   const [noBackdrop, setNoBackdrop] = useState(false);
 
-  //   useEffect(() => {
-  //     document.addEventListener("scroll", () => {
-  //       if (document !== null) {
-  //         let scrolled = document.scrollingElement.scrollTop;
+  let listener;
 
-  //         if (scrolled >= 10) {
-  //           if (backgroundColor !== "opaque") {
-  //             setBackgroundColor("opaque");
-  //           }
-  //         } else {
-  //           if (backgroundColor !== "transparent") {
-  //             setBackgroundColor("transparent");
-  //           }
-  //         }
-  //       }
-  //     });
-  //     return () => {
-  //       document.removeEventListener("scroll", listener);
-  //     };
-  //   }, [backgroundColor]);
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      if (document !== null) {
+        let scrolled = document.scrollingElement.scrollTop;
+
+        if (scrolled >= 10) {
+          if (backgroundColor !== "opaque") {
+            setBackgroundColor("opaque");
+          }
+        } else {
+          if (backgroundColor !== "transparent") {
+            setBackgroundColor("transparent");
+          }
+        }
+      }
+    });
+    return () => {
+      document.removeEventListener("scroll", listener);
+    };
+  }, [backgroundColor]);
 
   return (
-    <div className={classes.navbar_body_opaque}>
+    <div
+      className={
+        isNavbarVisisbleFromTop
+          ? classes.navbar_body_opaque
+          : backgroundColor === "opaque"
+          ? classes.navbar_body_opaque
+          : classes.navbar_body
+      }
+    >
       <div className={classes.left_panel}>
         <>
-          <div className={classes.left_panel_btns}>
-            <p>Buy</p>
-          </div>
+          <Link href={"/buy"}>
+            <div className={classes.left_panel_btns}>
+              <p>Buy</p>
+            </div>
+          </Link>
 
           <div className={classes.left_panel_btns}>
             <p>Rent</p>
           </div>
 
           <div className={classes.left_panel_btns}>
-            <p>Shared Spaces</p>
+            <p>Invest</p>
           </div>
 
           <div className={classes.left_panel_btns}>
-            <p>Invest</p>
+            <p>More</p>
+          </div>
+
+          {/* <div className={classes.left_panel_btns}>
+            <p>Shared Spaces</p>
           </div>
 
           <div className={classes.left_panel_btns}>
@@ -66,25 +88,64 @@ function Navbar() {
 
           <div className={classes.left_panel_btns}>
             <p>Agent Finder</p>
-          </div>
+          </div> */}
         </>
       </div>
 
-      <img src={logo.src} />
+      <img src={backgroundColor === "opaque" ? logo.src : logo_white.src} />
 
       <div className={classes.right_panel}>
-        <p>More</p>
+        {/* <p>More</p> */}
 
-        <p>Property ID</p>
-        <div className={classes.add_property_btn}>
-          <img src={home_icon.src} />
-          <p>Add Free Property</p>
+        <div className={classes.input_with_icon}>
+          <input
+            placeholder="Property ID"
+            className={classes.property_id_search}
+          />
+          <img
+            src={
+              backgroundColor === "opaque"
+                ? search_icon.src
+                : search_icon_white.src
+            }
+          />
         </div>
 
-        <div className={classes.login_btn}>
+        <div className={classes.add_property_btn}>
+          <div className={classes.free_tag}>
+            <p>Free</p>
+          </div>
+          <img src={home_icon.src} />
+          <p>Add Property</p>
+        </div>
+
+        <div className={classes.icons_container}>
+          <img
+            className={classes.icon}
+            src={backgroundColor === "opaque" ? bell_blue.src : bell_white.src}
+          />
+
+          <img
+            className={classes.icon}
+            src={
+              backgroundColor === "opaque"
+                ? setting_blue.src
+                : setting_white.src
+            }
+          />
+        </div>
+
+        <div
+          style={{
+            backgroundColor: backgroundColor === "opaque" ? "#0060fd" : "white",
+          }}
+          className={classes.login_btn}
+        >
           <img src={user_icon.src} />
           <p>Login</p>
         </div>
+
+        <p>اردو</p>
       </div>
     </div>
   );

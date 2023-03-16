@@ -23,9 +23,18 @@ function Layout({ children }) {
   return (
     <div className={classes.container}>
       <>
-        <Navbar />
-        <div className={classes.main}>{children}</div>
-        <Footer />
+        {currentPage === "buy" ? (
+          <>
+            <Navbar />
+            <div className={classes.main}>{children}</div>
+          </>
+        ) : (
+          <>
+            <Navbar />
+            <div className={classes.main}>{children}</div>
+            <Footer />
+          </>
+        )}
       </>
     </div>
   );

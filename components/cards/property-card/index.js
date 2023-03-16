@@ -5,6 +5,8 @@ import bath from "../../../public/assets/component-assets/proprerty-card-assets/
 import bed from "../../../public/assets/component-assets/proprerty-card-assets/bed.svg";
 import size from "../../../public/assets/component-assets/proprerty-card-assets/size.svg";
 import Image from "next/image";
+import whatsapp_blue from "../../../public/assets/icons/whatsapp_blue.svg";
+import whatsapp_color from "../../../public/assets/icons/whatsapp_color.svg";
 
 function PropertyCard() {
   return (
@@ -32,12 +34,16 @@ function PropertyCard() {
           </div>
 
           <div className={classes.btns_container}>
-            <div style={{ height: "23px" }} className="btn">
-              <p style={{ fontSize: "10px" }}>Call</p>
+            <div className={classes.non_primary_btns}>
+              <div style={{ height: "23px" }} className="btn_secondary">
+                <p style={{ fontSize: "10px" }}>Call</p>
+              </div>
+              <div style={{ height: "23px" }} className="btn_secondary">
+                {/* <p style={{ fontSize: "10px" }}>Whatsapp</p> */}
+                <img src={whatsapp_color.src} />
+              </div>
             </div>
-            <div style={{ height: "23px" }} className="btn">
-              <p style={{ fontSize: "10px" }}>Whatsapp</p>
-            </div>
+
             <div style={{ height: "23px" }} className="btn">
               <p style={{ fontSize: "10px" }}>Email</p>
             </div>

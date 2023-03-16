@@ -9,6 +9,24 @@
   align-items: center;
   justify-content: center;
   overflow-x: hidden;
+  overflow-y: visible;
+  transition: ease-in-out 200ms;
+  position: relative;
+}
+.card_body:hover {
+  transform: translate3d(0px, -3px, 0px);
+  box-shadow: 0 5px 30px 10px rgba(8, 72, 146, 0.24);
+}
+.tag {
+  position: absolute;
+  top: -9px;
+  left: 15px;
+  width: 110px;
+  z-index: 20;
+  margin-right: auto;
+  margin-left: auto;
+  left: 0;
+  right: 0;
 }
 .content_container {
   width: 89%;

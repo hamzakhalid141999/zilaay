@@ -82,6 +82,12 @@
   position: relative;
   padding-bottom: 30px;
 }
+.sort_by_input {
+  height: 31px;
+  width: 100px;
+  border: 2px solid rgb(195, 195, 195);
+  border-radius: 3px;
+}
 .property_title_bar {
   /* position: absolute; */
   top: 0;
@@ -99,7 +105,7 @@
   line-height: 24px;
 }
 .input_field {
-  width: 9%;
+  width: 100%;
   height: 42px;
   background: #ffffff;
   border: 1px solid #dddbdb;
@@ -122,6 +128,6 @@
   align-items: center;
   justify-content: flex-start;
   column-gap: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   margin-top: 30px;
 }

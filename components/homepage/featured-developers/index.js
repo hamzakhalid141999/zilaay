@@ -2,8 +2,25 @@ import React from "react";
 import DeveloperCard from "../../cards/developer-card";
 import FeaturedDeveloper from "../../cards/featured-developer-card";
 import classes from "./featured-developers.module.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import Next from "../../reactSlickButtons/next";
+import Prev from "../../reactSlickButtons/prev";
 
 function FeaturedDevelopers() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    // centerMode: true,
+    nextArrow: <Next />,
+    prevArrow: <Prev />,
+  };
+
   return (
     <div style={{ height: "40vh" }} className="landing_page_colored_container">
       <div
@@ -24,13 +41,18 @@ function FeaturedDevelopers() {
           </div>
 
           <div className={classes.cards_container}>
-            <FeaturedDeveloper />
-            <FeaturedDeveloper />
-            <FeaturedDeveloper />
-            <FeaturedDeveloper />
-            <FeaturedDeveloper />
-            <FeaturedDeveloper />
-            <FeaturedDeveloper />
+            <Slider arrows={true} {...settings}>
+              <FeaturedDeveloper />
+              <FeaturedDeveloper />
+              <FeaturedDeveloper />
+              <FeaturedDeveloper />
+              <FeaturedDeveloper />
+              <FeaturedDeveloper />
+              <FeaturedDeveloper />
+              <FeaturedDeveloper />
+              <FeaturedDeveloper />
+              <FeaturedDeveloper />
+            </Slider>
           </div>
         </div>
       </div>

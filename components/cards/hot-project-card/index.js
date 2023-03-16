@@ -5,10 +5,13 @@ import bg from "../../../public/assets/component-assets/hot-project-card-assets/
 import home from "../../../public/assets/component-assets/hot-project-card-assets/home.svg";
 import size from "../../../public/assets/component-assets/hot-project-card-assets/size.svg";
 import logo from "../../../public/assets/component-assets/hot-project-card-assets/logo.svg";
+import hot_tag from "../../../public/assets/tags/hot-ribbon.svg";
 
 function HotProjectCard() {
   return (
     <div className={classes.card_body}>
+      <img src={hot_tag.src} className={classes.tag} />
+
       <div className={classes.card_img}>
         <Image className={classes.img} fill src={bg} />
       </div>
