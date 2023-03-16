@@ -25,7 +25,7 @@
   justify-content: center;
   row-gap: 20px;
   background-color: rgba(214, 243, 255, 0.045);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(9px);
   position: fixed;
   top: 0;
   z-index: 1000000000;
