@@ -1,0 +1,30 @@
+.container {
+  height: 63vh !important;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5px;
+}
+.img_container {
+  width: 100%;
+  height: 100%;
+  position: relative !important;
+}
+.img_1 {
+  width: 100%;
+  object-fit: cover;
+}
+.right_panel {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 5px;
+}
+.single_row {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5px;
+}

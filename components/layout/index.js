@@ -18,12 +18,15 @@ function Layout({ children }) {
     }
   }, [router.pathname]);
 
-  console.log(currentPage);
-
   return (
     <div className={classes.container}>
       <>
-        {currentPage === "buy" ? (
+        {currentPage === "" ? (
+          <>
+            <div className={classes.main}>{children}</div>
+            <Footer />
+          </>
+        ) : currentPage === "buy" ? (
           <>
             <Navbar />
             <div className={classes.main}>{children}</div>

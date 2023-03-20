@@ -20,6 +20,35 @@ function PropertiesForSale({ color, title }) {
     // centerMode: true,
     nextArrow: <Next />,
     prevArrow: <Prev />,
+    responsive: [
+      {
+        breakpoint: 1370,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 1035,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 690,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+    ],
   };
 
   return (

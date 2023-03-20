@@ -1,6 +1,6 @@
 .card_body {
-  width: 100%;
-  max-width: 287px;
+  width: 96%;
+  min-width: 267px;
   height: 335px;
   background: #ffffff;
   border: 1px solid rgba(205, 216, 234, 0.5);

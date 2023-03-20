@@ -8,7 +8,7 @@ import Link from "next/link";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
-function Map() {
+function Map({ refInstance }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -22,7 +22,7 @@ function Map() {
   return (
     <div className={classes.wrapper}>
       <div className={classes.main_container}>
-        <div className={classes.map_container}>
+        <div ref={refInstance} className={classes.map_container}>
           <div className={classes.filter_bar_container}>
             <div className={classes.filter_bar}>
               <input

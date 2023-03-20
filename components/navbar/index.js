@@ -14,7 +14,7 @@ import bell_white from "../../public/assets/navbar-assets/bell.svg";
 import setting_blue from "../../public/assets/navbar-assets/setting_blue.svg";
 import bell_blue from "../../public/assets/navbar-assets/bell_blue.svg";
 
-function Navbar() {
+function Navbar({ showNavbar, isTransparent }) {
   const router = useRouter();
   //   const { width } = useWindowSize();
   const [openPanel, setOpenPanel] = useState(false);
@@ -36,7 +36,8 @@ function Navbar() {
           if (backgroundColor !== "opaque") {
             setBackgroundColor("opaque");
           }
-        } else {
+        }
+        if (scrolled < 10) {
           if (backgroundColor !== "transparent") {
             setBackgroundColor("transparent");
           }
@@ -50,6 +51,11 @@ function Navbar() {
 
   return (
     <div
+      style={{
+        opacity: showNavbar || backgroundColor === "transparent" ? "1" : "0",
+        backgroundColor:
+          isTransparent && backgroundColor === "transparent" && "transparent",
+      }}
       className={
         isNavbarVisisbleFromTop
           ? classes.navbar_body_opaque

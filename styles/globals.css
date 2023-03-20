@@ -70,13 +70,61 @@ h1 {
   border: 1px solid var(--blue);
 }
 .btn:hover {
-  background: #528fff;
+  background-color: #528fff;
   cursor: pointer;
 }
 .btn p {
   font-size: 14px;
   line-height: 15px;
   color: white;
+}
+
+.btn_rounded {
+  width: fit-content;
+  height: 100%;
+  background-color: #025bff;
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in-out 200s;
+  border: 1px solid var(--blue);
+  border-radius: 200px;
+}
+.btn_rounded:hover {
+  background-color: #528fff;
+  cursor: pointer;
+}
+.btn_rounded p {
+  font-size: 14px;
+  line-height: 15px;
+  color: white;
+}
+
+.btn_rounded_white {
+  width: fit-content;
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in-out 200s;
+  border: 1px solid white;
+  border-radius: 200px;
+}
+.btn_rounded_white:hover {
+  background-color: var(--blue);
+  cursor: pointer;
+}
+.btn_rounded_white p {
+  font-size: 14px;
+  line-height: 15px;
+  color: var(--blue);
 }
 
 .btn_secondary {
@@ -253,12 +301,12 @@ h1 {
   align-items: center;
   column-gap: 15px;
 }
-.slick-slider .slick-track,
+/* .slick-slider .slick-track,
 .slick-slider .slick-list {
   display: flex;
   flex-direction: row;
   column-gap: 13px;
-}
+} */
 @font-face {
   font-family: "p-l";
   src: url("../public/fonts/poppins/Poppins-Light.ttf");

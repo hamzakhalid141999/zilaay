@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import AllAgencies from "../components/homepage/all-agencies";
 import Banner from "../components/homepage/banner";
 import Blogs from "../components/homepage/blogs";
@@ -12,15 +12,38 @@ import Map from "../components/homepage/map";
 import ListedProperties from "../components/homepage/properties-for-sale";
 import TrendingLinks from "../components/trending-links";
 import styles from "../styles/Home.module.css";
+import { useInView } from "react-intersection-observer";
+import Navbar from "../components/navbar";
 
 export default function Home() {
+  const { ref: microBuyRef, inView: microBuyInView } = useInView({
+    threshold: 0,
+  });
+  const { ref: bannerRef, inView: bannerInView } = useInView({
+    threshold: 0,
+  });
+  const [showNavbar, setShowNavbar] = useState();
+
+  useEffect(() => {
+    if (microBuyInView === false && bannerInView === false) {
+      setShowNavbar(true);
+    } else {
+      setShowNavbar(false);
+    }
+  }, [microBuyInView, bannerInView]);
+
+  console.log(bannerInView, microBuyInView);
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Zilaay | Real Estate Portal</title>
       </Head>
-      <Banner />
-      <Map />
+      <Navbar showNavbar={showNavbar} isTransparent={true} />
+
+      <Banner refInstance={bannerRef} />
+
+      <Map refInstance={microBuyRef} />
       <div className={styles.ad_container}>
         <div className={styles.ad_placehodler}>
           <h1>928 x 250 AD HERE</h1>

@@ -3,12 +3,11 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 70px;
   align-items: center;
 }
 .top_panel {
   background-color: var(--blue);
-  height: 42vh;
+  height: 50vh;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -22,6 +21,9 @@
 .top_panel:hover .pattern_bg {
   transform: scale(1.12);
   transition: ease-out 200ms;
+}
+.banner_img {
+  margin-top: 100px;
 }
 .bottom_panel {
   background-color: #fafafa;
@@ -57,6 +59,7 @@
   flex-direction: column;
   row-gap: 12px;
   z-index: 1;
+  margin-top: 30px;
 }
 .banner_content_container h2 {
   font-family: "p-b";
@@ -319,7 +322,8 @@
   background-color: rgb(217, 217, 217);
 }
 .card_body {
-  width: 287px;
+  width: 97% !important;
+  width: 257px;
   height: 200px;
   border: 1px solid #dddbdb;
   border-radius: 20px;

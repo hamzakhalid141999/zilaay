@@ -9,12 +9,13 @@
   align-items: center;
   position: relative;
   z-index: 200;
+  transition: ease-in-out 200ms;
   transition: background-color 200ms linear;
-  background-color: var(--blue) !important;
+  background-color: var(--blue);
   position: fixed;
 }
 .navbar_body_opaque {
-  background-color: white !important;
+  background-color: white;
 }
 .profile_menu {
   opacity: 1;
