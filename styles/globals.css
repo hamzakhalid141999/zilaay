@@ -8,6 +8,14 @@
   --footer-color: #1f1f1f;
 }
 
+a {
+  text-decoration: none !important;
+}
+
+a:-webkit-any-link {
+  color: black !important;
+}
+
 input:focus {
   outline: none;
 }
@@ -67,6 +75,7 @@ h1 {
   align-items: center;
   justify-content: center;
   transition: ease-in-out 200s;
+  column-gap: 10px;
   border: 1px solid var(--blue);
 }
 .btn:hover {
@@ -301,12 +310,7 @@ h1 {
   align-items: center;
   column-gap: 15px;
 }
-/* .slick-slider .slick-track,
-.slick-slider .slick-list {
-  display: flex;
-  flex-direction: row;
-  column-gap: 13px;
-} */
+
 @font-face {
   font-family: "p-l";
   src: url("../public/fonts/poppins/Poppins-Light.ttf");

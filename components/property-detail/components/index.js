@@ -5,6 +5,31 @@ import star_filled from "../../../public/assets/property-detail-assets/star_fill
 import star_empty from "../../../public/assets/property-detail-assets/star_empty.svg";
 import hot_tag from "../../../public/assets/tags/hot-ribbon.svg";
 
+import message from "../../../public/assets/property-detail-assets/message.svg";
+import call from "../../../public/assets/property-detail-assets/call.svg";
+import chat from "../../../public/assets/property-detail-assets/chat.svg";
+import logo from "../../../public/assets/component-assets/agency-card-assets/logo.png";
+import Image from "next/image";
+
+import waste from "../../../public/assets/icons/waste.svg";
+import study from "../../../public/assets/icons/study.svg";
+import sofa from "../../../public/assets/icons/sofa.svg";
+import services from "../../../public/assets/icons/services.svg";
+import parking_icon from "../../../public/assets/icons/parking_icon.svg";
+import kitchen from "../../../public/assets/icons/kitchen.svg";
+import flooring from "../../../public/assets/icons/flooring.svg";
+import elevators from "../../../public/assets/icons/elevators.svg";
+import electricity from "../../../public/assets/icons/electricity.svg";
+import drop_down from "../../../public/assets/icons/drop_down.svg";
+import dining from "../../../public/assets/icons/dining.svg";
+import bed from "../../../public/assets/icons/bed.svg";
+import bath from "../../../public/assets/icons/bath.svg";
+
+import doc1 from "../../../public/assets/property-detail-assets/doc1.png";
+import doc2 from "../../../public/assets/property-detail-assets/doc2.png";
+
+import ad from "../../../public/assets/property-detail-assets/ad.png";
+
 function PropertyDetailContent() {
   return (
     <div className={classes.container}>
@@ -98,6 +123,7 @@ function PropertyDetailContent() {
                 </div>
               </div>
             </div>
+
             <div className={classes.divider} />
 
             <div className={classes.section}>
@@ -117,8 +143,173 @@ function PropertyDetailContent() {
               </p>
             </div>
             <div className={classes.divider} />
+
+            <div className={classes.section}>
+              <h2 className={classes.section_heading}>Property Features</h2>
+
+              <div className={classes.features_container}>
+                <h2>Main Features</h2>
+
+                <div className={classes.vertical_divider} />
+
+                <div className={classes.features}>
+                  <div className={classes.feature_row}>
+                    <img src={parking_icon.src} />
+                    <p>Parking Spaces: 1</p>
+                  </div>
+
+                  <div className={classes.feature_row}>
+                    <img src={flooring.src} />
+                    <p>Flooring</p>
+                  </div>
+
+                  <div className={classes.feature_row}>
+                    <img src={electricity.src} />
+                    <p>Electricity Backup</p>
+                  </div>
+
+                  <div className={classes.feature_row}>
+                    <img src={waste.src} />
+                    <p>Waste Disposal</p>
+                  </div>
+
+                  <div className={classes.feature_row}>
+                    <img src={elevators.src} />
+                    <p>Elevators: 1</p>
+                  </div>
+
+                  <div className={classes.feature_row}>
+                    <img src={services.src} />
+                    <p>Service Elevators in Building</p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style={{ backgroundColor: "white" }}
+                className={classes.features_container}
+              >
+                <h2>Rooms</h2>
+
+                <div className={classes.vertical_divider} />
+
+                <div className={classes.features}>
+                  <div className={classes.feature_row}>
+                    <img src={bed.src} />
+                    <p>Bedrooms: 1</p>
+                  </div>
+
+                  <div className={classes.feature_row}>
+                    <img src={bath.src} />
+                    <p>Bathrooms: 4</p>
+                  </div>
+
+                  <div className={classes.feature_row}>
+                    <img src={dining.src} />
+                    <p>Dining Room</p>
+                  </div>
+
+                  <div className={classes.feature_row}>
+                    <img src={kitchen.src} />
+                    <p>Kitchen: 1</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={classes.divider} />
+
+            <div className={classes.section}>
+              <h2 className={classes.section_heading}>Property Documents</h2>
+
+              <div className={classes.docs_container}>
+                <img src={doc1.src} />
+                <img src={doc2.src} />
+                <img src={doc1.src} />
+                <img src={doc2.src} />
+              </div>
+
+              <div style={{ width: "100%" }} className="cities_container">
+                <p
+                  style={{ color: "#0060fd" }}
+                  className="listed_properties_heading"
+                >
+                  Location & Nearby
+                </p>
+                <div className="cities_btns_container">
+                  <div className="city_btn">
+                    <p>DHA Phase 8 Maps</p>
+                  </div>
+                  <div className="city_btn">
+                    <p>Nearby</p>
+                  </div>
+
+                  <div style={{ marginLeft: "20px" }} className="btn">
+                    <p>More Karachi Maps</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className={classes.map_container} style={{ width: "100%" }}>
+                <iframe
+                  width="100%"
+                  height="350"
+                  frameborder="0"
+                  scrolling="no"
+                  marginheight="0"
+                  marginwidth="0"
+                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                ></iframe>
+              </div>
+            </div>
           </div>
-          <div className={classes.right_panel}></div>
+          <div className={classes.right_panel}>
+            <div className={classes.contact_panel}>
+              <div className={classes.panel_content_container}>
+                <h2 className={classes.place_name}>New Horizons</h2>
+                <p className={classes.address}>
+                  3619 Kings Gate Dr, Memphis, TN 38116
+                </p>
+                <p className={classes.city}>Whitehaven</p>
+
+                <div className={classes.panel_btns_container}>
+                  <h2 className={classes.price}>PKR4.05 Crore</h2>
+
+                  <div style={{ width: "90%" }} className="btn">
+                    <img src={call.src} />
+                    <p>Call</p>
+                  </div>
+                  <div style={{ width: "90%" }} className="btn_secondary">
+                    <img src={message.src} />
+                    <p>Message</p>
+                  </div>
+                  <div style={{ width: "90%" }} className="btn">
+                    <img src={chat.src} />
+                    <p>Zilaay Chat</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={classes.agency_panel}>
+              <div className={classes.agency_content_container}>
+                <div className={classes.img_container}>
+                  <Image fill src={logo} />
+                </div>
+                <div className={classes.agency_info_panel}>
+                  <h2 className={classes.agency_heading}>
+                    Cantt Vista Real Estate
+                  </h2>
+                  <p className={classes.agency_subheading}>Karachi Agency</p>
+
+                  <h2 className={classes.agency_heading}>Raheel Ahmed Mir</h2>
+                  <p className={classes.agency_subheading}>Contact Person</p>
+                </div>
+              </div>
+            </div>
+
+            <img src={ad.src} />
+          </div>
         </div>
       </div>
     </div>
