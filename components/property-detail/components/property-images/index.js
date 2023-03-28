@@ -6,31 +6,130 @@ import img_3 from "../../../../public/assets/property-detail-assets/img_3.png";
 import img_4 from "../../../../public/assets/property-detail-assets/img_4.png";
 import img_5 from "../../../../public/assets/property-detail-assets/img_5.png";
 import Image from "next/image";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import Next from "../../../reactSlickButtons/next";
+import Prev from "../../../reactSlickButtons/prev";
 
 function PropertyImages() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    // centerMode: true,
+    nextArrow: <Next yPosition={"45%"} xPosition={"10px"} />,
+    prevArrow: <Prev yPosition={"45%"} xPosition={"10px"} />,
+  };
   return (
-    <div className={classes.container}>
-      <div className={classes.img_container}>
-        <Image fill className={classes.img_1} src={img_1.src} />
-      </div>
-      <div className={classes.right_panel}>
-        <div className={classes.single_row}>
+    <div className={classes.wrapper}>
+      <Slider arrows={true} {...settings}>
+        <div className={classes.container}>
           <div className={classes.img_container}>
-            <Image fill className={classes.img_1} src={img_2.src} />
+            <Image fill className={classes.img_1} src={img_1.src} />
           </div>
-          <div className={classes.img_container}>
-            <Image fill className={classes.img_1} src={img_4.src} />
+          <div className={classes.right_panel}>
+            <div className={classes.single_row}>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_2.src} />
+              </div>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_4.src} />
+              </div>
+            </div>
+            <div className={classes.single_row}>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_3.src} />
+              </div>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_5.src} />
+              </div>
+            </div>
           </div>
         </div>
-        <div className={classes.single_row}>
+
+        <div className={classes.container}>
           <div className={classes.img_container}>
-            <Image fill className={classes.img_1} src={img_3.src} />
+            <Image fill className={classes.img_1} src={img_1.src} />
           </div>
-          <div className={classes.img_container}>
-            <Image fill className={classes.img_1} src={img_5.src} />
+          <div className={classes.right_panel}>
+            <div className={classes.single_row}>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_2.src} />
+              </div>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_4.src} />
+              </div>
+            </div>
+            <div className={classes.single_row}>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_3.src} />
+              </div>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_5.src} />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+
+        <div className={classes.container}>
+          <div className={classes.img_container}>
+            <Image fill className={classes.img_1} src={img_1.src} />
+          </div>
+          <div className={classes.right_panel}>
+            <div className={classes.single_row}>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_2.src} />
+              </div>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_4.src} />
+              </div>
+            </div>
+            <div className={classes.single_row}>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_3.src} />
+              </div>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_5.src} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={classes.container}>
+          <div className={classes.img_container}>
+            <Image fill className={classes.img_1} src={img_1.src} />
+          </div>
+          <div className={classes.right_panel}>
+            <div className={classes.single_row}>
+              <div className={classes.img_container}>
+                <video
+                  controls
+                  fill
+                  className={classes.video}
+                  src={
+                    "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=1"
+                  }
+                />
+              </div>
+              <div className={classes.img_container}>
+                <Image fill className={classes.img_1} src={img_5.src} />
+              </div>
+            </div>
+            <div className={classes.single_row}>
+              <div className={classes.img_container}>
+                <div className={classes.placeholder} />
+              </div>
+              <div className={classes.img_container}>
+                <div className={classes.placeholder} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Slider>
     </div>
   );
 }

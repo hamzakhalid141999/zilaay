@@ -24,6 +24,11 @@ import drop_down from "../../../public/assets/icons/drop_down.svg";
 import dining from "../../../public/assets/icons/dining.svg";
 import bed from "../../../public/assets/icons/bed.svg";
 import bath from "../../../public/assets/icons/bath.svg";
+import whatsapp_icon from "../../../public/assets/icons/whatsapp_color.svg";
+import phone_blue from "../../../public/assets/icons/phone_blue.svg";
+import email_white from "../../../public/assets/icons/email_white.svg";
+
+import profile from "../../../public/assets/property-detail-assets/profile.png";
 
 import doc1 from "../../../public/assets/property-detail-assets/doc1.png";
 import doc2 from "../../../public/assets/property-detail-assets/doc2.png";
@@ -43,6 +48,18 @@ function PropertyDetailContent() {
 
             <div className="btn_rounded_white">
               <p style={{ color: "black" }}>Location & Nearby</p>
+            </div>
+
+            <div className="btn_rounded_white">
+              <p style={{ color: "black" }}>Description</p>
+            </div>
+
+            <div className="btn_rounded_white">
+              <p style={{ color: "black" }}>Property Features</p>
+            </div>
+
+            <div className="btn_rounded_white">
+              <p style={{ color: "black" }}>Property Documents</p>
             </div>
           </div>
 
@@ -275,39 +292,112 @@ function PropertyDetailContent() {
                 <div className={classes.panel_btns_container}>
                   <h2 className={classes.price}>PKR4.05 Crore</h2>
 
-                  <div style={{ width: "90%" }} className="btn">
-                    <img src={call.src} />
+                  <div style={{ width: "90%" }} className="btn_secondary">
+                    <img src={phone_blue.src} />
                     <p>Call</p>
                   </div>
-                  <div style={{ width: "90%" }} className="btn_secondary">
-                    <img src={message.src} />
-                    <p>Message</p>
+                  <div
+                    style={{ width: "90%", backgroundColor: "#25D366" }}
+                    className="whatsapp_btn"
+                  >
+                    <img src={whatsapp_icon.src} />
+                    <p>WhatsApp</p>
                   </div>
                   <div style={{ width: "90%" }} className="btn">
                     <img src={chat.src} />
                     <p>Zilaay Chat</p>
                   </div>
+                  <div style={{ width: "90%" }} className="btn">
+                    <img src={email_white.src} />
+                    <p>Email</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className={classes.agency_panel}>
-              <div className={classes.agency_content_container}>
-                <div className={classes.img_container}>
-                  <Image fill src={logo} />
+            <div className={classes.agency_seller_panel}>
+              <div className={classes.agency_panel}>
+                <div className={classes.agency_content_container}>
+                  <div className={classes.img_container}>
+                    <Image fill src={logo} />
+                  </div>
+                  <div className={classes.agency_info_panel}>
+                    <h2 className={classes.agency_heading}>
+                      Cantt Vista Real Estate
+                    </h2>
+                    <p
+                      style={{ marginBottom: "4px" }}
+                      className={classes.agency_subheading}
+                    >
+                      Karachi Agency
+                    </p>
+
+                    <h2
+                      style={{ marginTop: "4px" }}
+                      className={classes.agency_heading}
+                    >
+                      Raheel Ahmed Mir
+                    </h2>
+                    <p className={classes.agency_subheading}>Contact Person</p>
+                    <div
+                      style={{ border: "1px solid #0549c7" }}
+                      className={classes.btn_filled}
+                    >
+                      <p>Agency Profile</p>
+                    </div>
+                  </div>
                 </div>
-                <div className={classes.agency_info_panel}>
-                  <h2 className={classes.agency_heading}>
-                    Cantt Vista Real Estate
+              </div>
+              <div className={classes.seller_panel}>
+                <div className={classes.seller_content_panel_outer}>
+                  <h2 className={classes.seller_heading_main}>
+                    Seller Information
                   </h2>
-                  <p className={classes.agency_subheading}>Karachi Agency</p>
+                  <div className={classes.seller_content_panel_inner}>
+                    <div className={classes.img_container}>
+                      <Image fill src={profile} />
+                    </div>
+                    <div className={classes.agency_info_panel}>
+                      <h2 className={classes.seller_heading}>
+                        Faraz Ahmad Khan
+                      </h2>
+                      <p
+                        style={{ marginBottom: "4px" }}
+                        className={classes.seller_subheading}
+                      >
+                        Member since Feb 2012
+                      </p>
 
-                  <h2 className={classes.agency_heading}>Raheel Ahmed Mir</h2>
-                  <p className={classes.agency_subheading}>Contact Person</p>
+                      <div className={classes.btns_container}>
+                        <div className={classes.btn_filled}>
+                          <p>Call</p>
+                        </div>
+
+                        <div className={classes.btn_empty}>
+                          <p>Whatsapp</p>
+                        </div>
+
+                        <div className={classes.btn_filled}>
+                          <p>Email</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-
+            <div className={classes.useful_links_section}>
+              <div className={classes.links_content_container}>
+                <h2 className={classes.links_heading}>Useful Links</h2>
+                <p>Property for sale in Karachi</p>
+                <p>Property for sale in Karachi</p>
+                <p>Property for sale in Karachi</p>
+                <p>Property for sale in Karachi</p>
+                <p>Property for sale in Karachi</p>
+                <p>Property for sale in Karachi</p>
+                <p>Property for sale in Karachi</p>
+              </div>
+            </div>
             <img src={ad.src} />
           </div>
         </div>

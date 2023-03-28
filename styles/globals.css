@@ -78,6 +78,9 @@ h1 {
   column-gap: 10px;
   border: 1px solid var(--blue);
 }
+.btn img {
+  max-width: 30px;
+}
 .btn:hover {
   background-color: #528fff;
   cursor: pointer;
@@ -117,8 +120,8 @@ h1 {
   height: 100%;
   background-color: white;
   border-radius: 5px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,10 +139,11 @@ h1 {
   color: var(--blue);
 }
 
-.btn_secondary {
+.btn_secondary,
+.whatsapp_btn {
   width: fit-content;
   height: 43px;
-  background-color: white !important;
+  background-color: white;
   border-radius: 5px;
   padding-left: 14px;
   padding-right: 14px;
@@ -149,19 +153,29 @@ h1 {
   align-items: center;
   justify-content: center;
   transition: ease-in-out 200s;
-  border: 1px solid var(--blue);
+  border: 1px solid var(--blue) !important;
 }
-.btn_secondary img {
+.whatsapp_btn {
+  background-color: #25d366;
+  border: 1px solid white !important;
+}
+.btn_secondary img,
+.whatsapp_btn img {
   width: 15px;
 }
-.btn_secondary:hover {
+.btn_secondary:hover,
+.whatsapp_btn:hover {
   background: rgb(240, 240, 240);
   cursor: pointer;
 }
-.btn_secondary p {
+.btn_secondary p,
+.whatsapp_btn p {
   font-size: 14px;
   line-height: 15px;
   color: var(--blue);
+}
+.whatsapp_btn p {
+  color: white !important;
 }
 
 .landing_page_heading {

@@ -7,9 +7,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
+  position: relative;
   background-color: white;
   transition: ease-in-out 200ms;
+}
+.tag {
+  position: absolute;
+  top: 20px;
+  right: -5px;
+  width: 50px !important;
 }
 .img_container {
   width: 100%;

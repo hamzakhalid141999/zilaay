@@ -13,10 +13,11 @@ import setting_white from "../../public/assets/navbar-assets/setting.svg";
 import bell_white from "../../public/assets/navbar-assets/bell.svg";
 import setting_blue from "../../public/assets/navbar-assets/setting_blue.svg";
 import bell_blue from "../../public/assets/navbar-assets/bell_blue.svg";
+import { useWindowSize } from "../../utils";
 
 function Navbar({ showNavbar, isTransparent }) {
+  const { width } = useWindowSize();
   const router = useRouter();
-  //   const { width } = useWindowSize();
   const [openPanel, setOpenPanel] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState("transparent");
   const [isNavbarVisisbleFromTop, setIsNavbarVisibleFromTop] = useState(false);
@@ -80,21 +81,39 @@ function Navbar({ showNavbar, isTransparent }) {
             <p>Invest</p>
           </div>
 
-          <div className={classes.left_panel_btns}>
-            <p>More</p>
-          </div>
+          {width < 1370 ? (
+            <>
+              <div className={classes.left_panel_btns}>
+                <p>Shared Spaces</p>
+              </div>
 
-          {/* <div className={classes.left_panel_btns}>
-            <p>Shared Spaces</p>
-          </div>
+              <div className={classes.left_panel_btns}>
+                <p>Wanted</p>
+              </div>
 
-          <div className={classes.left_panel_btns}>
-            <p>Wanted</p>
-          </div>
-
-          <div className={classes.left_panel_btns}>
-            <p>Agent Finder</p>
-          </div> */}
+              <div className={classes.left_panel_btns}>
+                <p>Agent Finder</p>
+              </div>
+            </>
+          ) : (
+            <div className={classes.left_panel_btns}>
+              {/* <div className={classes.drop_down_arrow} /> */}
+              <div className={classes.drop_down}>
+                <div className={classes.single_tab}>
+                  <p>Shared Spaces</p>
+                </div>
+                <div className={classes.single_tab}>
+                  {" "}
+                  <p>Wanted</p>
+                </div>
+                <div className={classes.single_tab}>
+                  {" "}
+                  <p>Agent Finder</p>
+                </div>
+              </div>
+              <p>More</p>
+            </div>
+          )}
         </>
       </div>
 

@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css";
 import Next from "../../reactSlickButtons/next";
 import Prev from "../../reactSlickButtons/prev";
 
-function PropertiesForSale({ color, title }) {
+function PropertiesForSale({ textColor, color, title, hideBtnContainer }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -55,31 +55,36 @@ function PropertiesForSale({ color, title }) {
     <div className="listed_properties_container">
       <div className="properties_and_filter_container">
         <div className="cities_container">
-          <p style={{ color: color }} className="listed_properties_heading">
+          <p
+            style={{ color: textColor ? textColor : color }}
+            className="listed_properties_heading"
+          >
             {title}
           </p>
-          <div className="cities_btns_container">
-            <div className="city_btn">
-              <p>Lahore</p>
+          {!hideBtnContainer && (
+            <div className="cities_btns_container">
+              <div className="city_btn">
+                <p>Lahore</p>
+              </div>
+              <div className="city_btn">
+                <p>Rawalpindi</p>
+              </div>
+              <div className="city_btn">
+                <p>Islamabad</p>
+              </div>
+              <div className="city_btn">
+                <p>Karachi</p>
+              </div>
+              <div style={{ marginLeft: "20px" }} className="btn">
+                <p>Discover More</p>
+              </div>
             </div>
-            <div className="city_btn">
-              <p>Rawalpindi</p>
-            </div>
-            <div className="city_btn">
-              <p>Islamabad</p>
-            </div>
-            <div className="city_btn">
-              <p>Karachi</p>
-            </div>
-            <div style={{ marginLeft: "20px" }} className="btn">
-              <p>Discover More</p>
-            </div>
-          </div>
+          )}
         </div>
 
         <div className="properties_container">
           <Slider arrows={true} {...settings}>
-            <PropertyCard />
+            <PropertyCard isAd={true} />
             <PropertyCard />
             <PropertyCard />
             <PropertyCard />

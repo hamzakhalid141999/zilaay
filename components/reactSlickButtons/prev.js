@@ -4,14 +4,14 @@ import arrow from "../../public/assets/icons/left_arrow.svg";
 import Image from "next/image";
 
 function prev(props) {
-  const { className, style, onClick } = props;
+  const { className, style, onClick, xPosition, yPosition } = props;
   return (
     <div
       onClick={onClick}
       style={{
         position: "absolute",
-        left: "-28px",
-        top: "40%",
+        left: xPosition ? xPosition : "-28px",
+        top: yPosition ? yPosition : "40%",
         display: "block",
         zIndex: "+10",
       }}
