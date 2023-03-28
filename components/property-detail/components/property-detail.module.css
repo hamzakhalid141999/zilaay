@@ -466,16 +466,16 @@
   width: 96%;
   background: #f8f9fb;
   border-radius: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 20px;
   margin-bottom: 30px;
+  gap: 15px;
 }
 .docs_container img {
-  height: 200px;
-  width: 200px;
+  height: 100%;
+  aspect-ratio: 1/1;
+  width: 100%;
 }
 .map_container {
   margin-top: 30px;
