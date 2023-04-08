@@ -29,7 +29,6 @@
 
 .card_body:hover {
   transform: translate3d(0px, -3px, 0px);
-  box-shadow: 0 5px 30px 10px rgba(8, 72, 146, 0.24);
 }
 .card_body img {
   width: 40%;

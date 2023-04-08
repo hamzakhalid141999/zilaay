@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Zilaay | Real Estate Portal</title>
+        <title>Zilaay | Pakistan's One-Stop Real Estate Marketplace</title>
       </Head>
       <Navbar showNavbar={showNavbar} isTransparent={true} />
 

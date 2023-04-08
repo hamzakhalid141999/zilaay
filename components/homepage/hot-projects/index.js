@@ -47,7 +47,7 @@ function HotProjects() {
         className="colored_container_with_shimmer"
       >
         <div className={classes.shimmer} />
-        <div className={classes.content_container}>
+        <div className="cards_content_container">
           <div className="heading_container_filled">
             <p
               style={{

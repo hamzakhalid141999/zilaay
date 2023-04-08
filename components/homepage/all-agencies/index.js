@@ -77,12 +77,7 @@ function AllAgencies() {
     ],
   };
   return (
-    <div
-      style={{
-        height: "85vh",
-      }}
-      className="landing_page_colored_container"
-    >
+    <div className="landing_page_colored_container">
       <div
         style={{
           background:
@@ -90,7 +85,7 @@ function AllAgencies() {
         }}
         className="colored_container"
       >
-        <div className={classes.content_container}>
+        <div className="cards_content_container">
           <div className="heading_container">
             <p className="landing_page_heading">All Agencies</p>
             <div

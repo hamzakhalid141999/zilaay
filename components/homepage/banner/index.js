@@ -14,6 +14,9 @@ import Next from "../../reactSlickButtons/next";
 import Prev from "../../reactSlickButtons/prev";
 import Navbar from "../../navbar";
 
+import search_white from "../../../public/assets/icons/search_white.svg";
+import near_pin_blue from "../../../public/assets/icons/near_pin_blue.svg";
+
 function Banner({ refInstance }) {
   const settings = {
     dots: false,
@@ -84,6 +87,12 @@ function Banner({ refInstance }) {
     setIsInputFocused(false);
   };
 
+  const cardOverlays = [
+    "linear-gradient(41.96deg, #719462 0.92%, rgba(113, 148, 98, 0) 100%)",
+    "linear-gradient(41.96deg, #AC68A5 0.92%, rgba(172, 104, 165, 0) 100%)",
+    "linear-gradient(41.96deg, #4FA6A6 0.92%, rgba(79, 166, 166, 0) 100%)",
+  ];
+
   return (
     <>
       <div ref={refInstance} className={classes.container}>
@@ -93,7 +102,7 @@ function Banner({ refInstance }) {
           <img className={classes.banner_img} src={banner_image.src} />
           <div className={classes.banner_content_container}>
             <h2>Maps Par Ao, Baichtay Jao!</h2>
-            <p>Phasellus consectetur, ligula a lacinia mollis.</p>
+            <p>Pakistan's One-Stop Real Estate Marketplace</p>
             <div className={classes.discover_more_btn}>
               <p>Discover</p>
             </div>
@@ -140,6 +149,16 @@ function Banner({ refInstance }) {
                     type="text"
                     placeholder="Search 3 BHK for sale, rent or invest in pakistan..."
                   />
+                  <div className={classes.search_btns_container}>
+                    <div className={classes.near_me_btn}>
+                      <img src={near_pin_blue.src} />
+                      <p>Near Me</p>
+                    </div>
+                    <div className={classes.search_btn}>
+                      <img src={search_white.src} />
+                      <p>Search</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div
@@ -202,7 +221,10 @@ function Banner({ refInstance }) {
             <Slider arrows={true} {...settings}>
               <div className={classes.card_body}>
                 <img src={feature_cards_bg.src} />
-                <div className={classes.overlay}>
+                <div
+                  style={{ backgroundImage: cardOverlays[0] }}
+                  className={classes.overlay}
+                >
                   <p>Find Properties To Buy Near me!</p>
                   <div className={classes.card_btn}>
                     <p>Explore More</p>
@@ -211,7 +233,10 @@ function Banner({ refInstance }) {
               </div>
               <div className={classes.card_body}>
                 <img src={feature_cards_bg.src} />
-                <div className={classes.overlay}>
+                <div
+                  style={{ backgroundImage: cardOverlays[1] }}
+                  className={classes.overlay}
+                >
                   <p>Find Properties To Buy Near me!</p>
                   <div className={classes.card_btn}>
                     <p>Explore More</p>
@@ -220,7 +245,10 @@ function Banner({ refInstance }) {
               </div>
               <div className={classes.card_body}>
                 <img src={feature_cards_bg.src} />
-                <div className={classes.overlay}>
+                <div
+                  style={{ backgroundImage: cardOverlays[2] }}
+                  className={classes.overlay}
+                >
                   <p>Find Properties To Buy Near me!</p>
                   <div className={classes.card_btn}>
                     <p>Explore More</p>
@@ -229,7 +257,10 @@ function Banner({ refInstance }) {
               </div>
               <div className={classes.card_body}>
                 <img src={feature_cards_bg.src} />
-                <div className={classes.overlay}>
+                <div
+                  style={{ backgroundImage: cardOverlays[0] }}
+                  className={classes.overlay}
+                >
                   <p>Find Properties To Buy Near me!</p>
                   <div className={classes.card_btn}>
                     <p>Explore More</p>
@@ -238,7 +269,10 @@ function Banner({ refInstance }) {
               </div>
               <div className={classes.card_body}>
                 <img src={feature_cards_bg.src} />
-                <div className={classes.overlay}>
+                <div
+                  style={{ backgroundImage: cardOverlays[1] }}
+                  className={classes.overlay}
+                >
                   <p>Find Properties To Buy Near me!</p>
                   <div className={classes.card_btn}>
                     <p>Explore More</p>
@@ -253,13 +287,25 @@ function Banner({ refInstance }) {
               <h2>My Activity</h2>
               <div className={classes.activity_tab}>
                 <p>Recently Searched</p>
+                <div className={classes.recent_number}>
+                  <p>4</p>
+                </div>
               </div>
               <div className={classes.activity_tab}>
                 <p>Shortlisted</p>
+                <div className={classes.shortlisted_number}>
+                  <p>8</p>
+                </div>
               </div>
             </div>
             <div className={classes.activity_container_right}>
               <img src={profile_placeholder.src} />
+              <div className={classes.login_btn}>
+                <p>Login/Register to save activity</p>
+              </div>
+              <p className={classes.activity_text}>
+                & see your activities across browsers and devices
+              </p>
             </div>
           </div>
         </div>

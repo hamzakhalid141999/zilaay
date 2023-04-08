@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./property-detail.module.css";
 import PropertyImages from "./property-images";
 import star_filled from "../../../public/assets/property-detail-assets/star_filled.svg";
@@ -27,21 +27,36 @@ import bath from "../../../public/assets/icons/bath.svg";
 import whatsapp_icon from "../../../public/assets/icons/whatsapp_color.svg";
 import phone_blue from "../../../public/assets/icons/phone_blue.svg";
 import email_white from "../../../public/assets/icons/email_white.svg";
-
 import profile from "../../../public/assets/property-detail-assets/profile.png";
-
 import doc1 from "../../../public/assets/property-detail-assets/doc1.png";
 import doc2 from "../../../public/assets/property-detail-assets/doc2.png";
-
 import ad from "../../../public/assets/property-detail-assets/ad.png";
+import { useInView } from "react-intersection-observer";
 
 function PropertyDetailContent() {
+  const [isTopPanelSticky, setIsTopPanelSticky] = useState(false);
+
+  console.log("IS STICKY: ", isTopPanelSticky);
+
   return (
     <div className={classes.container}>
-      <PropertyImages />
+      <PropertyImages setIsTopPanelSticky={setIsTopPanelSticky} />
       <div className={classes.content_container}>
-        <div className={classes.stats_panel}>
-          <div className={classes.btns_container}>
+        <div
+          style={{
+            position: isTopPanelSticky && "fixed",
+            top: isTopPanelSticky && "35px",
+            width: isTopPanelSticky && "100vw",
+            borderRadius: isTopPanelSticky && "0",
+          }}
+          className={classes.stats_panel}
+        >
+          <div
+            style={{
+              marginLeft: isTopPanelSticky && "14px",
+            }}
+            className={classes.btns_container}
+          >
             <div className="btn_rounded">
               <p>Overview</p>
             </div>
@@ -83,7 +98,7 @@ function PropertyDetailContent() {
                 <p>3619 Kings Gate Dr, Memphis, TN 38116</p>
                 <p>Whitehaven</p>
 
-                <div className={classes.single_row_details}>
+                {/* <div className={classes.single_row_details}>
                   <div className={classes.stars_container}>
                     <img src={star_filled.src} />
                     <img src={star_filled.src} />
@@ -98,7 +113,7 @@ function PropertyDetailContent() {
                     <img src={hot_tag.src} />
                     <p>Verified Listing</p>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className={classes.overview_details_container}>
@@ -315,74 +330,48 @@ function PropertyDetailContent() {
               </div>
             </div>
 
-            <div className={classes.agency_seller_panel}>
-              <div className={classes.agency_panel}>
-                <div className={classes.agency_content_container}>
-                  <div className={classes.img_container}>
-                    <Image fill src={logo} />
-                  </div>
-                  <div className={classes.agency_info_panel}>
-                    <h2 className={classes.agency_heading}>
-                      Cantt Vista Real Estate
-                    </h2>
-                    <p
-                      style={{ marginBottom: "4px" }}
-                      className={classes.agency_subheading}
-                    >
-                      Karachi Agency
-                    </p>
+            <div className={classes.agency_panel}>
+              <div className={classes.agency_content_container}>
+                <div className={classes.img_container}>
+                  <Image fill src={logo} />
+                </div>
+                <div className={classes.agency_info_panel}>
+                  <h2 className={classes.agency_heading}>
+                    Cantt Vista Real Estate
+                  </h2>
+                  <p
+                    style={{ marginBottom: "4px" }}
+                    className={classes.agency_subheading}
+                  >
+                    Karachi Agency
+                  </p>
 
-                    <h2
-                      style={{ marginTop: "4px" }}
-                      className={classes.agency_heading}
-                    >
-                      Raheel Ahmed Mir
-                    </h2>
-                    <p className={classes.agency_subheading}>Contact Person</p>
-                    <div
-                      style={{ border: "1px solid #0549c7" }}
-                      className={classes.btn_filled}
-                    >
-                      <p>Agency Profile</p>
-                    </div>
+                  <h2
+                    style={{ marginTop: "4px" }}
+                    className={classes.agency_heading}
+                  >
+                    Raheel Ahmed Mir
+                  </h2>
+                  <p className={classes.agency_subheading}>Contact Person</p>
+                  <div
+                    style={{ border: "1px solid #0549c7" }}
+                    className={classes.btn_filled}
+                  >
+                    <p>Agency Profile</p>
                   </div>
                 </div>
               </div>
-              <div className={classes.seller_panel}>
-                <div className={classes.seller_content_panel_outer}>
-                  <h2 className={classes.seller_heading_main}>
-                    Seller Information
-                  </h2>
-                  <div className={classes.seller_content_panel_inner}>
-                    <div className={classes.img_container}>
-                      <Image fill src={profile} />
-                    </div>
-                    <div className={classes.agency_info_panel}>
-                      <h2 className={classes.seller_heading}>
-                        Faraz Ahmad Khan
-                      </h2>
-                      <p
-                        style={{ marginBottom: "4px" }}
-                        className={classes.seller_subheading}
-                      >
-                        Member since Feb 2012
-                      </p>
+              <div className={classes.btns_container}>
+                <div className={classes.btn_filled}>
+                  <p>Call</p>
+                </div>
 
-                      <div className={classes.btns_container}>
-                        <div className={classes.btn_filled}>
-                          <p>Call</p>
-                        </div>
+                <div className={classes.btn_empty}>
+                  <p>Whatsapp</p>
+                </div>
 
-                        <div className={classes.btn_empty}>
-                          <p>Whatsapp</p>
-                        </div>
-
-                        <div className={classes.btn_filled}>
-                          <p>Email</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className={classes.btn_filled}>
+                  <p>Email</p>
                 </div>
               </div>
             </div>

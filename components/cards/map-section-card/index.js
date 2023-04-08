@@ -8,12 +8,30 @@ import whatsapp_blue from "../../../public/assets/icons/whatsapp_blue.svg";
 import whatsapp_color from "../../../public/assets/icons/whatsapp_color.svg";
 import Link from "next/link";
 
+import grey_drop_down from "../../../public/assets/icons/grey_drop_down.svg";
+import video_card from "../../../public/assets/icons/video_card.svg";
+import camera_card from "../../../public/assets/icons/camera_card.svg";
+import share_card from "../../../public/assets/icons/share_card.svg";
+import heart_card from "../../../public/assets/icons/heart_card.svg";
+
 function MapSectionCard() {
   return (
     <Link href={"/property-detail"}>
       <div className={classes.card_body}>
         <img src={hot_tag.src} className={classes.tag} />
         <div className={classes.card_img}>
+          <img src={heart_card.src} className={classes.heart} />
+          <img src={share_card.src} className={classes.share} />
+          <div className={classes.icons_container}>
+            <div className={classes.single_tab}>
+              <img src={video_card.src} className={classes.video} />
+              <p>17</p>
+            </div>
+            <div className={classes.single_tab}>
+              <img src={camera_card.src} className={classes.camera} />
+              <p>2</p>
+            </div>
+          </div>
           <Image className={classes.img} fill src={bg} />
         </div>
         <div className={classes.content_container}>
@@ -44,10 +62,10 @@ function MapSectionCard() {
                   <p style={{ fontSize: "10px" }}>WhatsApp</p>
                   <img src={whatsapp_blue.src} />
                 </div>
-              </div>
 
-              <div style={{ height: "23px" }} className="btn">
-                <p style={{ fontSize: "10px" }}>Email</p>
+                <div style={{ height: "23px" }} className="btn">
+                  <p style={{ fontSize: "10px" }}>Email</p>
+                </div>
               </div>
             </div>
           </div>

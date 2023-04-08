@@ -4,7 +4,6 @@
   height: 335px;
   background: #ffffff;
   border: 1px solid #c1d1dc;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
   border-radius: 20px;
   transition: ease-in-out 200ms;
   position: relative;
@@ -13,7 +12,6 @@
 
 .card_body:hover {
   transform: translate3d(0px, -3px, 0px);
-  box-shadow: 0 5px 30px 10px rgba(8, 72, 146, 0.24);
 }
 .tag {
   position: absolute;

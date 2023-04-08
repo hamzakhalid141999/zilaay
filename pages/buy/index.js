@@ -8,6 +8,9 @@ import Link from "next/link";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Footer from "../../components/footer/index";
+import near_me_pin from "../../public/assets/icons/near_me_pin.svg";
+import search_icon from "../../public/assets/icons/search_icon.svg";
+import grey_drop_down from "../../public/assets/icons/grey_drop_down.svg";
 
 function Buy() {
   const settings = {
@@ -26,55 +29,82 @@ function Buy() {
         <div className={classes.map_container}>
           <div className={classes.filter_bar_container}>
             <div className={classes.filter_bar}>
-              <input
-                placeholder="Address, neighborhood, or ZIP"
-                style={{ width: "130%" }}
-                className={classes.input_field}
-              />
+              <div
+                style={{ minWidth: "260px" }}
+                className="select_input_container_2_icons"
+              >
+                <input
+                  placeholder="Address, Neighborhood or ZIP"
+                  className={classes.input_field}
+                />
+                <img className="input_icon_1" src={near_me_pin.src} />
+                <img className="input_icon_2" src={search_icon.src} />
+              </div>
 
-              <div style={{ width: "60%" }} className="select_input_container">
+              <div
+                style={{ minWidth: "75px" }}
+                className="select_input_container"
+              >
                 <select className={classes.input_field}>
                   <option>Buy</option>
                 </select>
                 <img src={drop_down_icon.src} />
               </div>
 
-              <div style={{ width: "120%" }} className="select_input_container">
+              <div
+                style={{ minWidth: "140px" }}
+                className="select_input_container"
+              >
                 <select className={classes.input_field}>
                   <option>Property Type</option>
                 </select>
                 <img src={drop_down_icon.src} />
               </div>
 
-              <div style={{ width: "100%" }} className="select_input_container">
+              <div
+                style={{ minWidth: "120px" }}
+                className="select_input_container"
+              >
                 <select className={classes.input_field}>
                   <option>Area (Sqt)</option>
                 </select>
                 <img src={drop_down_icon.src} />
               </div>
 
-              <div style={{ width: "100%" }} className="select_input_container">
+              <div
+                style={{ minWidth: "90px" }}
+                className="select_input_container"
+              >
                 <select className={classes.input_field}>
                   <option>Price</option>
                 </select>
                 <img src={drop_down_icon.src} />
               </div>
 
-              <div style={{ width: "100%" }} className="select_input_container">
+              <div
+                style={{ minWidth: "80px" }}
+                className="select_input_container"
+              >
                 <select className={classes.input_field}>
                   <option>Beds</option>
                 </select>
                 <img src={drop_down_icon.src} />
               </div>
 
-              <div style={{ width: "100%" }} className="select_input_container">
+              <div
+                style={{ minWidth: "90px" }}
+                className="select_input_container"
+              >
                 <select className={classes.input_field}>
                   <option>Baths</option>
                 </select>
                 <img src={drop_down_icon.src} />
               </div>
 
-              <div style={{ width: "100%" }} className="select_input_container">
+              <div
+                style={{ minWidth: "145px" }}
+                className="select_input_container"
+              >
                 <select className={classes.input_field}>
                   <option>More Options</option>
                 </select>
@@ -103,9 +133,20 @@ function Buy() {
             <div className={classes.properties_section_container}>
               <div className={classes.property_title_bar}>
                 <h2>Karachi, Defence DHA Houses for Sale</h2>
-                <select className={classes.sort_by_input}>
-                  <option>Sort By</option>
-                </select>
+                <div className="select_input_container">
+                  <select className={classes.sort_by_input}>
+                    <option>Sort By</option>
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                    <option>Popular</option>
+                    <option>Lowest Price</option>
+                    <option>Highest Price</option>
+                  </select>
+                  <img
+                    style={{ opacity: 0.5, width: "14px" }}
+                    src={grey_drop_down.src}
+                  />
+                </div>
               </div>
 
               <div className={classes.scroller}>

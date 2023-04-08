@@ -69,19 +69,58 @@ function Navbar({ showNavbar, isTransparent }) {
         <>
           <Link href={"/buy"}>
             <div className={classes.left_panel_btns}>
+              {/* <div className={classes.drop_down}>
+                <div className={classes.single_tab}>
+                  <p>Shared Spaces</p>
+                </div>
+                <div className={classes.single_tab}>
+                  {" "}
+                  <p>Wanted</p>
+                </div>
+                <div className={classes.single_tab}>
+                  {" "}
+                  <p>Agent Finder</p>
+                </div>
+              </div> */}
               <p>Buy</p>
             </div>
           </Link>
 
           <div className={classes.left_panel_btns}>
+            {/* <div className={classes.drop_down}>
+              <div className={classes.single_tab}>
+                <p>Shared Spaces</p>
+              </div>
+              <div className={classes.single_tab}>
+                {" "}
+                <p>Wanted</p>
+              </div>
+              <div className={classes.single_tab}>
+                {" "}
+                <p>Agent Finder</p>
+              </div>
+            </div> */}
             <p>Rent</p>
           </div>
 
           <div className={classes.left_panel_btns}>
+            {/* <div className={classes.drop_down}>
+              <div className={classes.single_tab}>
+                <p>Shared Spaces</p>
+              </div>
+              <div className={classes.single_tab}>
+                {" "}
+                <p>Wanted</p>
+              </div>
+              <div className={classes.single_tab}>
+                {" "}
+                <p>Agent Finder</p>
+              </div>
+            </div> */}
             <p>Invest</p>
           </div>
 
-          {width < 1370 ? (
+          {width > 1370 ? (
             <>
               <div className={classes.left_panel_btns}>
                 <p>Shared Spaces</p>

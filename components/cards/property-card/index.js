@@ -8,14 +8,31 @@ import Image from "next/image";
 import whatsapp_blue from "../../../public/assets/icons/whatsapp_blue.svg";
 import whatsapp_color from "../../../public/assets/icons/whatsapp_color.svg";
 import ad from "../../../public/assets/icons/ad.png";
+import heart_card from "../../../public/assets/icons/heart_card.svg";
 
 function PropertyCard({ isAd }) {
   return (
     <div className={classes.card_body}>
       {isAd ? (
-        <Image className={classes.ad_img} src={ad} fill />
+        <>
+          <Image className={classes.ad_img} src={ad} fill />
+          <div className={classes.ad_content}>
+            <p>Some random Ad text</p>
+            <div className={classes.btn_filled}>
+              <p>View Property</p>
+            </div>
+          </div>
+
+          <div className={classes.ad_tag}>
+            <p>ADS</p>
+          </div>
+
+          <img src={heart_card.src} className={classes.heart} />
+        </>
       ) : (
         <>
+          <img src={heart_card.src} className={classes.heart} />
+
           <div className={classes.card_img}>
             <Image className={classes.img} fill src={bg} />
           </div>
@@ -44,13 +61,13 @@ function PropertyCard({ isAd }) {
                     <p style={{ fontSize: "10px" }}>Call</p>
                   </div>
                   <div style={{ height: "23px" }} className="btn_secondary">
-                    {/* <p style={{ fontSize: "10px" }}>Whatsapp</p> */}
-                    <img src={whatsapp_color.src} />
+                    <p style={{ fontSize: "10px" }}>WhatsApp</p>
+                    <img src={whatsapp_blue.src} />
                   </div>
-                </div>
 
-                <div style={{ height: "23px" }} className="btn">
-                  <p style={{ fontSize: "10px" }}>Email</p>
+                  <div style={{ height: "23px" }} className="btn">
+                    <p style={{ fontSize: "10px" }}>Email</p>
+                  </div>
                 </div>
               </div>
             </div>
