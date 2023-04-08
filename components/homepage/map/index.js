@@ -39,25 +39,7 @@ function Map({ refInstance }) {
         },
       },
       {
-        breakpoint: 1113,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          infinite: true,
-          centerMode: false,
-        },
-      },
-      {
-        breakpoint: 923,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          infinite: true,
-          centerMode: false,
-        },
-      },
-      {
-        breakpoint: 743,
+        breakpoint: 1266,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -66,7 +48,7 @@ function Map({ refInstance }) {
         },
       },
       {
-        breakpoint: 559,
+        breakpoint: 945,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -75,7 +57,7 @@ function Map({ refInstance }) {
         },
       },
       {
-        breakpoint: 378,
+        breakpoint: 630,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
