@@ -1,6 +1,6 @@
 .card_body {
   width: 96%;
-  min-width: 267px;
+  min-width: 247px;
   /* max-width: 300px; */
   height: 340px;
   background: #ffffff;
@@ -140,12 +140,13 @@
   margin-bottom: 5px;
 }
 .details_row {
-  width: 85%;
+  width: 95%;
   height: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;
+  column-gap: 5px;
 }
 .details_row p {
   font-size: 14px;
@@ -178,9 +179,10 @@
   width: 20px;
 }
 .non_primary_btns {
-  width: 85%;
+  width: 100%;
   height: fit-content;
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   column-gap: 10px;
 }

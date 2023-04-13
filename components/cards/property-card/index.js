@@ -57,15 +57,24 @@ function PropertyCard({ isAd }) {
 
               <div className={classes.btns_container}>
                 <div className={classes.non_primary_btns}>
-                  <div style={{ height: "23px" }} className="btn_secondary">
+                  <div
+                    style={{ width: "100%", height: "23px" }}
+                    className="btn_secondary"
+                  >
                     <p style={{ fontSize: "10px" }}>Call</p>
                   </div>
-                  <div style={{ height: "23px" }} className="btn_secondary">
+                  <div
+                    style={{ width: "100%", height: "23px" }}
+                    className="btn_secondary"
+                  >
                     <p style={{ fontSize: "10px" }}>WhatsApp</p>
                     <img src={whatsapp_blue.src} />
                   </div>
 
-                  <div style={{ height: "23px" }} className="btn">
+                  <div
+                    style={{ width: "100%", height: "23px" }}
+                    className="btn"
+                  >
                     <p style={{ fontSize: "10px" }}>Email</p>
                   </div>
                 </div>

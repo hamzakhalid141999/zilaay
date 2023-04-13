@@ -14,8 +14,12 @@ import TrendingLinks from "../components/trending-links";
 import styles from "../styles/Home.module.css";
 import { useInView } from "react-intersection-observer";
 import Navbar from "../components/navbar";
+import back_top from "../public/assets/icons/back_top.svg";
+import chat_bot from "../public/assets/icons/chat_bot.svg";
 
 export default function Home() {
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
   const { ref: microBuyRef, inView: microBuyInView } = useInView({
     threshold: 0,
   });
@@ -32,10 +36,84 @@ export default function Home() {
     }
   }, [microBuyInView, bannerInView]);
 
-  console.log(bannerInView, microBuyInView);
+  let listener;
+
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      if (document !== null) {
+        let scrolled = document.scrollingElement.scrollTop;
+
+        console.log(scrolled);
+        if (scrolled >= 800) {
+          setShowScrollToTop(true);
+        } else if (scrolled < 800) {
+          setShowScrollToTop(false);
+        }
+      }
+    });
+    return () => {
+      document.removeEventListener("scroll", listener);
+    };
+  }, []);
+
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleOpenContactForm = () => {
+    setShowContactForm(!showContactForm);
+  };
 
   return (
     <div className={styles.container}>
+      <img
+        style={{
+          right: showScrollToTop ? "2%" : "-5%",
+          pointerEvents: showScrollToTop ? "all" : "none",
+        }}
+        onClick={() => {
+          if (showScrollToTop) {
+            handleClick();
+          }
+        }}
+        src={back_top.src}
+        className={styles.top_icon}
+      />
+
+      <div className={styles.chat_icon}>
+        <div className={styles.contact_form_container}>
+          <div
+            className={
+              showContactForm ? styles.contact_form : styles.contact_form_hidden
+            }
+          >
+            <div className={styles.contact_form_content}>
+              <h2>Contact Us</h2>
+              <p className={styles.form_text}>
+                Use the form below to contact us
+              </p>
+              <input placeholder="Your Name" className={styles.input_field} />
+              <input placeholder="Your Email" className={styles.input_field} />
+              <input placeholder="Your Phone" className={styles.input_field} />
+              <input placeholder="Your Name" className={styles.input_field} />
+              <textarea
+                placeholder="Type your message"
+                className={styles.input_field_textarea}
+              />
+              <div className={styles.btn_filled}>
+                <p>Send</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img
+          onClick={() => {
+            handleOpenContactForm();
+          }}
+          src={chat_bot.src}
+        />
+      </div>
+
       <Head>
         <title>Zilaay | Pakistan's One-Stop Real Estate Marketplace</title>
       </Head>

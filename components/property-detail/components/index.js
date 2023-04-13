@@ -33,7 +33,7 @@ import doc2 from "../../../public/assets/property-detail-assets/doc2.png";
 import ad from "../../../public/assets/property-detail-assets/ad.png";
 import { useInView } from "react-intersection-observer";
 
-function PropertyDetailContent() {
+function PropertyDetailContent({ stickyDivRef }) {
   const [isTopPanelSticky, setIsTopPanelSticky] = useState(false);
 
   console.log("IS STICKY: ", isTopPanelSticky);
@@ -295,7 +295,7 @@ function PropertyDetailContent() {
               </div>
             </div>
           </div>
-          <div className={classes.right_panel}>
+          <div ref={stickyDivRef} className={classes.right_panel}>
             <div className={classes.contact_panel}>
               <div className={classes.panel_content_container}>
                 <h2 className={classes.place_name}>New Horizons</h2>

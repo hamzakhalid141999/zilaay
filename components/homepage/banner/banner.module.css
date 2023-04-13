@@ -16,7 +16,7 @@
   column-gap: 100px;
   position: relative;
   transition: ease-out 200ms;
-  min-height: 320px;
+  min-height: 390px;
 }
 .top_panel:hover .pattern_bg {
   transform: scale(1.12);
@@ -104,6 +104,7 @@
   position: absolute;
   bottom: -17%;
   width: 60%;
+  min-width: 855px;
 }
 
 .tabs_container {
@@ -478,6 +479,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  border-radius: 7px;
 }
 .activity_tab p {
   color: var(--blue);

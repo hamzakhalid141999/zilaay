@@ -17,22 +17,24 @@ import "slick-carousel/slick/slick.css";
 import Next from "../../reactSlickButtons/next";
 import Prev from "../../reactSlickButtons/prev";
 
+import erase from "../../../public/assets/icons/erase.svg";
+import draw from "../../../public/assets/icons/draw.svg";
+
 function Map({ refInstance }) {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    // centerMode: true,
     nextArrow: <Next />,
     prevArrow: <Prev />,
     responsive: [
       {
         breakpoint: 1300,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 5,
           slidesToScroll: 1,
           infinite: true,
           centerMode: false,
@@ -41,7 +43,7 @@ function Map({ refInstance }) {
       {
         breakpoint: 1266,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 1,
           infinite: true,
           centerMode: false,
@@ -164,6 +166,17 @@ function Map({ refInstance }) {
 
           <div className={classes.map_property_section}>
             <div className={classes.map_section}>
+              <div className={classes.map_btn_container}>
+                <div className={classes.btn}>
+                  <img src={erase.src} />
+                  <p>Erase</p>
+                </div>
+
+                <div className={classes.btn}>
+                  <img src={draw.src} />
+                  <p>Draw</p>
+                </div>
+              </div>
               <iframe
                 width="100%"
                 height="100%"

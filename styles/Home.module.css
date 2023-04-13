@@ -22,3 +22,109 @@
   width: 80%;
   text-align: center;
 }
+.top_icon,
+.chat_icon {
+  position: fixed;
+  bottom: 3%;
+  right: 2%;
+  width: 60px;
+  z-index: 10000;
+  background-color: var(--blue);
+  border-radius: 100px;
+  padding: 2px;
+  transition: ease-out 200ms;
+}
+.chat_icon {
+  bottom: 13%;
+}
+.chat_icon img {
+  width: 60px;
+  border-radius: 100px;
+}
+.top_icon:hover,
+.chat_icon:hover {
+  transform: translateY(-5px);
+}
+.contact_form {
+  width: 280px;
+  height: fit-content;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: white;
+  position: absolute;
+  bottom: 35%;
+  right: 1%;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.143);
+  transition: ease-in-out 200ms;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.contact_form_hidden {
+  width: 280px;
+  height: fit-content;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: white;
+  position: absolute;
+  bottom: 0%;
+  opacity: 0;
+  right: 1%;
+  margin-bottom: 0;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.143);
+  transition: ease-in-out 200ms;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.contact_form_content {
+  display: flex;
+  flex-direction: column;
+  width: 87%;
+  height: 93%;
+  row-gap: 10px;
+}
+.contact_form_content h2 {
+  font-size: 22px;
+  font-family: "p-sb";
+  margin-bottom: 10px;
+}
+.contact_form_container {
+  position: relative;
+}
+.form_text {
+  opacity: 0.5;
+  font-size: 13px;
+  font-family: "p-r";
+}
+.input_field {
+  width: 90%;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid rgb(203, 203, 203);
+}
+.input_field_textarea {
+  width: 90%;
+  height: 70px;
+  border-radius: 8px;
+  border: 1px solid rgb(203, 203, 203);
+  padding-left: 12px;
+  padding-top: 10px;
+}
+.btn_filled {
+  width: 100%;
+  height: 45px;
+  border-radius: 7px;
+  background-color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn_filled p {
+  font-size: 12px;
+  color: white;
+  font-family: "p-r";
+}

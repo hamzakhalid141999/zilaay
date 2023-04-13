@@ -9,7 +9,13 @@ import "slick-carousel/slick/slick.css";
 import Next from "../../reactSlickButtons/next";
 import Prev from "../../reactSlickButtons/prev";
 
-function PropertiesForSale({ textColor, color, title, hideBtnContainer }) {
+function PropertiesForSale({
+  otherDivRef,
+  textColor,
+  color,
+  title,
+  hideBtnContainer,
+}) {
   const settings = {
     dots: false,
     infinite: true,
@@ -22,7 +28,7 @@ function PropertiesForSale({ textColor, color, title, hideBtnContainer }) {
     prevArrow: <Prev />,
     responsive: [
       {
-        breakpoint: 1370,
+        breakpoint: 1270,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -52,7 +58,7 @@ function PropertiesForSale({ textColor, color, title, hideBtnContainer }) {
   };
 
   return (
-    <div className="listed_properties_container">
+    <div ref={otherDivRef} className="listed_properties_container">
       <div className="properties_and_filter_container">
         <div className="cities_container">
           <p
