@@ -17,6 +17,9 @@ import Navbar from "../components/navbar";
 import back_top from "../public/assets/icons/back_top.svg";
 import chat_bot from "../public/assets/icons/chat_bot.svg";
 
+import video_placeholder from "../public/assets/icons/video_placeholder.png";
+import pause_icon from "../public/assets/icons/pause_icon.svg";
+
 export default function Home() {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
@@ -66,6 +69,16 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.trailer_container}>
+        <div className={styles.video_placeholder_container}>
+          <img className={styles.pause_icon} src={pause_icon.src} />
+          <img className={styles.placeholder} src={video_placeholder.src} />
+        </div>
+        <p>
+          Zilaay <span>New</span> TVC
+        </p>
+      </div>
+
       <img
         style={{
           right: showScrollToTop ? "2%" : "-5%",

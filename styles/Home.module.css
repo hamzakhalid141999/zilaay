@@ -7,6 +7,7 @@
   justify-content: center;
   column-gap: 20px;
   row-gap: 20px;
+  position: relative;
 }
 .ad_placehodler {
   width: 970px;
@@ -46,7 +47,7 @@
   transform: translateY(-5px);
 }
 .contact_form {
-  width: 280px;
+  width: 320px;
   height: fit-content;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -62,8 +63,59 @@
   align-items: center;
   justify-content: center;
 }
+.trailer_container {
+  position: fixed;
+  right: -10px;
+  top: 10%;
+  width: 170px;
+  background-color: white;
+  height: fit-content;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  z-index: 10000;
+  border-bottom-left-radius: 24px;
+  border-top-left-radius: 24px;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.143);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 10px;
+  transition: ease-out 200ms;
+  padding-right: 10px;
+}
+.trailer_container:hover {
+  right: 0;
+}
+.trailer_container p {
+  font-size: 12px;
+}
+.trailer_container p span {
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: var(--blue);
+}
+.video_placeholder_container {
+  width: 80%;
+  height: 55%;
+  position: relative;
+}
+.pause_icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 30px;
+}
+.placeholder {
+  width: 100%;
+  height: 100%;
+}
 .contact_form_hidden {
-  width: 280px;
+  width: 320px;
   height: fit-content;
   padding-top: 20px;
   padding-bottom: 20px;
