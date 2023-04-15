@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import Next from "../../reactSlickButtons/next";
 import Prev from "../../reactSlickButtons/prev";
 
-function EliteDevelopers() {
+function EliteDevelopers({ passedRef }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -51,7 +51,7 @@ function EliteDevelopers() {
   };
 
   return (
-    <div className="landing_page_colored_container">
+    <div ref={passedRef} className="landing_page_colored_container">
       <div
         style={{
           background:

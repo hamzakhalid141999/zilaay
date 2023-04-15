@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AllAgencies from "../components/homepage/all-agencies";
 import Banner from "../components/homepage/banner";
 import Blogs from "../components/homepage/blogs";
@@ -23,7 +23,16 @@ import pause_icon from "../public/assets/icons/pause_icon.svg";
 export default function Home() {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
+  const [enlargeTrailer, setEnlargeTrailer] = useState(false);
+  const [
+    hasContentAboveEliteBuilderPassed,
+    setHasContentAboveEliteBuilderPassed,
+  ] = useState(false);
+  const [hideTVC, setHideTVC] = useState(false);
   const { ref: microBuyRef, inView: microBuyInView } = useInView({
+    threshold: 0,
+  });
+  const { ref: eliteBuildersRef, inView: eliteBuildersInView } = useInView({
     threshold: 0,
   });
   const { ref: bannerRef, inView: bannerInView } = useInView({
@@ -31,10 +40,13 @@ export default function Home() {
   });
   const [showNavbar, setShowNavbar] = useState();
 
+  const contactFormRef = useRef(null);
+
   useEffect(() => {
     if (microBuyInView === false && bannerInView === false) {
       setShowNavbar(true);
     } else {
+      setHasContentAboveEliteBuilderPassed(true);
       setShowNavbar(false);
     }
   }, [microBuyInView, bannerInView]);
@@ -47,10 +59,10 @@ export default function Home() {
         let scrolled = document.scrollingElement.scrollTop;
 
         console.log(scrolled);
-        if (scrolled >= 800) {
-          setShowScrollToTop(true);
-        } else if (scrolled < 800) {
-          setShowScrollToTop(false);
+        if (scrolled > 130) {
+          setHideTVC(true);
+        } else if (scrolled <= 130) {
+          setHideTVC(false);
         }
       }
     });
@@ -67,10 +79,51 @@ export default function Home() {
     setShowContactForm(!showContactForm);
   };
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        contactFormRef.current &&
+        !contactFormRef.current.contains(event.target)
+      ) {
+        setShowContactForm(false);
+      }
+    }
+
+    // Bind the event listener
+    window.addEventListener("click", handleClickOutside);
+
+    // Unbind the event listener on cleanup
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, [contactFormRef]);
+
+  useEffect(() => {
+    if (eliteBuildersInView === true) {
+      setShowScrollToTop(true);
+    } else if (hasContentAboveEliteBuilderPassed === true) {
+      setShowScrollToTop(true);
+    } else {
+      setShowScrollToTop(false);
+    }
+  }, [eliteBuildersInView]);
+
   return (
     <div className={styles.container}>
-      <div className={styles.trailer_container}>
-        <div className={styles.video_placeholder_container}>
+      <div
+        style={{ right: hideTVC ? "-15%" : "-10px" }}
+        className={
+          enlargeTrailer
+            ? styles.large_trailer_container
+            : styles.trailer_container
+        }
+      >
+        <div
+          onClick={() => {
+            setEnlargeTrailer(!enlargeTrailer);
+          }}
+          className={styles.video_placeholder_container}
+        >
           <img className={styles.pause_icon} src={pause_icon.src} />
           <img className={styles.placeholder} src={video_placeholder.src} />
         </div>
@@ -142,7 +195,7 @@ export default function Home() {
         </div>
       </div>
       <HotProjects />
-      <EliteDevelopers />
+      <EliteDevelopers passedRef={eliteBuildersRef} />
       <FeaturedDevelopers />
       <div className={styles.ad_container}>
         <div className={styles.ad_placehodler}>
