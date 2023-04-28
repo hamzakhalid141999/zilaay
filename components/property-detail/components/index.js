@@ -36,8 +36,6 @@ import { useInView } from "react-intersection-observer";
 function PropertyDetailContent({ stickyDivRef }) {
   const [isTopPanelSticky, setIsTopPanelSticky] = useState(false);
 
-  console.log("IS STICKY: ", isTopPanelSticky);
-
   return (
     <div className={classes.container}>
       <PropertyImages setIsTopPanelSticky={setIsTopPanelSticky} />

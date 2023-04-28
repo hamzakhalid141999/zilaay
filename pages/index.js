@@ -58,7 +58,6 @@ export default function Home() {
       if (document !== null) {
         let scrolled = document.scrollingElement.scrollTop;
 
-        console.log(scrolled);
         if (scrolled > 130) {
           setHideTVC(true);
         } else if (scrolled <= 130) {

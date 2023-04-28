@@ -14,6 +14,8 @@ import bell_white from "../../public/assets/navbar-assets/bell.svg";
 import setting_blue from "../../public/assets/navbar-assets/setting_blue.svg";
 import bell_blue from "../../public/assets/navbar-assets/bell_blue.svg";
 import { useWindowSize } from "../../utils";
+import search_white from "../../public/assets/icons/search_white.svg";
+import near_pin_blue from "../../public/assets/icons/near_pin_blue.svg";
 
 function Navbar({ showNavbar, isTransparent }) {
   const { width } = useWindowSize();
@@ -25,8 +27,11 @@ function Navbar({ showNavbar, isTransparent }) {
   const [panelType, setPanelType] = useState("left");
   const [panelSize, setPanelSize] = useState(60);
   const [noBackdrop, setNoBackdrop] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
 
   let listener;
+
+  console.log(showNavbar);
 
   useEffect(() => {
     document.addEventListener("scroll", () => {
@@ -50,6 +55,14 @@ function Navbar({ showNavbar, isTransparent }) {
     };
   }, [backgroundColor]);
 
+  const handleFocus = () => {
+    setIsInputFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsInputFocused(false);
+  };
+
   return (
     <div
       style={{
@@ -66,208 +79,307 @@ function Navbar({ showNavbar, isTransparent }) {
       }
     >
       <div className={classes.left_panel}>
-        <>
-          <div
-            onClick={() => {
-              router.push("/buy");
-            }}
-            className={classes.left_panel_btns}
-          >
-            <div className={classes.btns_drop_down_wrapper}>
-              <div className={classes.btns_drop_down}>
-                <div className={classes.drop_down_left_panel}>
-                  <div className={classes.drop_down_left_panel_content}>
-                    <p>Residential</p>
-                    <p>Commercial</p>
-                    <p>Plots</p>
-                  </div>
-                </div>
-                <div className={classes.drop_down_right_panel}>
-                  <div className={classes.drop_down_right_panel_content}>
-                    <div className={classes.right_panel_col}>
-                      <p>House</p>
-                      <p>Flat</p>
-                      <p>Lower Portion</p>
-                      <p>Upper Portion</p>
-                      <p>Pent House</p>
-                      <p>Basement</p>
+        {!showNavbar ? (
+          <>
+            <div
+              onClick={() => {
+                router.push("/buy");
+              }}
+              className={classes.left_panel_btns}
+            >
+              <div className={classes.btns_drop_down_wrapper}>
+                <div className={classes.btns_drop_down}>
+                  <div className={classes.drop_down_left_panel}>
+                    <div className={classes.drop_down_left_panel_content}>
+                      <p>Residential</p>
+                      <p>Commercial</p>
+                      <p>Plots</p>
                     </div>
+                  </div>
+                  <div className={classes.drop_down_right_panel}>
+                    <div className={classes.drop_down_right_panel_content}>
+                      <div className={classes.right_panel_col}>
+                        <p>House</p>
+                        <p>Flat</p>
+                        <p>Lower Portion</p>
+                        <p>Upper Portion</p>
+                        <p>Pent House</p>
+                        <p>Basement</p>
+                      </div>
 
-                    <div className={classes.right_panel_col}>
-                      <p>Farmhouse</p>
-                      <p>Hostel</p>
-                      <p>Guest House</p>
-                      <p>Hotel Suit</p>
-                      <p>Beach Hut</p>
+                      <div className={classes.right_panel_col}>
+                        <p>Farmhouse</p>
+                        <p>Hostel</p>
+                        <p>Guest House</p>
+                        <p>Hotel Suit</p>
+                        <p>Beach Hut</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <p className={classes.left_panel_btn}>Buy</p>
             </div>
-            <p className={classes.left_panel_btn}>Buy</p>
-          </div>
 
-          <div className={classes.left_panel_btns}>
-            <div className={classes.btns_drop_down_wrapper}>
-              <div className={classes.btns_drop_down}>
-                <div className={classes.drop_down_left_panel}>
-                  <div className={classes.drop_down_left_panel_content}>
-                    <p>Residential</p>
-                    <p>Commercial</p>
-                    <p>Plots</p>
-                  </div>
-                </div>
-                <div className={classes.drop_down_right_panel}>
-                  <div className={classes.drop_down_right_panel_content}>
-                    <div className={classes.right_panel_col}>
-                      <p>House</p>
-                      <p>Flat</p>
-                      <p>Lower Portion</p>
-                      <p>Upper Portion</p>
-                      <p>Pent House</p>
-                      <p>Basement</p>
-                    </div>
-
-                    <div className={classes.right_panel_col}>
-                      <p>Farmhouse</p>
-                      <p>Hostel</p>
-                      <p>Guest House</p>
-                      <p>Hotel Suit</p>
-                      <p>Beach Hut</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p className={classes.left_panel_btn}>Rent</p>
-
-            <div className={classes.btns_drop_down_wrapper}>
-              <div className={classes.btns_drop_down}>
-                <div className={classes.drop_down_left_panel}>
-                  <div className={classes.drop_down_left_panel_content}>
-                    <p>Residential</p>
-                    <p>Commercial</p>
-                    <p>Plots</p>
-                  </div>
-                </div>
-                <div className={classes.drop_down_right_panel}>
-                  <div className={classes.drop_down_right_panel_content}>
-                    <div className={classes.right_panel_col}>
-                      <p>House</p>
-                      <p>Flat</p>
-                      <p>Lower Portion</p>
-                      <p>Upper Portion</p>
-                      <p>Pent House</p>
-                      <p>Basement</p>
-                    </div>
-
-                    <div className={classes.right_panel_col}>
-                      <p>Farmhouse</p>
-                      <p>Hostel</p>
-                      <p>Guest House</p>
-                      <p>Hotel Suit</p>
-                      <p>Beach Hut</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className={classes.left_panel_btns}>
-            <div className={classes.btns_drop_down_wrapper}>
-              <div className={classes.btns_drop_down}>
-                <div className={classes.drop_down_left_panel}>
-                  <div className={classes.drop_down_left_panel_content}>
-                    <p>Residential</p>
-                    <p>Commercial</p>
-                    <p>Plots</p>
-                  </div>
-                </div>
-                <div className={classes.drop_down_right_panel}>
-                  <div className={classes.drop_down_right_panel_content}>
-                    <div className={classes.right_panel_col}>
-                      <p>House</p>
-                      <p>Flat</p>
-                      <p>Lower Portion</p>
-                      <p>Upper Portion</p>
-                      <p>Pent House</p>
-                      <p>Basement</p>
-                    </div>
-
-                    <div className={classes.right_panel_col}>
-                      <p>Farmhouse</p>
-                      <p>Hostel</p>
-                      <p>Guest House</p>
-                      <p>Hotel Suit</p>
-                      <p>Beach Hut</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p className={classes.left_panel_btn}>Invest</p>
-          </div>
-
-          {width > 1370 ? (
-            <>
-              <div className={classes.left_panel_btns}>
-                <p>Shared Spaces</p>
-              </div>
-
-              <div className={classes.left_panel_btns}>
-                <p>Wanted</p>
-              </div>
-
-              <div className={classes.left_panel_btns}>
-                <p>Agent Finder</p>
-              </div>
-            </>
-          ) : (
             <div className={classes.left_panel_btns}>
-              {/* <div className={classes.drop_down_arrow} /> */}
-              <div className={classes.drop_down}>
-                <div className={classes.single_tab}>
+              <div className={classes.btns_drop_down_wrapper}>
+                <div className={classes.btns_drop_down}>
+                  <div className={classes.drop_down_left_panel}>
+                    <div className={classes.drop_down_left_panel_content}>
+                      <p>Residential</p>
+                      <p>Commercial</p>
+                      <p>Plots</p>
+                    </div>
+                  </div>
+                  <div className={classes.drop_down_right_panel}>
+                    <div className={classes.drop_down_right_panel_content}>
+                      <div className={classes.right_panel_col}>
+                        <p>House</p>
+                        <p>Flat</p>
+                        <p>Lower Portion</p>
+                        <p>Upper Portion</p>
+                        <p>Pent House</p>
+                        <p>Basement</p>
+                      </div>
+
+                      <div className={classes.right_panel_col}>
+                        <p>Farmhouse</p>
+                        <p>Hostel</p>
+                        <p>Guest House</p>
+                        <p>Hotel Suit</p>
+                        <p>Beach Hut</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p className={classes.left_panel_btn}>Rent</p>
+
+              <div className={classes.btns_drop_down_wrapper}>
+                <div className={classes.btns_drop_down}>
+                  <div className={classes.drop_down_left_panel}>
+                    <div className={classes.drop_down_left_panel_content}>
+                      <p>Residential</p>
+                      <p>Commercial</p>
+                      <p>Plots</p>
+                    </div>
+                  </div>
+                  <div className={classes.drop_down_right_panel}>
+                    <div className={classes.drop_down_right_panel_content}>
+                      <div className={classes.right_panel_col}>
+                        <p>House</p>
+                        <p>Flat</p>
+                        <p>Lower Portion</p>
+                        <p>Upper Portion</p>
+                        <p>Pent House</p>
+                        <p>Basement</p>
+                      </div>
+
+                      <div className={classes.right_panel_col}>
+                        <p>Farmhouse</p>
+                        <p>Hostel</p>
+                        <p>Guest House</p>
+                        <p>Hotel Suit</p>
+                        <p>Beach Hut</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={classes.left_panel_btns}>
+              <div className={classes.btns_drop_down_wrapper}>
+                <div className={classes.btns_drop_down}>
+                  <div className={classes.drop_down_left_panel}>
+                    <div className={classes.drop_down_left_panel_content}>
+                      <p>Residential</p>
+                      <p>Commercial</p>
+                      <p>Plots</p>
+                    </div>
+                  </div>
+                  <div className={classes.drop_down_right_panel}>
+                    <div className={classes.drop_down_right_panel_content}>
+                      <div className={classes.right_panel_col}>
+                        <p>House</p>
+                        <p>Flat</p>
+                        <p>Lower Portion</p>
+                        <p>Upper Portion</p>
+                        <p>Pent House</p>
+                        <p>Basement</p>
+                      </div>
+
+                      <div className={classes.right_panel_col}>
+                        <p>Farmhouse</p>
+                        <p>Hostel</p>
+                        <p>Guest House</p>
+                        <p>Hotel Suit</p>
+                        <p>Beach Hut</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p className={classes.left_panel_btn}>Invest</p>
+            </div>
+
+            {width > 1370 ? (
+              <>
+                <div className={classes.left_panel_btns}>
                   <p>Shared Spaces</p>
                 </div>
-                <div className={classes.single_tab}>
-                  {" "}
+
+                <div className={classes.left_panel_btns}>
                   <p>Wanted</p>
                 </div>
-                <div className={classes.single_tab}>
-                  {" "}
+
+                <div className={classes.left_panel_btns}>
                   <p>Agent Finder</p>
                 </div>
+              </>
+            ) : (
+              <div className={classes.left_panel_btns}>
+                {/* <div className={classes.drop_down_arrow} /> */}
+                <div className={classes.drop_down}>
+                  <div className={classes.single_tab}>
+                    <p>Shared Spaces</p>
+                  </div>
+                  <div className={classes.single_tab}>
+                    {" "}
+                    <p>Wanted</p>
+                  </div>
+                  <div className={classes.single_tab}>
+                    {" "}
+                    <p>Agent Finder</p>
+                  </div>
+                </div>
+                <p>More</p>
               </div>
-              <p>More</p>
-            </div>
-          )}
-        </>
+            )}
+          </>
+        ) : (
+          <img
+            onClick={() => {
+              router.push("/");
+            }}
+            style={{ marginLeft: "40px" }}
+            src={logo_white.src}
+          />
+        )}
       </div>
 
-      <img
-        onClick={() => {
-          router.push("/");
-        }}
-        src={backgroundColor === "opaque" ? logo.src : logo_white.src}
-      />
+      {!showNavbar ? (
+        <img
+          onClick={() => {
+            router.push("/");
+          }}
+          src={logo_white.src}
+        />
+      ) : (
+        <div className={classes.navbaar_search_bar}>
+          <div
+            className={
+              isInputFocused
+                ? classes.search_panel
+                : classes.search_panel_hidden
+            }
+          >
+            <div className={classes.search_panel_container}>
+              <div className={classes.checkbox_container}>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+                <div className={classes.single_checkbox_container}>
+                  <input type={"checkbox"} />
+                  <p>House</p>
+                </div>
+              </div>
+
+              <div className={classes.search_panel_divider}></div>
+            </div>
+          </div>
+
+          <div className={classes.search_btn_1}>
+            <p>Buy</p>
+          </div>
+          <div className={classes.search_btn_1}>
+            <p>All Residential</p>
+          </div>
+          <div className={classes.search_input_container}>
+            <input
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              className={classes.hollow_input}
+              type="text"
+              placeholder="Enter Locality / Project / Society / Landmark"
+            />
+            <div className={classes.search_btns_container}>
+              <div className={classes.near_me_btn}>
+                <img src={near_pin_blue.src} />
+                <p>Near Me</p>
+              </div>
+              <div className={classes.search_btn}>
+                <img src={search_white.src} />
+                <p>Search</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className={classes.right_panel}>
-        {/* <p>More</p> */}
-
-        <div className={classes.input_with_icon}>
-          <input
-            placeholder="Property ID"
-            className={classes.property_id_search}
-          />
-          <img
-            src={
-              backgroundColor === "opaque"
-                ? search_icon.src
-                : search_icon_white.src
-            }
-          />
-        </div>
+        {!showNavbar && (
+          <div className={classes.input_with_icon}>
+            <input
+              placeholder="Property ID"
+              className={classes.property_id_search}
+            />
+            <img
+              src={
+                backgroundColor === "opaque"
+                  ? search_icon.src
+                  : search_icon_white.src
+              }
+            />
+          </div>
+        )}
 
         <div className={classes.add_property_btn}>
           <div className={classes.free_tag}>
@@ -277,25 +389,17 @@ function Navbar({ showNavbar, isTransparent }) {
           <p>Add Property</p>
         </div>
 
-        <div className={classes.icons_container}>
-          <img
-            className={classes.icon}
-            src={backgroundColor === "opaque" ? bell_blue.src : bell_white.src}
-          />
+        {!showNavbar && (
+          <div className={classes.icons_container}>
+            <img className={classes.icon} src={bell_white.src} />
 
-          <img
-            className={classes.icon}
-            src={
-              backgroundColor === "opaque"
-                ? setting_blue.src
-                : setting_white.src
-            }
-          />
-        </div>
+            <img className={classes.icon} src={setting_white.src} />
+          </div>
+        )}
 
         <div
           style={{
-            backgroundColor: backgroundColor === "opaque" ? "#0060fd" : "white",
+            backgroundColor: "white",
           }}
           className={classes.login_btn}
         >
@@ -335,7 +439,7 @@ function Navbar({ showNavbar, isTransparent }) {
           </div>
         </div>
 
-        <p>اردو</p>
+        {!showNavbar ? <p>اردو</p> : <p>More</p>}
       </div>
     </div>
   );

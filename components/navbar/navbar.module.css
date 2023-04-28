@@ -15,7 +15,7 @@
   position: fixed;
 }
 .navbar_body_opaque {
-  background-color: white;
+  background-color: var(--blue);
 }
 .profile_menu {
   opacity: 1;
@@ -169,7 +169,7 @@
 }
 
 .navbar_body_opaque .login_label {
-  color: white !important;
+  color: var(--blue) !important;
 }
 .add_property_btn:hover {
   background-color: #ff4a4a;
@@ -185,7 +185,9 @@
   width: fit-content;
   padding-left: 10px;
   padding-right: 10px;
+  min-width: 140px;
 }
+
 .navbar_body p {
   cursor: pointer;
   color: white;
@@ -194,6 +196,7 @@
 .navbar_body_opaque p {
   transition: ease-in-out 200ms;
   cursor: pointer;
+  color: white;
 }
 .navbar_body_opaque p:hover {
   transform: translateY(-2px);
@@ -216,7 +219,7 @@
 }
 
 .navbar_body_opaque .left_panel_btn {
-  color: black;
+  color: white;
   font-size: 15px;
 }
 
@@ -226,7 +229,7 @@
 }
 
 .navbar_body_opaque .right_panel p {
-  color: #000000;
+  color: white;
   font-size: 15px;
 }
 
@@ -324,7 +327,6 @@
 .drop_down_right_panel_content {
   width: 85%;
   height: 80%;
-  /* background-color: red; */
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -468,6 +470,155 @@
   font-size: 13px;
 }
 
+.navbaar_search_bar {
+  width: 90%;
+  height: 60%;
+  background-color: white;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr 5fr;
+  border: 1.5px solid #cdd8ea;
+  place-items: center;
+  position: relative;
+  z-index: 10000 !important;
+}
+.search_btn_1 {
+  width: 100%;
+  height: 80%;
+  border-right: 1px solid #dddbdb;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 15px;
+}
+.search_btn_1 p {
+  font-size: 12px;
+  color: black;
+}
+.search_btns_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+  position: absolute;
+  right: 10px;
+}
+.search_input_container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  position: relative;
+}
+.search_panel,
+.search_panel_hidden {
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  background-color: white;
+  border: 1.5px solid #cdd8ea;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  top: 105%;
+  left: -1.5px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+.search_panel_hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.search_panel_container {
+  width: 92%;
+  height: 87%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.checkbox_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 80%;
+  row-gap: 14px;
+}
+.search_panel_divider {
+  width: 100%;
+  height: 1px;
+  background-color: #cdd8ea;
+}
+.single_checkbox_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  column-gap: 15px;
+  height: fit-content;
+}
+.single_checkbox_container p {
+  color: black;
+  font-size: 13px;
+  font-family: "p-r";
+}
+.near_me_btn {
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 30px;
+  background: #d5dff0;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: ease-out 200ms;
+}
+.hollow_input {
+  height: 100%;
+  width: 52%;
+  border: none;
+}
+.near_me_btn img {
+  width: 12px;
+}
+.near_me_btn p {
+  color: var(--blue);
+  font-size: 12px;
+}
+.near_me_btn:hover {
+  opacity: 0.8;
+}
+.search_btn {
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 34px;
+  background: var(--blue);
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: ease-out 200ms;
+}
+.search_btn:hover {
+  opacity: 0.8;
+}
+.search_btn img {
+  width: 12px;
+}
+.search_btn p {
+  color: white;
+  font-size: 12px;
+}
 @media screen and (max-width: 941px) {
   .right_panel {
     display: none;
