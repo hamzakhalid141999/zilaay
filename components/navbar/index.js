@@ -292,55 +292,109 @@ function Navbar({ showNavbar, isTransparent }) {
                 </div>
                 <div className={classes.single_checkbox_container}>
                   <input type={"checkbox"} />
-                  <p>House</p>
+                  <p>Pent House</p>
                 </div>
                 <div className={classes.single_checkbox_container}>
                   <input type={"checkbox"} />
-                  <p>House</p>
+                  <p>Guest House</p>
                 </div>
                 <div className={classes.single_checkbox_container}>
                   <input type={"checkbox"} />
-                  <p>House</p>
+                  <p>Flat</p>
                 </div>
                 <div className={classes.single_checkbox_container}>
                   <input type={"checkbox"} />
-                  <p>House</p>
+                  <p>Basement</p>
                 </div>
                 <div className={classes.single_checkbox_container}>
                   <input type={"checkbox"} />
-                  <p>House</p>
+                  <p>Hotel Suit</p>
                 </div>
                 <div className={classes.single_checkbox_container}>
                   <input type={"checkbox"} />
-                  <p>House</p>
+                  <p>Lower Portion</p>
                 </div>
                 <div className={classes.single_checkbox_container}>
                   <input type={"checkbox"} />
-                  <p>House</p>
+                  <p>Farmhouse</p>
                 </div>
                 <div className={classes.single_checkbox_container}>
                   <input type={"checkbox"} />
-                  <p>House</p>
+                  <p>Beach Hut</p>
                 </div>
                 <div className={classes.single_checkbox_container}>
                   <input type={"checkbox"} />
-                  <p>House</p>
+                  <p>Upper Portion</p>
                 </div>
                 <div className={classes.single_checkbox_container}>
                   <input type={"checkbox"} />
-                  <p>House</p>
+                  <p>Hostle</p>
                 </div>
               </div>
 
+              <p className={classes.filters_btn}>
+                Filters <span> Clear all filters</span>
+              </p>
+
               <div className={classes.search_panel_divider}></div>
+
+              <div className={classes.drop_down_btns}>
+                <select className={classes.drop_down_btn}>
+                  <option>Price</option>
+                </select>
+                <select className={classes.drop_down_btn}>
+                  <option>Area</option>
+                </select>
+                <select className={classes.drop_down_btn}>
+                  <option>Beds</option>
+                </select>
+                <select className={classes.drop_down_btn}>
+                  <option>Baths</option>
+                </select>
+                <select className={classes.drop_down_btn}>
+                  <option>More Options</option>
+                </select>
+              </div>
             </div>
           </div>
 
           <div className={classes.search_btn_1}>
             <p>Buy</p>
+            <div className={classes.search_menu_wrapper}>
+              <div className={classes.login_drop_down}>
+                <div className={classes.login_single_tab}>
+                  <p className={classes.login_label_menu}>Buy</p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  {" "}
+                  <p className={classes.drop_down_label}>Rebt</p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  {" "}
+                  <p className={classes.drop_down_sub_label}>Co-Living</p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  {" "}
+                  <p className={classes.drop_down_sub_label}>Co-Working</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={classes.search_btn_1}>
             <p>All Residential</p>
+            <div className={classes.search_menu_wrapper}>
+              <div className={classes.login_drop_down}>
+                <div className={classes.login_single_tab}>
+                  <p className={classes.login_label_menu}>All Residential</p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  <p className={classes.drop_down_label}>Commercial</p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  <p className={classes.drop_down_sub_label}>Plots</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={classes.search_input_container}>
             <input

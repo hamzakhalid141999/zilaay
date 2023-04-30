@@ -74,17 +74,9 @@ function Banner({ refInstance }) {
   ];
 
   const [selectedTabId, setSelectedTabId] = useState(tabs[0]?.id);
-  const [isInputFocused, setIsInputFocused] = useState(false);
 
   const handleSelectTab = async (id) => {
     setSelectedTabId(id);
-  };
-
-  const handleFocus = () => {
-    setIsInputFocused(true);
-  };
-  const handleBlur = () => {
-    setIsInputFocused(false);
   };
 
   const cardOverlays = [
@@ -143,8 +135,6 @@ function Banner({ refInstance }) {
                 </div>
                 <div className={classes.search_input_container}>
                   <input
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
                     className={classes.hollow_input}
                     type="text"
                     placeholder="Search 3 BHK for sale, rent or invest in pakistan..."
@@ -161,13 +151,7 @@ function Banner({ refInstance }) {
                   </div>
                 </div>
               </div>
-              <div
-                className={
-                  !isInputFocused
-                    ? classes.filter_panel_container_hidden
-                    : classes.filter_panel_container
-                }
-              >
+              <div className={classes.filter_panel_container}>
                 <div className={classes.angled_div} />
                 <div className={classes.filter_panel}>
                   <div className={classes.filter_btn_container}>
