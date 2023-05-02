@@ -21,6 +21,7 @@ import video_placeholder from "../public/assets/icons/video_placeholder.png";
 import pause_icon from "../public/assets/icons/pause_icon.svg";
 
 export default function Home() {
+  const [isDropdownEnabled, setIsDropdownEnabled] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
   const [enlargeTrailer, setEnlargeTrailer] = useState(false);
@@ -108,7 +109,18 @@ export default function Home() {
   }, [eliteBuildersInView]);
 
   return (
-    <div className={styles.container}>
+    <div
+      style={{
+        height: isDropdownEnabled ? "100vh" : "fit-content",
+        overflowY: isDropdownEnabled && "hidden",
+      }}
+      className={styles.container}
+    >
+      <div
+        style={{ opacity: isDropdownEnabled ? "1" : "0" }}
+        className={styles.overlay}
+      ></div>
+
       <div
         style={{ right: hideTVC ? "-15%" : "-10px" }}
         className={
@@ -184,7 +196,10 @@ export default function Home() {
       </Head>
       <Navbar showNavbar={showNavbar} isTransparent={true} />
 
-      <Banner refInstance={bannerRef} />
+      <Banner
+        setIsDropdownEnabled={setIsDropdownEnabled}
+        refInstance={bannerRef}
+      />
 
       <Map refInstance={microBuyRef} />
       <div className={styles.ad_container}>

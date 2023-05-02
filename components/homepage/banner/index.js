@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./banner.module.css";
 import banner_image from "../../../public/assets/landing-page-assets/banner-image.png";
 import time_icon from "../../../public/assets/landing-page-assets/time_icon.svg";
@@ -17,7 +17,9 @@ import Navbar from "../../navbar";
 import search_white from "../../../public/assets/icons/search_white.svg";
 import near_pin_blue from "../../../public/assets/icons/near_pin_blue.svg";
 
-function Banner({ refInstance }) {
+function Banner({ setIsDropdownEnabled, refInstance }) {
+  const [isInputFocused, setIsInputFocused] = useState(false);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -85,6 +87,30 @@ function Banner({ refInstance }) {
     "linear-gradient(41.96deg, #4FA6A6 0.92%, rgba(79, 166, 166, 0) 100%)",
   ];
 
+  const handleFocus = () => {
+    setIsInputFocused(true);
+    setIsDropdownEnabled(true);
+  };
+
+  const handleBlur = () => {
+    setIsInputFocused(false);
+    setIsDropdownEnabled(false);
+  };
+
+  useEffect(() => {
+    if (isInputFocused) {
+      const htmlElement = document.querySelector("html");
+      if (htmlElement) {
+        htmlElement.style.overflow = "hidden";
+      }
+    } else {
+      const htmlElement = document.querySelector("html");
+      if (htmlElement) {
+        htmlElement.style.overflow = "auto";
+      }
+    }
+  }, [isInputFocused]);
+
   return (
     <>
       <div ref={refInstance} className={classes.container}>
@@ -135,6 +161,8 @@ function Banner({ refInstance }) {
                 </div>
                 <div className={classes.search_input_container}>
                   <input
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                     className={classes.hollow_input}
                     type="text"
                     placeholder="Search 3 BHK for sale, rent or invest in pakistan..."
@@ -151,8 +179,76 @@ function Banner({ refInstance }) {
                   </div>
                 </div>
               </div>
+              <div
+                className={
+                  isInputFocused
+                    ? classes.search_panel_dropdown
+                    : classes.search_panel_dropdown_hidden
+                }
+              >
+                <div className={classes.types_left_panel}>
+                  <div className={classes.drop_down_left_panel}>
+                    <div className={classes.drop_down_left_panel_content}>
+                      <p>Residential</p>
+                      <p>Commercial</p>
+                      <p>Plots</p>
+                    </div>
+                  </div>
+                </div>
+                <div className={classes.checkboxes_right_panel}>
+                  <div className={classes.checkbox_container}>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>House</p>
+                    </div>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>Pent House</p>
+                    </div>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>Guest House</p>
+                    </div>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>Flat</p>
+                    </div>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>Basement</p>
+                    </div>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>Hotel Suit</p>
+                    </div>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>Lower Portion</p>
+                    </div>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>Farmhouse</p>
+                    </div>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>Beach Hut</p>
+                    </div>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>Upper Portion</p>
+                    </div>
+                    <div className={classes.single_checkbox_container}>
+                      <input type={"checkbox"} />
+                      <p>Hostle</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className={classes.filter_panel_container}>
-                <div className={classes.angled_div} />
+                <div
+                  style={{ opacity: isInputFocused && "0" }}
+                  className={classes.angled_div}
+                />
                 <div className={classes.filter_panel}>
                   <div className={classes.filter_btn_container}>
                     <div

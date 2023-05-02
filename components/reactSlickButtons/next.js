@@ -4,10 +4,11 @@ import arrow from "../../public/assets/icons/right_arrow.svg";
 import Image from "next/image";
 
 function next(props) {
-  const { className, style, onClick, xPosition, yPosition } = props;
+  const { style, onClick, xPosition, yPosition } = props;
 
   return (
     <div
+      className={classes.arrow}
       onClick={onClick}
       style={{
         position: "absolute",
@@ -17,6 +18,7 @@ function next(props) {
       }}
     >
       <Image
+        className={classes.arrow}
         src={arrow}
         height={"50"}
         width={"50"}
