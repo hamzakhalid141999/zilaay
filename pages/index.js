@@ -196,10 +196,7 @@ export default function Home() {
       </Head>
       <Navbar showNavbar={showNavbar} isTransparent={true} />
 
-      <Banner
-        setIsDropdownEnabled={setIsDropdownEnabled}
-        refInstance={bannerRef}
-      />
+      <Banner setIsDropdown={setIsDropdownEnabled} refInstance={bannerRef} />
 
       <Map refInstance={microBuyRef} />
       <div className={styles.ad_container}>

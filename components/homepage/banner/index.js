@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import classes from "./banner.module.css";
 import banner_image from "../../../public/assets/landing-page-assets/banner-image.png";
 import time_icon from "../../../public/assets/landing-page-assets/time_icon.svg";
@@ -17,8 +17,14 @@ import Navbar from "../../navbar";
 import search_white from "../../../public/assets/icons/search_white.svg";
 import near_pin_blue from "../../../public/assets/icons/near_pin_blue.svg";
 
-function Banner({ setIsDropdownEnabled, refInstance }) {
+import { Slider as PriceSlider, InputNumber } from "antd";
+
+function Banner({ setIsDropdown, refInstance }) {
   const [isInputFocused, setIsInputFocused] = useState(false);
+  const [selectedDropDownOption, setSelectedDropDownOption] = useState();
+  const [disabled, setdisabled] = useState(false);
+  const [minPrice, setMinPrice] = useState(0.0);
+  const [maxPrice, setMaxPrice] = useState(0.0);
 
   const settings = {
     dots: false,
@@ -77,6 +83,10 @@ function Banner({ setIsDropdownEnabled, refInstance }) {
 
   const [selectedTabId, setSelectedTabId] = useState(tabs[0]?.id);
 
+  const [isDropDownEnabled, setIsDropDownEnabled] = useState(false);
+  const inputRef = useRef(null);
+  const div1Ref = useRef(null);
+
   const handleSelectTab = async (id) => {
     setSelectedTabId(id);
   };
@@ -86,6 +96,25 @@ function Banner({ setIsDropdownEnabled, refInstance }) {
     "linear-gradient(41.96deg, #AC68A5 0.92%, rgba(172, 104, 165, 0) 100%)",
     "linear-gradient(41.96deg, #4FA6A6 0.92%, rgba(79, 166, 166, 0) 100%)",
   ];
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        inputRef.current &&
+        !inputRef.current.contains(event.target) &&
+        div1Ref.current &&
+        !div1Ref.current.contains(event.target)
+      ) {
+        setIsDropDownEnabled(false);
+        setIsDropdown(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [inputRef, div1Ref]);
 
   const handleFocus = () => {
     setIsInputFocused(true);
@@ -98,7 +127,7 @@ function Banner({ setIsDropdownEnabled, refInstance }) {
   };
 
   useEffect(() => {
-    if (isInputFocused) {
+    if (isDropDownEnabled) {
       const htmlElement = document.querySelector("html");
       if (htmlElement) {
         htmlElement.style.overflow = "hidden";
@@ -109,7 +138,23 @@ function Banner({ setIsDropdownEnabled, refInstance }) {
         htmlElement.style.overflow = "auto";
       }
     }
-  }, [isInputFocused]);
+  }, [isDropDownEnabled]);
+
+  function onChange(value) {
+    setMinPrice(value[0]);
+    setMaxPrice(value[1]);
+    setdisabled(false);
+  }
+
+  function lowerLimit(value) {
+    setdisabled(false);
+    setMinPrice(value);
+  }
+
+  function upperLimit(value) {
+    setdisabled(false);
+    setMaxPrice(value);
+  }
 
   return (
     <>
@@ -150,19 +195,29 @@ function Banner({ setIsDropdownEnabled, refInstance }) {
               <div className={classes.lower_panel}>
                 <div className={classes.drop_down_container}>
                   <div
-                    style={{ width: "75%" }}
+                    onClick={() => {
+                      setIsDropDownEnabled(true);
+                      setIsDropdown(true);
+                      setSelectedDropDownOption(undefined);
+                      console.log("asdasdasd");
+                    }}
+                    style={{ width: "75%", cursor: "pointer" }}
                     className="select_input_container"
                   >
-                    <select className={classes.hollow_input}>
-                      <option> All Residential</option>
-                    </select>
+                    <div className={classes.hollow_input}>
+                      <p> All Residential</p>
+                    </div>
                     <img src={drop_down_icon.src} />
                   </div>
                 </div>
                 <div className={classes.search_input_container}>
                   <input
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
+                    onFocus={() => {
+                      setIsDropDownEnabled(true);
+                      setIsDropdown(true);
+                      setSelectedDropDownOption(undefined);
+                    }}
+                    ref={inputRef}
                     className={classes.hollow_input}
                     type="text"
                     placeholder="Search 3 BHK for sale, rent or invest in pakistan..."
@@ -180,73 +235,193 @@ function Banner({ setIsDropdownEnabled, refInstance }) {
                 </div>
               </div>
               <div
+                ref={div1Ref}
                 className={
-                  isInputFocused
+                  isDropDownEnabled
                     ? classes.search_panel_dropdown
                     : classes.search_panel_dropdown_hidden
                 }
               >
-                <div className={classes.types_left_panel}>
-                  <div className={classes.drop_down_left_panel}>
-                    <div className={classes.drop_down_left_panel_content}>
-                      <p>Residential</p>
-                      <p>Commercial</p>
-                      <p>Plots</p>
-                    </div>
+                <div
+                  className={classes.search_panel_dropdown_content_container}
+                >
+                  <div className={classes.drop_down_inner_content_container}>
+                    {selectedDropDownOption !== undefined &&
+                    selectedDropDownOption === "price" ? (
+                      <div className={classes.options_content_container_div}>
+                        <p className={classes.submenu_heading}>
+                          Select Price Range
+                        </p>
+                        <p className={classes.price_range_label}>
+                          0 - 100+ Crore
+                        </p>
+
+                        <div className={classes.slider_container}>
+                          <InputNumber
+                            type="number"
+                            className={classes.price_range}
+                            min={0}
+                            max={100}
+                            step={0.001}
+                            value={disabled ? null : minPrice}
+                            onChange={lowerLimit}
+                          />
+                          <PriceSlider
+                            className="slider-main-div"
+                            min={0}
+                            max={100}
+                            step={0.001}
+                            onChange={onChange}
+                            range={true}
+                            defaultValue={[minPrice, maxPrice]}
+                            value={[minPrice, maxPrice]}
+                          />
+
+                          <InputNumber
+                            type="number"
+                            className={classes.price_range}
+                            min={0}
+                            max={100}
+                            step={0.001}
+                            value={disabled ? null : maxPrice}
+                            onChange={upperLimit}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <div className={classes.types_left_panel}>
+                          <div className={classes.drop_down_left_panel}>
+                            <div
+                              className={classes.drop_down_left_panel_content}
+                            >
+                              <p>Residential</p>
+                              <p>Commercial</p>
+                              <p>Plots</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className={classes.checkboxes_right_panel}>
+                          <div className={classes.checkbox_container}>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>House</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Pent House</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Guest House</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Flat</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Basement</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Hotel Suit</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Lower Portion</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Farmhouse</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Beach Hut</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Upper Portion</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Hostle</p>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    )}
                   </div>
-                </div>
-                <div className={classes.checkboxes_right_panel}>
-                  <div className={classes.checkbox_container}>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>House</p>
-                    </div>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>Pent House</p>
-                    </div>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>Guest House</p>
-                    </div>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>Flat</p>
-                    </div>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>Basement</p>
-                    </div>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>Hotel Suit</p>
-                    </div>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>Lower Portion</p>
-                    </div>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>Farmhouse</p>
-                    </div>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>Beach Hut</p>
-                    </div>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>Upper Portion</p>
-                    </div>
-                    <div className={classes.single_checkbox_container}>
-                      <input type={"checkbox"} />
-                      <p>Hostle</p>
+
+                  <div className={classes.choices_panel}>
+                    <div className={classes.drop_down_btns}>
+                      <div
+                        onClick={() => {
+                          setSelectedDropDownOption("price");
+                        }}
+                        className={
+                          selectedDropDownOption === "price"
+                            ? classes.drop_down_btn_selected
+                            : classes.drop_down_btn
+                        }
+                      >
+                        <p>Price</p>
+                      </div>
+                      <div
+                        onClick={() => {
+                          setSelectedDropDownOption("area");
+                        }}
+                        className={
+                          selectedDropDownOption === "area"
+                            ? classes.drop_down_btn_selected
+                            : classes.drop_down_btn
+                        }
+                      >
+                        <p>Area</p>
+                      </div>
+                      <div
+                        onClick={() => {
+                          setSelectedDropDownOption("beds");
+                        }}
+                        className={
+                          selectedDropDownOption === "beds"
+                            ? classes.drop_down_btn_selected
+                            : classes.drop_down_btn
+                        }
+                      >
+                        <p>Beds</p>
+                      </div>
+                      <div
+                        onClick={() => {
+                          setSelectedDropDownOption("baths");
+                        }}
+                        className={
+                          selectedDropDownOption === "baths"
+                            ? classes.drop_down_btn_selected
+                            : classes.drop_down_btn
+                        }
+                      >
+                        <p>Baths</p>
+                      </div>
+                      <div
+                        onClick={() => {
+                          setSelectedDropDownOption("more_options");
+                        }}
+                        className={
+                          selectedDropDownOption === "more_options"
+                            ? classes.drop_down_btn_selected
+                            : classes.drop_down_btn
+                        }
+                      >
+                        <p>More Options</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div className={classes.filter_panel_container}>
                 <div
-                  style={{ opacity: isInputFocused && "0" }}
+                  style={{ opacity: isDropDownEnabled && "0" }}
                   className={classes.angled_div}
                 />
                 <div className={classes.filter_panel}>
