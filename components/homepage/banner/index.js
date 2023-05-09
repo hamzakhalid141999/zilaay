@@ -33,7 +33,6 @@ function Banner({ setIsDropdown, refInstance }) {
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 2000,
-    // centerMode: true,
     nextArrow: <Next />,
     prevArrow: <Prev />,
     responsive: [
@@ -309,7 +308,7 @@ function Banner({ setIsDropdown, refInstance }) {
                             </div>
                             <div className={classes.single_checkbox_container}>
                               <input type={"checkbox"} />
-                              <p>Pent House</p>
+                              <p>Upper Portion</p>
                             </div>
                             <div className={classes.single_checkbox_container}>
                               <input type={"checkbox"} />
@@ -317,11 +316,15 @@ function Banner({ setIsDropdown, refInstance }) {
                             </div>
                             <div className={classes.single_checkbox_container}>
                               <input type={"checkbox"} />
+                              <p>Farmhouse</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
                               <p>Flat</p>
                             </div>
                             <div className={classes.single_checkbox_container}>
                               <input type={"checkbox"} />
-                              <p>Basement</p>
+                              <p>Pent House</p>
                             </div>
                             <div className={classes.single_checkbox_container}>
                               <input type={"checkbox"} />
@@ -329,19 +332,15 @@ function Banner({ setIsDropdown, refInstance }) {
                             </div>
                             <div className={classes.single_checkbox_container}>
                               <input type={"checkbox"} />
-                              <p>Lower Portion</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Farmhouse</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
                               <p>Beach Hut</p>
                             </div>
                             <div className={classes.single_checkbox_container}>
                               <input type={"checkbox"} />
-                              <p>Upper Portion</p>
+                              <p>Lower Portion</p>
+                            </div>
+                            <div className={classes.single_checkbox_container}>
+                              <input type={"checkbox"} />
+                              <p>Basement</p>
                             </div>
                             <div className={classes.single_checkbox_container}>
                               <input type={"checkbox"} />

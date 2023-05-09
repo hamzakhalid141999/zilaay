@@ -467,6 +467,10 @@ function Navbar({ showNavbar, isTransparent }) {
               </div>
               <div className={classes.login_single_tab}>
                 {" "}
+                <p className={classes.drop_down_label}>My Zilaay Chats</p>
+              </div>
+              <div className={classes.login_single_tab}>
+                {" "}
                 <p className={classes.drop_down_label}>My Activity</p>
               </div>
               <div className={classes.login_single_tab}>
@@ -485,15 +489,15 @@ function Navbar({ showNavbar, isTransparent }) {
                 {" "}
                 <p className={classes.drop_down_sub_label}>Contacted</p>
               </div>
-              <div className={classes.login_single_tab}>
-                {" "}
-                <p className={classes.drop_down_sub_label}>My Zilaay Chats</p>
-              </div>
             </div>
           </div>
         </div>
 
-        {!showNavbar ? <p>اردو</p> : <p>More</p>}
+        {!showNavbar ? (
+          <p style={{ fontSize: "24px", marginBottom: "12px" }}>اردو</p>
+        ) : (
+          <p>More</p>
+        )}
       </div>
     </div>
   );

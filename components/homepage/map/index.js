@@ -20,7 +20,37 @@ import Prev from "../../reactSlickButtons/prev";
 import erase from "../../../public/assets/icons/erase.svg";
 import draw from "../../../public/assets/icons/draw.svg";
 
+import pin_red from "../../../public/assets/icons/pin_red.svg";
+import pin_blue from "../../../public/assets/icons/pin_blue.svg";
+
+import { Tooltip as ReactTooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
+
+import {
+  GoogleMap,
+  useLoadScript,
+  MarkerF,
+  StandaloneSearchBox,
+  LoadScript,
+} from "@react-google-maps/api";
+
 function Map({ refInstance }) {
+  const mapApiKey = process.env.NEXT_PUBLIC_MAP_API;
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: mapApiKey ? mapApiKey : "",
+  });
+
+  const mapContainerStyle = {
+    width: "100%",
+    height: "100%",
+  };
+
+  const center = {
+    lat: 30.3753,
+    lng: 69.3451,
+  };
+
   const settings = {
     dots: false,
     infinite: true,
@@ -72,6 +102,12 @@ function Map({ refInstance }) {
 
   return (
     <div className={classes.wrapper}>
+      <ReactTooltip
+        style={{ zIndex: "1000" }}
+        anchorId="near-me"
+        place="top"
+        content="search near me"
+      />
       <div className={classes.main_container}>
         <div ref={refInstance} className={classes.map_container}>
           <div className={classes.filter_bar_container}>
@@ -84,7 +120,11 @@ function Map({ refInstance }) {
                   placeholder="Address, Neighborhood or ZIP"
                   className={classes.input_field}
                 />
-                <img className="input_icon_1" src={near_me_pin.src} />
+                <img
+                  id="near-me"
+                  className="input_icon_1"
+                  src={near_me_pin.src}
+                />
                 <img className="input_icon_2" src={search_icon.src} />
               </div>
 
@@ -177,16 +217,24 @@ function Map({ refInstance }) {
                   <p>Draw</p>
                 </div>
               </div>
-              <iframe
-                width="100%"
-                height="100%"
-                id="gmap_canvas"
-                src="https://maps.google.com/maps?q=california&t=&z=10&ie=UTF8&iwloc=&output=embed"
-                frameborder="0"
-                scrolling="no"
-                marginheight="0"
-                marginwidth="0"
-              ></iframe>
+              {isLoaded ? (
+                <GoogleMap
+                  mapContainerStyle={mapContainerStyle}
+                  center={center}
+                  zoom={5}
+                >
+                  <MarkerF
+                    icon={pin_red.src}
+                    position={{ lat: 30.3753, lng: 69.3451 }}
+                  />
+                  <MarkerF
+                    icon={pin_blue.src}
+                    position={{ lat: 31.3753, lng: 71.5451 }}
+                  />
+                </GoogleMap>
+              ) : (
+                <></>
+              )}
             </div>
             <div className={classes.properties_section_container}>
               <div className={classes.property_title_bar}>

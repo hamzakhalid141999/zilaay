@@ -25,6 +25,8 @@ export default function Home() {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
   const [enlargeTrailer, setEnlargeTrailer] = useState(false);
+  const videoContainerRef = useRef(null);
+
   const [
     hasContentAboveEliteBuilderPassed,
     setHasContentAboveEliteBuilderPassed,
@@ -64,6 +66,12 @@ export default function Home() {
         } else if (scrolled <= 130) {
           setHideTVC(false);
         }
+
+        if (scrolled > 2500) {
+          setShowScrollToTop(true);
+        } else if (scrolled <= 2500) {
+          setShowScrollToTop(false);
+        }
       }
     });
     return () => {
@@ -99,14 +107,20 @@ export default function Home() {
   }, [contactFormRef]);
 
   useEffect(() => {
-    if (eliteBuildersInView === true) {
-      setShowScrollToTop(true);
-    } else if (hasContentAboveEliteBuilderPassed === true) {
-      setShowScrollToTop(true);
-    } else {
-      setShowScrollToTop(false);
+    function handleClickOutside(event) {
+      if (
+        videoContainerRef.current &&
+        !videoContainerRef.current.contains(event.target)
+      ) {
+        setEnlargeTrailer(false);
+      }
     }
-  }, [eliteBuildersInView]);
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [videoContainerRef]);
 
   return (
     <div
@@ -128,6 +142,7 @@ export default function Home() {
             ? styles.large_trailer_container
             : styles.trailer_container
         }
+        ref={videoContainerRef}
       >
         <div
           onClick={() => {
@@ -139,7 +154,7 @@ export default function Home() {
           <img className={styles.placeholder} src={video_placeholder.src} />
         </div>
         <p>
-          Zilaay <span>New</span> TVC
+          Zilaay.com <span>New</span> Ad
         </p>
       </div>
 
