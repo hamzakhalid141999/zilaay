@@ -28,6 +28,14 @@ function Navbar({ showNavbar, isTransparent }) {
   const [panelSize, setPanelSize] = useState(60);
   const [noBackdrop, setNoBackdrop] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
+  const [currentPage, setCurrentPage] = useState();
+
+  useEffect(() => {
+    if (router.pathname) {
+      const page = router.pathname.split("/");
+      setCurrentPage(page[1]);
+    }
+  }, [router.pathname]);
 
   let listener;
 
@@ -419,7 +427,7 @@ function Navbar({ showNavbar, isTransparent }) {
       )}
 
       <div className={classes.right_panel}>
-        {!showNavbar && (
+        {!showNavbar && currentPage !== "login" && (
           <div className={classes.input_with_icon}>
             <input
               placeholder="Property ID"
@@ -435,63 +443,74 @@ function Navbar({ showNavbar, isTransparent }) {
           </div>
         )}
 
-        <div className={classes.add_property_btn}>
-          <div className={classes.free_tag}>
-            <p>Free</p>
+        {currentPage !== "login" && (
+          <div className={classes.add_property_btn}>
+            <div className={classes.free_tag}>
+              <p>Free</p>
+            </div>
+            <img src={home_icon.src} />
+            <p>Add Property</p>
           </div>
-          <img src={home_icon.src} />
-          <p>Add Property</p>
-        </div>
+        )}
 
         {!showNavbar && (
           <div className={classes.icons_container}>
-            <img className={classes.icon} src={bell_white.src} />
+            {currentPage !== "login" && (
+              <img className={classes.icon} src={bell_white.src} />
+            )}
 
             <img className={classes.icon} src={setting_white.src} />
           </div>
         )}
 
-        <div
-          style={{
-            backgroundColor: "white",
-          }}
-          className={classes.login_btn}
-        >
-          <img src={user_icon.src} />
-          <p className={classes.login_label}>Login</p>
+        {currentPage !== "login" && (
+          <div
+            style={{
+              backgroundColor: "white",
+            }}
+            className={classes.login_btn}
+            onClick={() => {
+              router.push("/login");
+            }}
+          >
+            <img src={user_icon.src} />
+            <p className={classes.login_label}>Login</p>
 
-          <div className={classes.login_drop_down_wrapper}>
-            <div className={classes.login_drop_down}>
-              <div className={classes.login_single_tab}>
-                <p className={classes.login_label_menu}>Login/Register</p>
-              </div>
-              <div className={classes.login_single_tab}>
-                {" "}
-                <p className={classes.drop_down_label}>My Zilaay Chats</p>
-              </div>
-              <div className={classes.login_single_tab}>
-                {" "}
-                <p className={classes.drop_down_label}>My Activity</p>
-              </div>
-              <div className={classes.login_single_tab}>
-                {" "}
-                <p className={classes.drop_down_sub_label}>Recently Searched</p>
-              </div>
-              <div className={classes.login_single_tab}>
-                {" "}
-                <p className={classes.drop_down_sub_label}>Recently Viewed</p>
-              </div>
-              <div className={classes.login_single_tab}>
-                {" "}
-                <p className={classes.drop_down_sub_label}>Shortlisted</p>
-              </div>
-              <div className={classes.login_single_tab}>
-                {" "}
-                <p className={classes.drop_down_sub_label}>Contacted</p>
+            <div className={classes.login_drop_down_wrapper}>
+              <div className={classes.login_drop_down}>
+                <div className={classes.login_single_tab}>
+                  <p className={classes.login_label_menu}>Login/Register</p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  {" "}
+                  <p className={classes.drop_down_label}>My Zilaay Chats</p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  {" "}
+                  <p className={classes.drop_down_label}>My Activity</p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  {" "}
+                  <p className={classes.drop_down_sub_label}>
+                    Recently Searched
+                  </p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  {" "}
+                  <p className={classes.drop_down_sub_label}>Recently Viewed</p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  {" "}
+                  <p className={classes.drop_down_sub_label}>Shortlisted</p>
+                </div>
+                <div className={classes.login_single_tab}>
+                  {" "}
+                  <p className={classes.drop_down_sub_label}>Contacted</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
 
         {!showNavbar ? (
           <p style={{ fontSize: "24px", marginBottom: "12px" }}>اردو</p>
