@@ -469,16 +469,18 @@ function Navbar({ showNavbar, isTransparent }) {
               backgroundColor: "white",
             }}
             className={classes.login_btn}
-            onClick={() => {
-              router.push("/login");
-            }}
           >
             <img src={user_icon.src} />
             <p className={classes.login_label}>Login</p>
 
             <div className={classes.login_drop_down_wrapper}>
               <div className={classes.login_drop_down}>
-                <div className={classes.login_single_tab}>
+                <div
+                  onClick={() => {
+                    router.push("/login");
+                  }}
+                  className={classes.login_single_tab}
+                >
                   <p className={classes.login_label_menu}>Login/Register</p>
                 </div>
                 <div className={classes.login_single_tab}>

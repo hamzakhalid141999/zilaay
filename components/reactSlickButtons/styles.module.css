@@ -2,9 +2,3 @@
   cursor: pointer;
   transition: ease-out 200ms;
 }
-
-.arrow:hover {
-  transform: translateY(-20px);
-  transition: ease-out 200ms;
-  opacity: 0;
-}

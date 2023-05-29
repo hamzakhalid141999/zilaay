@@ -8,6 +8,7 @@ import AuthPanel from "../../components/login/auth-panel/index";
 function Login() {
   return (
     <div className={classes.login_container}>
+      <img src={clouds.src} className={classes.clouds} />
       <AuthPanel />
       <div className={classes.text_container}>
         <h2>

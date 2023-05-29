@@ -11,6 +11,7 @@ import Footer from "../../components/footer/index";
 import near_me_pin from "../../public/assets/icons/near_me_pin.svg";
 import search_icon from "../../public/assets/icons/search_icon.svg";
 import grey_drop_down from "../../public/assets/icons/grey_drop_down.svg";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 function Buy() {
   const settings = {
@@ -25,6 +26,12 @@ function Buy() {
 
   return (
     <div className={classes.wrapper}>
+      <ReactTooltip
+        style={{ zIndex: "1000" }}
+        anchorId="near-me"
+        place="top"
+        content="search near me"
+      />
       <div className={classes.main_container}>
         <div className={classes.map_container}>
           <div className={classes.filter_bar_container}>
@@ -37,7 +44,11 @@ function Buy() {
                   placeholder="Address, Neighborhood or ZIP"
                   className={classes.input_field}
                 />
-                <img className="input_icon_1" src={near_me_pin.src} />
+                <img
+                  id="near-me"
+                  className="input_icon_1"
+                  src={near_me_pin.src}
+                />
                 <img className="input_icon_2" src={search_icon.src} />
               </div>
 
@@ -135,10 +146,9 @@ function Buy() {
                 <h2>Karachi, Defence DHA Houses for Sale</h2>
                 <div className="select_input_container">
                   <select className={classes.sort_by_input}>
-                    <option>Sort By</option>
+                    <option>Popular</option>
                     <option>Newest</option>
                     <option>Oldest</option>
-                    <option>Popular</option>
                     <option>Lowest Price</option>
                     <option>Highest Price</option>
                   </select>

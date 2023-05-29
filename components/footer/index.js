@@ -11,14 +11,15 @@ function Footer() {
       </div>
       <div className={classes.footer_body}>
         <div className={classes.footer_content}>
+          {/* Blogs, News, Forum, Real Estate Agents, Add property  */}
           <div className={classes.col}>
             <h2>Company</h2>
             <p>About Us</p>
             <p>Contact Us</p>
-            <p>Jobs</p>
-            <p>Help and Support</p>
-            <p>Advertise on Zilaay</p>
             <p>Terms of Use</p>
+            <p>Privacy Policy</p>
+            <p>Advertise with Zilaay.com</p>
+            <p>Jobs at Zilaay.com</p>
           </div>
 
           <div className={classes.col}>
@@ -26,19 +27,8 @@ function Footer() {
             <p>Blogs</p>
             <p>News</p>
             <p>Forums</p>
-            <p>Expo</p>
             <p>Real Estate Agents</p>
-            <p>Add Agents</p>
-          </div>
-
-          <div className={classes.col}>
-            <h2>Cities</h2>
-            <p>Karachi</p>
-            <p>Islamabad</p>
-            <p>Lahore</p>
-            <p>Quetta</p>
-            <p>Sialkot</p>
-            <p>Faislabad</p>
+            <p>Add property</p>
           </div>
 
           <div className={classes.col}>

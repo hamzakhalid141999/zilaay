@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import MapSectionCard from "../../cards/map-section-card";
 import PropertyCard from "../../cards/property-card";
 import classes from "./map.module.css";
@@ -27,28 +27,26 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
 import {
+  Autocomplete,
+  DrawingManager,
   GoogleMap,
-  useLoadScript,
-  MarkerF,
-  StandaloneSearchBox,
-  LoadScript,
+  Polygon,
+  useJsApiLoader,
 } from "@react-google-maps/api";
+import MapComponent from "./mapDrawable";
 
 function Map({ refInstance }) {
   const mapApiKey = process.env.NEXT_PUBLIC_MAP_API;
+  const libraries = ["places", "drawing"];
 
-  const { isLoaded } = useLoadScript({
+  const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: mapApiKey ? mapApiKey : "",
+    libraries,
   });
 
   const mapContainerStyle = {
     width: "100%",
     height: "100%",
-  };
-
-  const center = {
-    lat: 30.3753,
-    lng: 69.3451,
   };
 
   const settings = {
@@ -99,6 +97,152 @@ function Map({ refInstance }) {
       },
     ],
   };
+
+  const onLoad = (drawingManager) => {
+    console.log(drawingManager);
+  };
+
+  const onPolygonComplete = (polygon) => {
+    console.log(polygon);
+  };
+
+  const onLoadDrawingManager = (drawingManager) => {
+    drawingManagerRef.current = drawingManager;
+  };
+
+  const mapRef = useRef();
+  const polygonRefs = useRef([]);
+  const activePolygonIndex = useRef();
+  const autocompleteRef = useRef();
+  const drawingManagerRef = useRef();
+
+  const [polygons, setPolygons] = useState([
+    [
+      { lat: 28.630818281028954, lng: 79.80954378826904 },
+      { lat: 28.62362346815063, lng: 79.80272024853515 },
+      { lat: 28.623585797675588, lng: 79.81490820629882 },
+      { lat: 28.630818281028954, lng: 79.80954378826904 },
+    ],
+    [
+      { lat: 28.63130796240949, lng: 79.8170110581665 },
+      { lat: 28.623623468150655, lng: 79.81705397351074 },
+      { lat: 28.623623468150655, lng: 79.82619494183349 },
+      { lat: 28.6313832978037, lng: 79.82619494183349 },
+      { lat: 28.63130796240949, lng: 79.8170110581665 },
+    ],
+  ]);
+
+  const defaultCenter = {
+    lat: 28.626137,
+    lng: 79.821603,
+  };
+  const [center, setCenter] = useState(defaultCenter);
+
+  const containerStyle = {
+    width: "100%",
+    height: "400px",
+  };
+
+  const autocompleteStyle = {
+    boxSizing: "border-box",
+    border: "1px solid transparent",
+    width: "240px",
+    height: "38px",
+    padding: "0 12px",
+    borderRadius: "3px",
+    boxShadow: "0 2px 6px rgba(0, 0, 0, 0.3)",
+    fontSize: "14px",
+    outline: "none",
+    textOverflow: "ellipses",
+    position: "absolute",
+    right: "8%",
+    top: "11px",
+    marginLeft: "-120px",
+  };
+
+  const polygonOptions = {
+    fillOpacity: 0.3,
+    fillColor: "#ff0000",
+    strokeColor: "#ff0000",
+    strokeWeight: 2,
+    draggable: true,
+    editable: true,
+  };
+
+  const drawingManagerOptions = {
+    polygonOptions: polygonOptions,
+    drawingControl: true,
+  };
+
+  const onLoadMap = (map) => {
+    mapRef.current = map;
+  };
+
+  const onLoadPolygon = (polygon, index) => {
+    polygonRefs.current[index] = polygon;
+  };
+
+  const onClickPolygon = (index) => {
+    activePolygonIndex.current = index;
+  };
+
+  const onLoadAutocomplete = (autocomplete) => {
+    autocompleteRef.current = autocomplete;
+  };
+
+  const onPlaceChanged = () => {
+    const { geometry } = autocompleteRef.current.getPlace();
+    const bounds = new window.google.maps.LatLngBounds();
+    if (geometry.viewport) {
+      bounds.union(geometry.viewport);
+    } else {
+      bounds.extend(geometry.location);
+    }
+    mapRef.current.fitBounds(bounds);
+  };
+
+  const onOverlayComplete = ($overlayEvent) => {
+    drawingManagerRef.current.setDrawingMode(null);
+    if ($overlayEvent.type === window.google.maps.drawing.OverlayType.POLYGON) {
+      const newPolygon = $overlayEvent.overlay
+        .getPath()
+        .getArray()
+        .map((latLng) => ({ lat: latLng.lat(), lng: latLng.lng() }));
+
+      // start and end point should be same for valid geojson
+      const startPoint = newPolygon[0];
+      newPolygon.push(startPoint);
+      $overlayEvent.overlay?.setMap(null);
+      setPolygons([...polygons, newPolygon]);
+    }
+  };
+
+  const onDeleteDrawing = () => {
+    const filtered = polygons.filter(
+      (polygon, index) => index !== activePolygonIndex.current
+    );
+    setPolygons(filtered);
+  };
+
+  const onEditPolygon = (index) => {
+    const polygonRef = polygonRefs.current[index];
+    if (polygonRef) {
+      const coordinates = polygonRef
+        .getPath()
+        .getArray()
+        .map((latLng) => ({ lat: latLng.lat(), lng: latLng.lng() }));
+
+      const allPolygons = [...polygons];
+      allPolygons[index] = coordinates;
+      setPolygons(allPolygons);
+    }
+  };
+
+  const [showMap, setShowMap] = useState(true);
+
+  // useEffect(() => {
+  //   setShowMap(false);
+  // }, []);
 
   return (
     <div className={classes.wrapper}>
@@ -217,34 +361,16 @@ function Map({ refInstance }) {
                   <p>Draw</p>
                 </div>
               </div>
-              {isLoaded ? (
-                <GoogleMap
-                  mapContainerStyle={mapContainerStyle}
-                  center={center}
-                  zoom={5}
-                >
-                  <MarkerF
-                    icon={pin_red.src}
-                    position={{ lat: 30.3753, lng: 69.3451 }}
-                  />
-                  <MarkerF
-                    icon={pin_blue.src}
-                    position={{ lat: 31.3753, lng: 71.5451 }}
-                  />
-                </GoogleMap>
-              ) : (
-                <></>
-              )}
+              <MapComponent />
             </div>
             <div className={classes.properties_section_container}>
               <div className={classes.property_title_bar}>
                 <h2>Karachi, Defence DHA Houses for Sale</h2>
                 <div className="select_input_container">
                   <select className={classes.sort_by_input}>
-                    <option>Sort By</option>
+                    <option>Popular</option>
                     <option>Newest</option>
                     <option>Oldest</option>
-                    <option>Popular</option>
                     <option>Lowest Price</option>
                     <option>Highest Price</option>
                   </select>

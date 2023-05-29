@@ -99,6 +99,19 @@
   position: relative;
   padding-bottom: 30px;
   scrollbar-width: none;
+  padding-right: 20px;
+  scrollbar-color: var(--blue) #dddbdb;
+}
+.properties_section::-webkit-scrollbar-track {
+  background: #dddbdb !important;
+}
+.properties_section::-webkit-scrollbar {
+  width: 11px;
+}
+.properties_section::-webkit-scrollbar-thumb {
+  background-color: var(--blue);
+  border-radius: 6px;
+  border: 3px solid #dddbdb;
 }
 .properties_section::-webkit-scrollbar {
   display: none;

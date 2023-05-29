@@ -22,7 +22,7 @@ function AuthPanel() {
   ];
 
   const [isLogin, setIsLogin] = useState(true);
-  const [userRole, setUserRole] = useState(false);
+  const [userRole, setUserRole] = useState(0);
 
   return (
     <div className={classes.panel_body}>
@@ -140,64 +140,96 @@ function AuthPanel() {
               </div>
             </div>
             <div className="row">
-              <div className={classes.hollow_btn_active}>
+              <div
+                onClick={() => {
+                  setUserRole(1);
+                }}
+                className={
+                  userRole === 1
+                    ? classes.hollow_btn_active
+                    : classes.hollow_btn_inactive
+                }
+              >
                 <p>As an Agency</p>
               </div>
 
-              <div className={classes.hollow_btn_inactive}>
+              <div
+                onClick={() => {
+                  setUserRole(2);
+                }}
+                className={
+                  userRole === 2
+                    ? classes.hollow_btn_active
+                    : classes.hollow_btn_inactive
+                }
+              >
                 <p>As a Builder</p>
               </div>
             </div>
 
             <div className={classes.form_container}>
-              <div className={classes.single_input_container}>
-                <p className={classes.label}>City</p>
-                <input
-                  className={classes.input_field}
-                  placeholder="Select your city"
-                />
-              </div>
-              <div className={classes.single_input_container}>
-                <p className={classes.label}>Agency Name</p>
-                <div className={classes.input_field_container}>
-                  <input
-                    className={classes.input_field}
-                    placeholder="Agency Name"
-                  />
-                </div>
-              </div>
+              {userRole === 1 ? (
+                <>
+                  <div className={classes.single_input_container}>
+                    <p className={classes.label}>City</p>
+                    <input
+                      className={classes.input_field}
+                      placeholder="Select your city"
+                    />
+                  </div>
+                  <div className={classes.single_input_container}>
+                    <p className={classes.label}>Agency Name</p>
+                    <div className={classes.input_field_container}>
+                      <input
+                        className={classes.input_field}
+                        placeholder="Agency Name"
+                      />
+                    </div>
+                  </div>
 
-              <div className={classes.single_input_container}>
-                <p className={classes.label}>Your Email</p>
-                <input
-                  type={"email"}
-                  className={classes.input_field}
-                  placeholder="nomanshahid@gmail.com"
-                />
-              </div>
+                  <div className={classes.single_input_container}>
+                    <p className={classes.label}>Your Email</p>
+                    <input
+                      type={"email"}
+                      className={classes.input_field}
+                      placeholder="nomanshahid@gmail.com"
+                    />
+                  </div>
 
-              <div className={classes.single_input_container}>
-                <p className={classes.label}>Your Mobile Number</p>
-                <div className={classes.input_field_container}>
-                  <input
-                    className={classes.input_field}
-                    placeholder="e.g (+923310983462)"
-                  />
-                </div>
-              </div>
+                  <div className={classes.single_input_container}>
+                    <p className={classes.label}>Your Mobile Number</p>
+                    <div className={classes.input_field_container}>
+                      <input
+                        className={classes.input_field}
+                        placeholder="e.g (+923310983462)"
+                      />
+                    </div>
+                  </div>
 
-              <div className={classes.single_input_container}>
-                <p className={classes.label}>WhatsApp</p>
-                <div className={classes.input_field_container}>
-                  <input
-                    className={classes.input_field}
-                    placeholder="e.g (+923310983462)"
-                  />
-                </div>
-              </div>
+                  <div className={classes.single_input_container}>
+                    <p className={classes.label}>WhatsApp</p>
+                    <div className={classes.input_field_container}>
+                      <input
+                        className={classes.input_field}
+                        placeholder="e.g (+923310983462)"
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
               <div className="primary_btn">
                 <p>SUBMIT</p>
               </div>
+              <p
+                onClick={() => {
+                  setIsLogin(true);
+                }}
+                className={classes.terms_of_use}
+              >
+                By submitting, I accept Zilaay.com's <span>terms of use</span>
+              </p>
               <div className={classes.continue_container}>
                 <div className={classes.line_left} />
                 <p className={classes.continue_with}>or continue with </p>
@@ -224,7 +256,7 @@ function AuthPanel() {
                 }}
                 className={classes.signup_link}
               >
-                Don't have an account? <span>Sign In</span>
+                Already have an account? <span>Sign In</span>
               </p>
             </div>
           </>
