@@ -25,6 +25,42 @@ function Banner({ setIsDropdown, refInstance }) {
   const [disabled, setdisabled] = useState(false);
   const [minPrice, setMinPrice] = useState(0.0);
   const [maxPrice, setMaxPrice] = useState(0.0);
+  const [dropDownOption, setDropDownOption] = useState("residential");
+
+  const [minArea, setMinArea] = useState(0.0);
+  const [maxArea, setMaxArea] = useState(0.0);
+
+  const residential_checkboxes = [
+    "House",
+    "Flat",
+    "Lower Portion",
+    "Upper Portion",
+    "Farmhouse",
+    "Pent House",
+    "Basement",
+    "Hostle",
+    "Guest House",
+    "Hotel Suites",
+    "Beach Huts",
+  ];
+
+  const commercial_checkboxes = [
+    "Office",
+    "Shop",
+    "Warehouse",
+    "Factory",
+    "Building",
+    "Others",
+  ];
+
+  const plots_checkboxes = [
+    "Residential Plots",
+    "Commercial Plots",
+    "Agricultral Plots",
+    "Factory",
+    "Building",
+    "Others",
+  ];
 
   const settings = {
     dots: false,
@@ -145,6 +181,22 @@ function Banner({ setIsDropdown, refInstance }) {
     setdisabled(false);
   }
 
+  function onAreaChange(value) {
+    setMinArea(value[0]);
+    setMaxArea(value[1]);
+    setdisabled(false);
+  }
+
+  function lowerLimitArea(value) {
+    setdisabled(false);
+    setMinArea(value);
+  }
+
+  function upperLimitArea(value) {
+    setdisabled(false);
+    setMaxArea(value);
+  }
+
   function lowerLimit(value) {
     setdisabled(false);
     setMinPrice(value);
@@ -154,6 +206,79 @@ function Banner({ setIsDropdown, refInstance }) {
     setdisabled(false);
     setMaxPrice(value);
   }
+
+  const [minFormattedPrice, setFormattedMinPrice] = useState();
+  const [maxFormattedPrice, setFormattedMaxPrice] = useState();
+
+  useEffect(() => {
+    if (maxPrice >= 100000) {
+      const formattedPrice = numDifferentiation(maxPrice);
+      setFormattedMaxPrice(formattedPrice);
+    } else {
+      setFormattedMaxPrice();
+    }
+
+    function numDifferentiation(value) {
+      var val = Math.abs(value);
+      if (val >= 1000000000) {
+        val = (val / 1000000000).toFixed(2) + " Arabs";
+      } else if (val >= 10000000) {
+        val = (val / 10000000).toFixed(2) + " Crores";
+      } else if (val >= 100000) {
+        val = (val / 100000).toFixed(2) + " Lacs";
+      }
+      return val;
+    }
+  }, [maxPrice]);
+
+  useEffect(() => {
+    if (minPrice >= 100000) {
+      const formattedPrice = numDifferentiation(minPrice);
+      setFormattedMinPrice(formattedPrice);
+    } else {
+      setFormattedMinPrice();
+    }
+
+    function numDifferentiation(value) {
+      var val = Math.abs(value);
+      if (val >= 1000000000) {
+        val = (val / 1000000000).toFixed(2) + " Arabs";
+      } else if (val >= 10000000) {
+        val = (val / 10000000).toFixed(2) + " Crores";
+      } else if (val >= 100000) {
+        val = (val / 100000).toFixed(2) + " Lacs";
+      }
+      return val;
+    }
+  }, [minPrice]);
+
+  console.log(maxFormattedPrice);
+
+  const formatter = (value) => {
+    if (value >= 100000) {
+      const formattedPrice = numDifferentiation(value);
+      return formattedPrice;
+    } else {
+      return;
+    }
+
+    function numDifferentiation(value) {
+      var val = Math.abs(value);
+      if (val >= 1000000000) {
+        val = (val / 1000000000).toFixed(2) + " Arabs";
+      } else if (val >= 10000000) {
+        val = (val / 10000000).toFixed(2) + " Crores";
+      } else if (val >= 100000) {
+        val = (val / 100000).toFixed(2) + " Lacs";
+      }
+      return val;
+    }
+  };
+
+  const formatterArea = (value) => {
+    console.log(value);
+    return `${value} sqft`;
+  };
 
   return (
     <>
@@ -256,35 +381,108 @@ function Banner({ setIsDropdown, refInstance }) {
                         </p>
 
                         <div className={classes.slider_container}>
-                          <InputNumber
-                            type="number"
-                            className={classes.price_range}
-                            min={0}
-                            max={100}
-                            step={0.001}
-                            value={disabled ? null : minPrice}
-                            onChange={lowerLimit}
-                          />
+                          <div className={classes.input_field_container}>
+                            <InputNumber
+                              type="number"
+                              className={classes.price_range}
+                              min={0}
+                              max={5000000000}
+                              step={10000}
+                              value={disabled ? null : minPrice}
+                              onChange={lowerLimit}
+                            />
+                            <p className={classes.formatter_price}>
+                              {minFormattedPrice
+                                ? `PKR ${minFormattedPrice}`
+                                : `PKR 0`}
+                            </p>
+                          </div>
+
                           <PriceSlider
                             className="slider-main-div"
                             min={0}
-                            max={100}
-                            step={0.001}
+                            max={5000000000}
+                            step={1000000}
                             onChange={onChange}
                             range={true}
                             defaultValue={[minPrice, maxPrice]}
                             value={[minPrice, maxPrice]}
+                            tooltip={{
+                              formatter,
+                            }}
                           />
 
-                          <InputNumber
-                            type="number"
-                            className={classes.price_range}
+                          <div className={classes.input_field_container}>
+                            <InputNumber
+                              type="number"
+                              className={classes.price_range}
+                              min={0}
+                              max={5000000000}
+                              step={1000000}
+                              value={disabled ? null : maxPrice}
+                              onChange={upperLimit}
+                            />
+                            <p className={classes.formatter_price}>
+                              {maxFormattedPrice
+                                ? `PKR ${maxFormattedPrice}`
+                                : `PKR 0`}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ) : selectedDropDownOption === "area" ? (
+                      <div className={classes.options_content_container_div}>
+                        <p className={classes.submenu_heading}>
+                          Select Property Area
+                        </p>
+                        <p className={classes.price_range_label}>
+                          0 - 11250 sqft
+                        </p>
+
+                        <div className={classes.slider_container}>
+                          <div className={classes.input_field_container}>
+                            <InputNumber
+                              type="number"
+                              className={classes.price_range}
+                              min={0}
+                              max={11250}
+                              step={1}
+                              value={disabled ? null : minArea}
+                              onChange={lowerLimitArea}
+                            />
+                            <p className={classes.formatter_price}>
+                              {minArea ? `${minArea} sqft` : `0 sqft`}
+                            </p>
+                          </div>
+
+                          <PriceSlider
+                            className="slider-main-div"
                             min={0}
-                            max={100}
-                            step={0.001}
-                            value={disabled ? null : maxPrice}
-                            onChange={upperLimit}
+                            max={11250}
+                            step={1}
+                            onChange={onAreaChange}
+                            range={true}
+                            defaultValue={[minArea, maxArea]}
+                            value={[minArea, maxArea]}
+                            tooltip={{
+                              formatter: formatterArea,
+                            }}
                           />
+
+                          <div className={classes.input_field_container}>
+                            <InputNumber
+                              type="number"
+                              className={classes.price_range}
+                              min={0}
+                              max={11250}
+                              step={1}
+                              value={disabled ? null : maxArea}
+                              onChange={upperLimitArea}
+                            />
+                            <p className={classes.formatter_price}>
+                              {maxArea ? `${maxArea} sqft` : `0 sqft`}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     ) : (
@@ -294,58 +492,86 @@ function Banner({ setIsDropdown, refInstance }) {
                             <div
                               className={classes.drop_down_left_panel_content}
                             >
-                              <p>Residential</p>
-                              <p>Commercial</p>
-                              <p>Plots</p>
+                              <p
+                                className={
+                                  dropDownOption === "residential"
+                                    ? classes.drop_down_option_selected
+                                    : classes.drop_down_option
+                                }
+                                onClick={() => {
+                                  setDropDownOption("residential");
+                                }}
+                              >
+                                Residential
+                              </p>
+                              <p
+                                className={
+                                  dropDownOption === "commercial"
+                                    ? classes.drop_down_option_selected
+                                    : classes.drop_down_option
+                                }
+                                onClick={() => {
+                                  setDropDownOption("commercial");
+                                }}
+                              >
+                                Commercial
+                              </p>
+                              <p
+                                className={
+                                  dropDownOption === "plots"
+                                    ? classes.drop_down_option_selected
+                                    : classes.drop_down_option
+                                }
+                                onClick={() => {
+                                  setDropDownOption("plots");
+                                }}
+                              >
+                                Plots
+                              </p>
                             </div>
                           </div>
                         </div>
                         <div className={classes.checkboxes_right_panel}>
                           <div className={classes.checkbox_container}>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>House</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Upper Portion</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Guest House</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Farmhouse</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Flat</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Pent House</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Hotel Suit</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Beach Hut</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Lower Portion</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Basement</p>
-                            </div>
-                            <div className={classes.single_checkbox_container}>
-                              <input type={"checkbox"} />
-                              <p>Hostle</p>
-                            </div>
+                            {dropDownOption === "residential"
+                              ? residential_checkboxes?.map(
+                                  (single_checkbox, index) => (
+                                    <div
+                                      key={index}
+                                      className={
+                                        classes.single_checkbox_container
+                                      }
+                                    >
+                                      <input type={"checkbox"} />
+                                      <p>{single_checkbox}</p>
+                                    </div>
+                                  )
+                                )
+                              : dropDownOption === "commercial"
+                              ? commercial_checkboxes?.map(
+                                  (single_checkbox, index) => (
+                                    <div
+                                      key={index}
+                                      className={
+                                        classes.single_checkbox_container
+                                      }
+                                    >
+                                      <input type={"checkbox"} />
+                                      <p>{single_checkbox}</p>
+                                    </div>
+                                  )
+                                )
+                              : plots_checkboxes?.map((single_checkbox, index) => (
+                                  <div
+                                    key={index}
+                                    className={
+                                      classes.single_checkbox_container
+                                    }
+                                  >
+                                    <input type={"checkbox"} />
+                                    <p>{single_checkbox}</p>
+                                  </div>
+                                ))}
                           </div>
                         </div>
                       </>

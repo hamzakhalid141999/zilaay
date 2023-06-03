@@ -238,11 +238,18 @@ function Map({ refInstance }) {
     }
   };
 
-  const [showMap, setShowMap] = useState(true);
+  const [showMap, setShowMap] = useState(false);
 
-  // useEffect(() => {
-  //   setShowMap(false);
-  // }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMap(true);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
 
   return (
     <div className={classes.wrapper}>
@@ -361,7 +368,9 @@ function Map({ refInstance }) {
                   <p>Draw</p>
                 </div>
               </div>
-              <MapComponent />
+            {
+              showMap && <MapComponent />
+            }  
             </div>
             <div className={classes.properties_section_container}>
               <div className={classes.property_title_bar}>

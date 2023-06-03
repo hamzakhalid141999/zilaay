@@ -267,7 +267,7 @@
 }
 .btns_drop_down_wrapper {
   position: absolute;
-  top: 70%;
+  top: 85%;
   z-index: 10000;
   opacity: 0;
   transition: ease-out 200ms;
@@ -303,14 +303,20 @@
   flex-direction: column;
   row-gap: 15px;
 }
-.drop_down_left_panel_content p {
+.option {
   font-family: "p-m";
   font-size: 14px;
-  color: black;
+  color: black !important;
   transition: ease-out 200ms;
 }
-.drop_down_left_panel_content p:hover {
-  color: var(--blue);
+.option_selected {
+  font-family: "p-m";
+  font-size: 14px !important;
+  color: var(--blue) !important;
+}
+.option:hover {
+  font-family: "p-m";
+  color: var(--blue) !important;
 }
 .drop_down_right_panel {
   width: 70%;

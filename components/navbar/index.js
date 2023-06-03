@@ -20,15 +20,18 @@ import near_pin_blue from "../../public/assets/icons/near_pin_blue.svg";
 function Navbar({ showNavbar, isTransparent }) {
   const { width } = useWindowSize();
   const router = useRouter();
-  const [openPanel, setOpenPanel] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState("transparent");
   const [isNavbarVisisbleFromTop, setIsNavbarVisibleFromTop] = useState(false);
-  const [darkTheme, setDarkTheme] = useState(undefined);
-  const [panelType, setPanelType] = useState("left");
-  const [panelSize, setPanelSize] = useState(60);
-  const [noBackdrop, setNoBackdrop] = useState(false);
+  const [buySelectedOption, setBuySelectionOption] = useState("residential");
+  const [rentSelectedOption, setRentSelectionOption] = useState("residential");
+  const [investSelectedOption, setInvestSelectionOption] = useState("residential");
+
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [currentPage, setCurrentPage] = useState();
+
+  const [investDropDownOption, setInvestDropDownOption] = useState("residential");
+  const [rentDropDownOption, setRentDropDownOption] = useState("residential");
+  const [buyDropDownOption, setBuyDropDownOption] = useState("residential");
 
   useEffect(() => {
     if (router.pathname) {
@@ -99,9 +102,15 @@ function Navbar({ showNavbar, isTransparent }) {
                 <div className={classes.btns_drop_down}>
                   <div className={classes.drop_down_left_panel}>
                     <div className={classes.drop_down_left_panel_content}>
-                      <p>Residential</p>
-                      <p>Commercial</p>
-                      <p>Plots</p>
+                      <p onClick={()=>{
+                        setBuySelectionOption("residential")
+                      }}  className={buySelectedOption === 'residential' ? classes.option_selected : classes.option}>Residential</p>
+                      <p onClick={()=>{
+                        setBuySelectionOption("commercial")
+                      }}  className={buySelectedOption === 'commercial' ? classes.option_selected : classes.option}>Commercial</p>
+                      <p onClick={()=>{
+                        setBuySelectionOption("plot")
+                      }}  className={buySelectedOption === 'plot' ? classes.option_selected : classes.option}>Plots</p>
                     </div>
                   </div>
                   <div className={classes.drop_down_right_panel}>
@@ -134,9 +143,15 @@ function Navbar({ showNavbar, isTransparent }) {
                 <div className={classes.btns_drop_down}>
                   <div className={classes.drop_down_left_panel}>
                     <div className={classes.drop_down_left_panel_content}>
-                      <p>Residential</p>
-                      <p>Commercial</p>
-                      <p>Plots</p>
+                      <p onClick={()=>{
+                        setRentSelectionOption("residential")
+                      }} className={rentSelectedOption === 'residential' ? classes.option_selected : classes.option}>Residential</p>
+                      <p onClick={()=>{
+                        setRentSelectionOption("commercial")
+                      }} className={rentSelectedOption === 'commercial' ? classes.option_selected : classes.option}>Commercial</p>
+                      <p onClick={()=>{
+                        setRentSelectionOption("plot")
+                      }} className={rentSelectedOption === 'plot' ? classes.option_selected : classes.option}>Plots</p>
                     </div>
                   </div>
                   <div className={classes.drop_down_right_panel}>
@@ -163,47 +178,30 @@ function Navbar({ showNavbar, isTransparent }) {
               </div>
               <p className={classes.left_panel_btn}>Rent</p>
 
-              <div className={classes.btns_drop_down_wrapper}>
-                <div className={classes.btns_drop_down}>
-                  <div className={classes.drop_down_left_panel}>
-                    <div className={classes.drop_down_left_panel_content}>
-                      <p>Residential</p>
-                      <p>Commercial</p>
-                      <p>Plots</p>
-                    </div>
-                  </div>
-                  <div className={classes.drop_down_right_panel}>
-                    <div className={classes.drop_down_right_panel_content}>
-                      <div className={classes.right_panel_col}>
-                        <p>House</p>
-                        <p>Flat</p>
-                        <p>Lower Portion</p>
-                        <p>Upper Portion</p>
-                        <p>Pent House</p>
-                        <p>Basement</p>
-                      </div>
-
-                      <div className={classes.right_panel_col}>
-                        <p>Farmhouse</p>
-                        <p>Hostel</p>
-                        <p>Guest House</p>
-                        <p>Hotel Suit</p>
-                        <p>Beach Hut</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+  
             </div>
 
+            <div className={classes.left_panel_btns}>
+                  <p>Shared Spaces</p>
+                </div>
+         
+
+            {width > 1370 ? (
+              <>
             <div className={classes.left_panel_btns}>
               <div className={classes.btns_drop_down_wrapper}>
                 <div className={classes.btns_drop_down}>
                   <div className={classes.drop_down_left_panel}>
                     <div className={classes.drop_down_left_panel_content}>
-                      <p>Residential</p>
-                      <p>Commercial</p>
-                      <p>Plots</p>
+                      <p onClick={()=>{
+                        setInvestSelectionOption("residential")
+                      }} className={investSelectedOption === 'residential' ? classes.option_selected : classes.option}>Residential</p>
+                      <p onClick={()=>{
+                        setInvestSelectionOption("commercial")
+                      }} className={investSelectedOption === 'commercial' ? classes.option_selected : classes.option}>Commercial</p>
+                      <p onClick={()=>{
+                        setInvestSelectionOption("plot")
+                      }} className={investSelectedOption === 'plot' ? classes.option_selected : classes.option}>Plots</p>
                     </div>
                   </div>
                   <div className={classes.drop_down_right_panel}>
@@ -230,12 +228,6 @@ function Navbar({ showNavbar, isTransparent }) {
               </div>
               <p className={classes.left_panel_btn}>Invest</p>
             </div>
-
-            {width > 1370 ? (
-              <>
-                <div className={classes.left_panel_btns}>
-                  <p>Shared Spaces</p>
-                </div>
 
                 <div className={classes.left_panel_btns}>
                   <p>Wanted</p>
