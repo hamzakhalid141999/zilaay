@@ -73,13 +73,13 @@ function PropertiesForSale({
                 <p>Lahore</p>
               </div>
               <div className="city_btn">
-                <p>Rawalpindi</p>
+                <p>Karachi</p>
               </div>
               <div className="city_btn">
                 <p>Islamabad</p>
               </div>
               <div className="city_btn">
-                <p>Karachi</p>
+                <p>Rawalpindi</p>
               </div>
               <div style={{ marginLeft: "20px" }} className="btn">
                 <p>Discover More</p>

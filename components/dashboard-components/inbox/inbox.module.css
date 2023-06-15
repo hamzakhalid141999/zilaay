@@ -1,0 +1,316 @@
+.container {
+  width: 92%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.heading_bar {
+  width: 100%;
+  height: 13vh;
+  max-height: 110px;
+  display: grid;
+  grid-template-columns: 2fr 4.5fr;
+  align-items: center;
+  border-bottom: 1px solid rgb(228, 228, 228);
+}
+.inbox_section {
+  width: 100%;
+  height: 79vh;
+  display: grid;
+  grid-template-columns: 2fr 4.5fr;
+  align-items: center;
+}
+.heading_bar h2 {
+  color: var(--blue);
+  font-size: 28px;
+  font-family: "p-sb";
+  width: 100%;
+}
+.heading_right_panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.user_profile {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  column-gap: 13px;
+  margin-left: 20px;
+}
+.profile_picture {
+  border: 2px solid #41ce2a;
+  border-radius: 15px;
+  width: 50px;
+  height: 50px;
+}
+.profile_name_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.name {
+  font-size: 16px;
+  font-family: "p-sb";
+}
+.name_title {
+  font-size: 12px;
+  font-family: "p-sb";
+  opacity: 0.4;
+}
+.inbox_list {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid rgb(228, 228, 228);
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  position: relative;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.inbox_list::-webkit-scrollbar {
+  display: none;
+}
+.overlay {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), white);
+  z-index: 1;
+}
+.chat_section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+.chat_list_container {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.chat_list_container::-webkit-scrollbar {
+  display: none;
+}
+.chat_section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.chat_section::-webkit-scrollbar {
+  display: none;
+}
+.msg_left_container,
+.msg_right_container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.msg_right_container {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.msg_right_container p,
+.msg_left_container p {
+  font-size: 12px;
+}
+.single_inbox_selected,
+.single_inbox {
+  width: 95%;
+  min-height: 100px;
+  background: #eef4ff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.date_container {
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+  background: rgba(21, 21, 21, 0.05);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.single_inbox {
+  background: #f8f8f8;
+}
+.inbox_content {
+  width: 94%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  position: relative;
+}
+.single_inbox_profile_picture {
+  height: 95%;
+  aspect-ratio: 1/1;
+  border: 2px solid #41ce2a;
+  border-radius: 15px;
+}
+.three_dot {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 20px;
+}
+.three_dot:hover{
+    background-color: grey;
+    height: 40px;
+    width: 40px;
+    border-radius: 100px;
+}
+.single_inbox_profile_name_section {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+}
+.single_inbox_name {
+  font-size: 16px;
+  font-family: "p-sb";
+  color: var(--blue);
+}
+.single_inbox_name_title {
+  font-size: 12px;
+  font-family: "p-r";
+  opacity: 0.4;
+}
+.single_inbox_message {
+  font-size: 12px;
+  font-family: "p-r";
+}
+
+.message_profile {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  column-gap: 13px;
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+.message_profile_picture {
+  background-color: rgb(228, 228, 228);
+  border-radius: 15px;
+  width: 50px;
+  height: 50px;
+}
+.message_profile_name_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.message_name {
+  font-size: 16px;
+  color: var(--blue);
+  font-family: "p-sb";
+}
+.message_name_title {
+  font-size: 12px;
+  font-family: "p-sb";
+  opacity: 0.4;
+}
+.left_msg_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  gap: 10px;
+  width: fit-content;
+  height: fit-content;
+  background: #eef4ff;
+  border-radius: 0px 10px 10px 10px;
+  margin-top: 8px;
+  margin-left: 80px;
+  max-width: 60%;
+}
+.right_msg_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  gap: 10px;
+  width: fit-content;
+  height: fit-content;
+  background: #0060fd;
+  border-radius: 10px 0px 10px 10px;
+  margin-top: 8px;
+  margin-right: 63px;
+  max-width: 60%;
+}
+.right_msg_container p {
+  color: white;
+}
+.message_typewriter_area {
+  width: 90%;
+  height: 10%;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+.msg_input_field {
+  width: 100%;
+  height: 96%;
+  border: none;
+}
+.btns_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.send_btn {
+  flex-direction: row;
+  column-gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 38px;
+  background: #0060fd;
+  border-radius: 10px;
+  transition: ease-out 200ms;
+}
+.send_btn p {
+  color: white;
+}
+.send_btn:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}

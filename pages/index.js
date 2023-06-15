@@ -136,7 +136,7 @@ export default function Home() {
       ></div>
 
       <div
-        style={{ right: hideTVC ? "-15%" : "-10px" }}
+        style={{ right: hideTVC ? "-24%" : "-10px" }}
         className={
           enlargeTrailer
             ? styles.large_trailer_container
@@ -150,8 +150,9 @@ export default function Home() {
           }}
           className={styles.video_placeholder_container}
         >
-          <img className={styles.pause_icon} src={pause_icon.src} />
-          <img className={styles.placeholder} src={video_placeholder.src} />
+          <iframe onClick={()=>{
+            setEnlargeTrailer(!enlargeTrailer);
+          }} width="100%" height="100%" src="https://www.youtube.com/embed/CHVy5h-uALw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <p>
           Zilaay.com <span>New</span> Ad
@@ -246,3 +247,7 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+useState, useEffect

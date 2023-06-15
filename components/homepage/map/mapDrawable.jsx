@@ -22,19 +22,7 @@ const MapComponent = () => {
   });
 
   const [polygons, setPolygons] = useState([
-    [
-      { lat: 28.630818281028954, lng: 79.80954378826904 },
-      { lat: 28.62362346815063, lng: 79.80272024853515 },
-      { lat: 28.623585797675588, lng: 79.81490820629882 },
-      { lat: 28.630818281028954, lng: 79.80954378826904 },
-    ],
-    [
-      { lat: 28.63130796240949, lng: 79.8170110581665 },
-      { lat: 28.623623468150655, lng: 79.81705397351074 },
-      { lat: 28.623623468150655, lng: 79.82619494183349 },
-      { lat: 28.6313832978037, lng: 79.82619494183349 },
-      { lat: 28.63130796240949, lng: 79.8170110581665 },
-    ],
+    
   ]);
 
   const defaultCenter = {
@@ -45,7 +33,7 @@ const MapComponent = () => {
 
   const containerStyle = {
     width: "100%",
-    height: "400px",
+    height: "700px",
   };
 
   const autocompleteStyle = {
@@ -65,18 +53,19 @@ const MapComponent = () => {
     marginLeft: "-120px",
   };
 
-  //   const deleteIconStyle = {
-  //     cursor: "pointer",
-  //     backgroundImage: `url(${deleteIcon})`,
-  //     height: "24px",
-  //     width: "24px",
-  //     marginTop: "5px",
-  //     backgroundColor: "#fff",
-  //     position: "absolute",
-  //     top: "2px",
-  //     left: "52%",
-  //     zIndex: 99999,
-  //   };
+    const deleteIconStyle = {
+      cursor: "pointer",
+      // backgroundImage: `url(${deleteIcon})`,
+      height: "24px",
+      width: "24px",
+      marginTop: "5px",
+      backgroundColor: "#fff",
+      position: "absolute",
+      top: "2px",
+      left: "52%",
+      zIndex: 99999,
+      backgroundColor: 'red'
+    };
 
   const polygonOptions = {
     fillOpacity: 0.3,
@@ -170,7 +159,7 @@ const MapComponent = () => {
         <div
           onClick={onDeleteDrawing}
           title="Delete shape"
-          //   style={deleteIconStyle}
+            style={deleteIconStyle}
         ></div>
       )}
       <GoogleMap

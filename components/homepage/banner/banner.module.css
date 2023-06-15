@@ -24,6 +24,7 @@
 }
 .banner_img {
   margin-top: 100px;
+  z-index: 1;
 }
 .bottom_panel {
   background-color: #fafafa;
@@ -528,6 +529,7 @@
   padding: 12px 25px;
   display: flex;
   align-items: center;
+  transition: ease-out 200ms;
 }
 .recent_search_tag img {
   width: 21px;
@@ -537,6 +539,11 @@
   line-height: 21px;
   color: #151515;
   opacity: 0.5;
+}
+.recent_search_tag:hover{
+  margin-bottom: 5px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.100);
+  cursor: pointer;
 }
 .pattern_bg {
   width: 100%;

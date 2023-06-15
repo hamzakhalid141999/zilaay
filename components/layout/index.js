@@ -26,6 +26,10 @@ function Layout({ children }) {
             <div className={classes.main}>{children}</div>
             <Footer />
           </>
+        ) : currentPage === "dashboard" ? (
+          <>
+            <div className={classes.main}>{children}</div>
+          </>
         ) : currentPage === "buy" || currentPage === "login" ? (
           <>
             <Navbar />

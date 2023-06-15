@@ -23,7 +23,7 @@ function Footer() {
           </div>
 
           <div className={classes.col}>
-            <h2>Contact Us</h2>
+            <h2>Connect</h2>
             <p>Blogs</p>
             <p>News</p>
             <p>Forums</p>

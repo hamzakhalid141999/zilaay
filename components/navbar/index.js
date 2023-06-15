@@ -24,14 +24,13 @@ function Navbar({ showNavbar, isTransparent }) {
   const [isNavbarVisisbleFromTop, setIsNavbarVisibleFromTop] = useState(false);
   const [buySelectedOption, setBuySelectionOption] = useState("residential");
   const [rentSelectedOption, setRentSelectionOption] = useState("residential");
-  const [investSelectedOption, setInvestSelectionOption] = useState("residential");
+  const [sharedSpacesOption, setSharedSpacesOption] = useState("co-living");
+
+  const [investSelectedOption, setInvestSelectionOption] =
+    useState("residential");
 
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [currentPage, setCurrentPage] = useState();
-
-  const [investDropDownOption, setInvestDropDownOption] = useState("residential");
-  const [rentDropDownOption, setRentDropDownOption] = useState("residential");
-  const [buyDropDownOption, setBuyDropDownOption] = useState("residential");
 
   useEffect(() => {
     if (router.pathname) {
@@ -92,50 +91,105 @@ function Navbar({ showNavbar, isTransparent }) {
       <div className={classes.left_panel}>
         {!showNavbar ? (
           <>
-            <div
-              onClick={() => {
-                router.push("/buy");
-              }}
-              className={classes.left_panel_btns}
-            >
+            <div className={classes.left_panel_btns}>
               <div className={classes.btns_drop_down_wrapper}>
                 <div className={classes.btns_drop_down}>
                   <div className={classes.drop_down_left_panel}>
                     <div className={classes.drop_down_left_panel_content}>
-                      <p onClick={()=>{
-                        setBuySelectionOption("residential")
-                      }}  className={buySelectedOption === 'residential' ? classes.option_selected : classes.option}>Residential</p>
-                      <p onClick={()=>{
-                        setBuySelectionOption("commercial")
-                      }}  className={buySelectedOption === 'commercial' ? classes.option_selected : classes.option}>Commercial</p>
-                      <p onClick={()=>{
-                        setBuySelectionOption("plot")
-                      }}  className={buySelectedOption === 'plot' ? classes.option_selected : classes.option}>Plots</p>
+                      <p
+                        onClick={() => {
+                          setBuySelectionOption("residential");
+                        }}
+                        className={
+                          buySelectedOption === "residential"
+                            ? classes.option_selected
+                            : classes.option
+                        }
+                      >
+                        Residential
+                      </p>
+                      <p
+                        onClick={() => {
+                          setBuySelectionOption("commercial");
+                        }}
+                        className={
+                          buySelectedOption === "commercial"
+                            ? classes.option_selected
+                            : classes.option
+                        }
+                      >
+                        Commercial
+                      </p>
+                      <p
+                        onClick={() => {
+                          setBuySelectionOption("plot");
+                        }}
+                        className={
+                          buySelectedOption === "plot"
+                            ? classes.option_selected
+                            : classes.option
+                        }
+                      >
+                        Plots
+                      </p>
                     </div>
                   </div>
                   <div className={classes.drop_down_right_panel}>
                     <div className={classes.drop_down_right_panel_content}>
-                      <div className={classes.right_panel_col}>
-                        <p>House</p>
-                        <p>Flat</p>
-                        <p>Lower Portion</p>
-                        <p>Upper Portion</p>
-                        <p>Pent House</p>
-                        <p>Basement</p>
-                      </div>
+                      {buySelectedOption === "residential" ? (
+                        <>
+                          <div className={classes.right_panel_col}>
+                            <p>House</p>
+                            <p>Flat</p>
+                            <p>Lower Portion</p>
+                            <p>Upper Portion</p>
+                            <p>Pent House</p>
+                            <p>Basement</p>
+                          </div>
 
-                      <div className={classes.right_panel_col}>
-                        <p>Farmhouse</p>
-                        <p>Hostel</p>
-                        <p>Guest House</p>
-                        <p>Hotel Suit</p>
-                        <p>Beach Hut</p>
-                      </div>
+                          <div className={classes.right_panel_col}>
+                            <p>Farmhouse</p>
+                            <p>Hostel</p>
+                            <p>Guest House</p>
+                            <p>Hotel Suit</p>
+                            <p>Beach Hut</p>
+                          </div>
+                        </>
+                      ) : buySelectedOption === "commercial" ? (
+                        <>
+                          <div className={classes.right_panel_col}>
+                            <p>Office</p>
+                            <p>Shop</p>
+                            <p>Warehouse</p>
+                            <p>Factory</p>
+                            <p>Building</p>
+                            <p>Others</p>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className={classes.right_panel_col}>
+                            <p>Residential Plots</p>
+                            <p>Commercial Plots</p>
+                            <p>Agricultral Plots</p>
+                            <p>Factory</p>
+                            <p>Building</p>
+                            <p>Others</p>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
-              <p className={classes.left_panel_btn}>Buy</p>
+              <p
+                onClick={() => {
+                  router.push("/buy");
+                }}
+                className={classes.left_panel_btn}
+              >
+                Buy
+              </p>
             </div>
 
             <div className={classes.left_panel_btns}>
@@ -143,91 +197,183 @@ function Navbar({ showNavbar, isTransparent }) {
                 <div className={classes.btns_drop_down}>
                   <div className={classes.drop_down_left_panel}>
                     <div className={classes.drop_down_left_panel_content}>
-                      <p onClick={()=>{
-                        setRentSelectionOption("residential")
-                      }} className={rentSelectedOption === 'residential' ? classes.option_selected : classes.option}>Residential</p>
-                      <p onClick={()=>{
-                        setRentSelectionOption("commercial")
-                      }} className={rentSelectedOption === 'commercial' ? classes.option_selected : classes.option}>Commercial</p>
-                      <p onClick={()=>{
-                        setRentSelectionOption("plot")
-                      }} className={rentSelectedOption === 'plot' ? classes.option_selected : classes.option}>Plots</p>
+                      <p
+                        onClick={() => {
+                          setRentSelectionOption("residential");
+                        }}
+                        className={
+                          rentSelectedOption === "residential"
+                            ? classes.option_selected
+                            : classes.option
+                        }
+                      >
+                        Residential
+                      </p>
+                      <p
+                        onClick={() => {
+                          setRentSelectionOption("commercial");
+                        }}
+                        className={
+                          rentSelectedOption === "commercial"
+                            ? classes.option_selected
+                            : classes.option
+                        }
+                      >
+                        Commercial
+                      </p>
+                      <p
+                        onClick={() => {
+                          setRentSelectionOption("plot");
+                        }}
+                        className={
+                          rentSelectedOption === "plot"
+                            ? classes.option_selected
+                            : classes.option
+                        }
+                      >
+                        Plots
+                      </p>
                     </div>
                   </div>
                   <div className={classes.drop_down_right_panel}>
                     <div className={classes.drop_down_right_panel_content}>
-                      <div className={classes.right_panel_col}>
-                        <p>House</p>
-                        <p>Flat</p>
-                        <p>Lower Portion</p>
-                        <p>Upper Portion</p>
-                        <p>Pent House</p>
-                        <p>Basement</p>
-                      </div>
+                      {rentSelectedOption === "residential" ? (
+                        <>
+                          <div className={classes.right_panel_col}>
+                            <p>House</p>
+                            <p>Flat</p>
+                            <p>Lower Portion</p>
+                            <p>Upper Portion</p>
+                            <p>Pent House</p>
+                            <p>Basement</p>
+                          </div>
 
-                      <div className={classes.right_panel_col}>
-                        <p>Farmhouse</p>
-                        <p>Hostel</p>
-                        <p>Guest House</p>
-                        <p>Hotel Suit</p>
-                        <p>Beach Hut</p>
-                      </div>
+                          <div className={classes.right_panel_col}>
+                            <p>Farmhouse</p>
+                            <p>Hostel</p>
+                            <p>Guest House</p>
+                            <p>Hotel Suit</p>
+                            <p>Beach Hut</p>
+                          </div>
+                        </>
+                      ) : rentSelectedOption === "commercial" ? (
+                        <>
+                          <div className={classes.right_panel_col}>
+                            <p>Office</p>
+                            <p>Shop</p>
+                            <p>Warehouse</p>
+                            <p>Factory</p>
+                            <p>Building</p>
+                            <p>Others</p>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className={classes.right_panel_col}>
+                            <p>Residential Plots</p>
+                            <p>Commercial Plots</p>
+                            <p>Agricultral Plots</p>
+                            <p>Factory</p>
+                            <p>Building</p>
+                            <p>Others</p>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
               <p className={classes.left_panel_btn}>Rent</p>
-
-  
             </div>
 
-            <div className={classes.left_panel_btns}>
-                  <p>Shared Spaces</p>
-                </div>
-         
-
-            {width > 1370 ? (
-              <>
             <div className={classes.left_panel_btns}>
               <div className={classes.btns_drop_down_wrapper}>
                 <div className={classes.btns_drop_down}>
                   <div className={classes.drop_down_left_panel}>
                     <div className={classes.drop_down_left_panel_content}>
-                      <p onClick={()=>{
-                        setInvestSelectionOption("residential")
-                      }} className={investSelectedOption === 'residential' ? classes.option_selected : classes.option}>Residential</p>
-                      <p onClick={()=>{
-                        setInvestSelectionOption("commercial")
-                      }} className={investSelectedOption === 'commercial' ? classes.option_selected : classes.option}>Commercial</p>
-                      <p onClick={()=>{
-                        setInvestSelectionOption("plot")
-                      }} className={investSelectedOption === 'plot' ? classes.option_selected : classes.option}>Plots</p>
+                      <p
+                        onClick={() => {
+                          setSharedSpacesOption("co-living");
+                        }}
+                        className={
+                          sharedSpacesOption === "co-living"
+                            ? classes.option_selected
+                            : classes.option
+                        }
+                      >
+                        Shared PG/Co-living
+                      </p>
+                      <p
+                        onClick={() => {
+                          setSharedSpacesOption("co-working");
+                        }}
+                        className={
+                          sharedSpacesOption === "co-working"
+                            ? classes.option_selected
+                            : classes.option
+                        }
+                      >
+                        Co-Working
+                      </p>
                     </div>
                   </div>
                   <div className={classes.drop_down_right_panel}>
-                    <div className={classes.drop_down_right_panel_content}>
-                      <div className={classes.right_panel_col}>
-                        <p>House</p>
-                        <p>Flat</p>
-                        <p>Lower Portion</p>
-                        <p>Upper Portion</p>
-                        <p>Pent House</p>
-                        <p>Basement</p>
-                      </div>
-
-                      <div className={classes.right_panel_col}>
-                        <p>Farmhouse</p>
-                        <p>Hostel</p>
-                        <p>Guest House</p>
-                        <p>Hotel Suit</p>
-                        <p>Beach Hut</p>
-                      </div>
+                    <div
+                      style={{ gridTemplateColumns: '1fr' }}
+                      className={classes.drop_down_right_panel_content}
+                    >
+                      {sharedSpacesOption === "co-living" ? (
+                        <>
+                          <div className={classes.right_panel_col}>
+                            <p>Co-Working Spaces in Karachi</p>
+                            <p>Co-Working Spaces in Lahore</p>
+                            <p>Co-Working Spaces in Islamabad</p>
+                            <p>Co-Working Spaces in Rawalpindi</p>
+                            <p>Co-Working Spaces in Peshawar</p>
+                            <p>Co-Working Spaces in Multan</p>
+                          </div>
+                        </>
+                      ) : (
+                        sharedSpacesOption === "co-working" && (
+                          <>
+                            <div className={classes.right_panel_col}>
+                              <p>Share a House</p>
+                              <p>Share a Flat</p>
+                              <p>Share a Hostle</p>
+                            </div>
+                          </>
+                        )
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
-              <p className={classes.left_panel_btn}>Invest</p>
+              <p>Shared Spaces</p>
             </div>
+
+            {width > 1370 ? (
+              <>
+                <div className={classes.left_panel_btns}>
+                  <div
+                    style={{
+                      backgroundColor: "white",
+                      padding: "15px",
+                      paddingRight: "30px",
+                      borderRadius: "10px",
+                    }}
+                    className={classes.btns_drop_down_wrapper}
+                  >
+                    <div className={classes.drop_down_left_panel_content}>
+                      <p className={classes.option}>Islamabad</p>
+                      <p className={classes.option}>Lahore</p>
+                      <p className={classes.option}>Karachi</p>
+                      <p className={classes.option}>Rawalpindi</p>
+                      <p className={classes.option}>Faislabad</p>
+                      <p className={classes.option}>Multan</p>
+                    </div>
+                  </div>
+                  <p className={classes.left_panel_btn}>Invest</p>
+                </div>
 
                 <div className={classes.left_panel_btns}>
                   <p>Wanted</p>
