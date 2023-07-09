@@ -379,9 +379,9 @@ function Navbar({ showNavbar, isTransparent }) {
                   <p>Wanted</p>
                 </div>
 
-                <div className={classes.left_panel_btns}>
-                  <p>Agent Finder</p>
-                </div>
+                <Link href={'/dashboard/overview'} className={classes.left_panel_btns}>
+                  <p>Dashboard</p>
+                </Link>
               </>
             ) : (
               <div className={classes.left_panel_btns}>

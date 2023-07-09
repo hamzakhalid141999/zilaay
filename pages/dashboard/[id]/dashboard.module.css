@@ -99,6 +99,7 @@
 }
 .component_container {
   height: 100%;
+  max-height: 92vh;
   width: 82%;
   background-color: white;
   border-top-left-radius: 70px;
@@ -106,6 +107,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  overflow: hidden;
 }
 .single_btn,
 .single_btn_selected {

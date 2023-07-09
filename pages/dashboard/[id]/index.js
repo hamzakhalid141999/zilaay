@@ -21,15 +21,21 @@ import Inbox from "../../../components/dashboard-components/inbox/inbox";
 import delete_icon from "../../../public/assets/dashboard/delete.svg";
 import zilaay_logo from "../../../public/assets/dashboard/zilaay_logo.svg";
 import search_icon_white from "../../../public/assets/navbar-assets/search_white.svg";
+import AddProperty from "../../../components/dashboard-components/add-property";
+import Overview from "../../../components/dashboard-components/overview";
+import Link from "next/link";
 
 function Dashboard() {
   const router = useRouter();
+  const [currentPage, setCurrentPage] = useState();
 
   useEffect(() => {
     if (router?.query?.id) {
-      console.log(router?.query?.id);
+      setCurrentPage(router?.query?.id);
     }
   }, [router?.query]);
+
+  console.log("Current page: ", currentPage);
 
   const menu_list = [
     {
@@ -37,42 +43,49 @@ function Dashboard() {
       name: "Overview",
       src: overview.src,
       src_2: my_listings_blue.src,
+      link: "overview",
     },
     {
       id: 2,
       name: "Add Property",
       src: add_property.src,
       src_2: add_property_blue.src,
+      link: "add-property",
     },
     {
       id: 3,
       name: "My Listing",
       src: my_listing.src,
       src_2: overview_blue.src,
+      link: "my-listing",
     },
     {
       id: 4,
       name: "My Activity",
       src: my_activity.src,
       src_2: my_activity_blue.src,
+      link: "my-activity",
     },
     {
       id: 5,
       name: "My Orders",
       src: my_orders.src,
       src_2: my_orders_blue.src,
+      link: "my-orders",
     },
     {
       id: 6,
       name: "Zilaay Chats",
       src: zilaay_chats.src,
       src_2: zilaay_chats_blue.src,
+      link: "zilaay-chats",
     },
     {
       id: 7,
       name: "Account Settings",
       src: account_settings.src,
       src_2: account_settings_blue.src,
+      link: "account-settings",
     },
   ];
 
@@ -80,15 +93,12 @@ function Dashboard() {
 
   return (
     <div className={classes.dashboard_container}>
-      {/* <img src={bg_pattern.src} className={classes.pattern}/> */}
-
       <div className={classes.navbar}>
         <div className={classes.left_panel}>
           <img src={zilaay_logo.src} />
         </div>
         <div className={classes.right_panel}>
-
-        <div className={classes.btn_with_icon}>
+          <div className={classes.btn_with_icon}>
             <img src={add_property.src} />
             <p>Add Property</p>
           </div>
@@ -112,7 +122,8 @@ function Dashboard() {
         <div className={classes.menu_container}>
           <div className={classes.btns_container}>
             {menu_list?.map((menu, index) => (
-              <div
+              <Link
+                href={`/dashboard/${menu?.link}`}
                 style={{
                   borderBottom:
                     menu_list?.length - 1 === index && "1px solid transparent",
@@ -120,6 +131,7 @@ function Dashboard() {
                 key={index}
                 onClick={() => {
                   setSelectedMenuOption(menu.id);
+                  router.push(`/dashboard/${menu?.link}`);
                 }}
                 className={
                   selectedMenuOption === menu?.id
@@ -133,7 +145,7 @@ function Dashboard() {
                   }
                 />
                 <p>{menu?.name}</p>
-              </div>
+              </Link>
             ))}
 
             <p className={classes.contact}>
@@ -142,7 +154,13 @@ function Dashboard() {
           </div>
         </div>
         <div className={classes.component_container}>
-          <Inbox />
+          {currentPage === "overview" ? (
+            <Overview />
+          ) : currentPage === "add-property" ? (
+            <AddProperty />
+          ) : (
+            currentPage === "zilaay-chats" && <Inbox />
+          )}
         </div>
       </div>
     </div>
