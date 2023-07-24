@@ -113,7 +113,7 @@
   height: fit-content;
   display: grid;
   place-items: center;
-  column-gap: 20px;
+  column-gap: 10px;
   grid-template-columns: 2fr 1fr;
 }
 .third_row_container {
@@ -154,16 +154,127 @@
   background: #f5f7fb;
   padding: 30px;
 }
-.hot_ad_container {
+.hot_ad_container,
+.staff_listings_section {
   width: 450px;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
   height: 100%;
 }
-.hot_ad_container h3 {
+.staff_listings_section {
+  width: 100%;
+}
+.hot_ad_container h3,
+.staff_listings_section h3 {
   font-family: "p-sb";
   font-size: 20px;
+}
+.staff_listing_cards_section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.single_staff_card {
+  width: 84%;
+  height: 370px;
+  max-height: 370px;
+  border-radius: 15px;
+  border: 1px solid #dddbdb;
+  background: #f5f7fb;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+.staff_card_top_bar {
+  width: 100%;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: flex-start;
+  gap: 15px;
+}
+.name_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0;
+  align-items: center;
+  justify-content: center;
+}
+.name_section h2 {
+  text-align: center;
+  font-family: "p-sb";
+  font-size: 18px;
+  margin-bottom: 0px;
+}
+.name_section p{
+  opacity: 0.4;
+  margin-top: -4px;
+}
+.btns_container{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.single_stat_btn_container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 2px;
+}
+.single_stat_btn_container h2{
+  font-size: 12px;
+  color: black;
+  font-family: "p-sb";
+}
+.single_stat_btn_container p{
+  font-size: 12px;
+  color: var(--blue);
+  font-family: "p-sb";
+
+}
+.profile_picture {
+  height: 70px;
+  width: 70px;
+  background-color: #969ba5;
+  border-radius: 50%;
+  margin-top: 30px;
+}
+.active_tag {
+  border-radius: 5px;
+  border: 1px solid #15bf30;
+  box-shadow: 0px 0px 10px 0px rgba(21, 191, 48, 0.5);
+  height: 22px;
+  width: fit-content;
+  padding-right: 7px;
+  padding-left: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu_btn_container,
+.pic_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.pic_container {
+  justify-content: center;
+}
+.tag_label {
+  color: #15bf30;
+  font-size: 12px;
+  font-family: "p-m";
 }
 .hot_property_container {
   height: 100%;
@@ -175,6 +286,7 @@
 .inbox_container {
   width: 100%;
   height: 300px;
+  /* min-height: 300px; */
   border-radius: 15px;
   border: 1px solid #dddbdb;
   background: #f5f7fb;
@@ -183,6 +295,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* overflow-y: scroll; */
 }
 .quota_and_credits_container {
   width: 100%;
@@ -193,6 +306,10 @@
   align-items: center;
   justify-content: center;
   height: 320px;
+  max-height: 300px;
+  min-height: 300px;
+  overflow-y: scroll;
+  padding-bottom: 10px;
 }
 .inbox_content_container {
   width: 100%;
@@ -201,6 +318,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  row-gap: 10px;
 }
 .quota_and_credits_content_container {
   width: 88%;
@@ -313,7 +431,7 @@
   font-family: "p-r";
   line-height: 22px;
 }
-.black_btn {
+.black_btn, .blue_btn {
   border-radius: 10px;
   background: #151515;
   height: 40px;
@@ -323,14 +441,29 @@
   margin-top: 10px;
   transition: ease-out 200ms;
 }
-.black_btn h4 {
+.blue_btn{
+  background: var(--blue);
+}
+.black_btn h4, .blue_btn h4 {
   color: white;
   font-size: 14px;
   font-family: "p-r";
 }
-.black_btn:hover {
+.black_btn:hover{
   background: #353535;
   cursor: pointer;
+}
+.blue_btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.social_media_container{
+  width: 80%;
+  min-height: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .white_btn {
   border-radius: 10px;

@@ -12,8 +12,12 @@ import buy_section_bg from "../../../public/assets/overview/buy_section_bg.png";
 import SmallTickIcon from "../../../public/assets/icons/SmallTickIcon";
 import upgrade_section_bg from "../../../public/assets/overview/upgrade_section_bg.png";
 import three_dot from "../../../public/assets/dashboard/three_dot.svg";
+import ThreeDotIcon from "../../../public/assets/icons/ThreeDotIcon";
+import FacebookIcon from "../../../public/assets/icons/FacebookIcon";
+import TwitterIcon from "../../../public/assets/icons/TwitterIcon";
+import InstagramIcon from "../../../public/assets/icons/InstagramIcon";
 
-const LineGraph = () => {
+const LineGraph = ({height: string}) => {
   const chartRef = useRef(null);
   let myChart = null;
 
@@ -41,7 +45,9 @@ const LineGraph = () => {
     });
   }, []);
 
-  return <canvas style={{ maxHeight: "350px", width: '100%' }} ref={chartRef} />;
+  return (
+    <canvas style={{ maxHeight: "350px", height: '350px', width: "100%" }} ref={chartRef} />
+  );
 };
 
 const PieChart = ({ width, height }) => {
@@ -190,7 +196,7 @@ function Overview() {
           <div className={classes.section_container}>
             <p>Analytics</p>
             <div className={classes.line_chart_content_container}>
-              <LineGraph />
+              <LineGraph height={'350px'}/>
             </div>
           </div>
           <div className={classes.hot_ad_container}>
@@ -237,17 +243,16 @@ function Overview() {
                   <p>Connect With Real Buyers</p>
                 </div>
 
-              <div>
-              <div className={classes.buy_now_single_row}>
-                  <SmallTickIcon />
-                  <p>Realtime Stats</p>
-                </div>
+                <div>
+                  <div className={classes.buy_now_single_row}>
+                    <SmallTickIcon />
+                    <p>Realtime Stats</p>
+                  </div>
 
-                <div className={classes.black_btn}>
-                  <h4>BUY NOW</h4>
+                  <div className={classes.black_btn}>
+                    <h4>BUY NOW</h4>
+                  </div>
                 </div>
-              </div>
-            
               </div>
             </div>
           </div>
@@ -322,15 +327,14 @@ function Overview() {
                   </h3>
                 </div>
 
-              <div>
-              <div className={classes.black_btn}>
-                  <h4>Upgrade My Account</h4>
+                <div>
+                  <div className={classes.black_btn}>
+                    <h4>Upgrade My Account</h4>
+                  </div>
+                  <div className={classes.white_btn}>
+                    <h4>Upgrade My Listings</h4>
+                  </div>
                 </div>
-                <div className={classes.white_btn}>
-                  <h4>Upgrade My Listings</h4>
-                </div>
-              </div>
-                
               </div>
             </div>
           </div>
@@ -386,6 +390,128 @@ function Overview() {
                     </div>
                   </div>
                 </div>
+
+                <div className={classes.single_inbox}>
+                  <div className={classes.inbox_content}>
+                    <img src={three_dot.src} className={classes.three_dot} />
+                    <div className={classes.single_inbox_profile_picture}></div>
+                    <div className={classes.single_inbox_profile_name_section}>
+                      <div>
+                        <h3 className={classes.single_inbox_name}>Mike</h3>
+                        <p className={classes.single_inbox_name_title}>Agent</p>
+                      </div>
+                      <p className={classes.single_inbox_message}>
+                        Type message here..
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={classes.divider} />
+
+        <div className={classes.third_row_container}>
+          <div className={classes.section_container}>
+            <p>Staff Statistics</p>
+            <div className={classes.line_chart_content_container}>
+              <LineGraph />
+            </div>
+          </div>
+          <div className={classes.staff_listings_section}>
+            <h3>Staff Listings</h3>
+            <div className={classes.staff_listing_cards_section}>
+              <div className={classes.single_staff_card}>
+                <div className={classes.staff_card_top_bar}>
+                  <div className={classes.active_tag}>
+                    <p className={classes.tag_label}>Active</p>
+                  </div>
+
+                  <div className={classes.pic_container}>
+                    <div className={classes.profile_picture}></div>
+                  </div>
+                  <div className={classes.menu_btn_container}>
+                    <ThreeDotIcon />
+                  </div>
+                </div>
+
+                <div className={classes.name_section}>
+                  <h2>Ibrahim Khan</h2>
+                  <p>ID Z1681684</p>
+                </div>
+
+                <div className={classes.btns_container}>
+                  <div className={classes.single_stat_btn_container}>
+                    <h2>Member Since</h2>
+                    <p>2023</p>
+                    <div style={{width: '100%'}} className={classes.blue_btn}>
+                      <h4>View Profile</h4>
+                    </div>
+                  </div>
+
+                  <div className={classes.single_stat_btn_container}>
+                    <h2>Active Listings</h2>
+                    <p>(20)</p>
+                    <div style={{width: '100%'}} className={classes.black_btn}>
+                      <h4>Message</h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={classes.divider}/>
+
+                <div className={classes.social_media_container}>
+                    <FacebookIcon />
+                    <TwitterIcon />
+                    <InstagramIcon />
+                </div>
+              </div>
+              <div className={classes.single_staff_card}>
+              <div className={classes.staff_card_top_bar}>
+                  <div className={classes.active_tag}>
+                    <p className={classes.tag_label}>Active</p>
+                  </div>
+
+                  <div className={classes.pic_container}>
+                    <div className={classes.profile_picture}></div>
+                  </div>
+                  <div className={classes.menu_btn_container}>
+                    <ThreeDotIcon />
+                  </div>
+                </div>
+
+                <div className={classes.name_section}>
+                  <h2>Ibrahim Khan</h2>
+                  <p>ID Z1681684</p>
+                </div>
+
+                <div className={classes.btns_container}>
+                  <div className={classes.single_stat_btn_container}>
+                    <h2>Member Since</h2>
+                    <p>2023</p>
+                    <div style={{width: '100%'}} className={classes.blue_btn}>
+                      <h4>View Profile</h4>
+                    </div>
+                  </div>
+
+                  <div className={classes.single_stat_btn_container}>
+                    <h2>Active Listings</h2>
+                    <p>(20)</p>
+                    <div style={{width: '100%'}} className={classes.black_btn}>
+                      <h4>Message</h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={classes.divider}/>
+
+                <div className={classes.social_media_container}>
+                    <FacebookIcon />
+                    <TwitterIcon />
+                    <InstagramIcon />
+                </div>
               </div>
             </div>
           </div>
@@ -409,7 +535,6 @@ function Overview() {
         </div>
 
         <div className={classes.divider} />
-
       </div>
     </div>
   );
