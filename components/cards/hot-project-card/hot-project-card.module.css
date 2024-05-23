@@ -1,30 +1,17 @@
 .card_body {
-  max-width: 400px;
+  width: 97%;
   min-width: 310px;
-  width: 100%;
   height: 335px;
   background: #ffffff;
-  border: 1px solid #fd2e00;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid #c1d1dc;
   border-radius: 20px;
   transition: ease-in-out 200ms;
   position: relative;
   animation: pulse 1.2s ease-out infinite;
 }
-@keyframes pulse {
-  0% {
-    border: 1px solid #dddbdb;
-  }
-  50% {
-    border: 1px solid #ff0404;
-  }
-  100% {
-    border: 1px solid #dddbdb;
-  }
-}
+
 .card_body:hover {
   transform: translate3d(0px, -3px, 0px);
-  box-shadow: 0 5px 30px 10px rgba(8, 72, 146, 0.24);
 }
 .tag {
   position: absolute;

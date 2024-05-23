@@ -1,5 +1,4 @@
-.next_icon, .prev_icon{
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
+.arrow {
+  cursor: pointer;
+  transition: ease-out 200ms;
 }

@@ -19,14 +19,65 @@ function AllAgencies() {
     // centerMode: true,
     nextArrow: <Next />,
     prevArrow: <Prev />,
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 1113,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 923,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 743,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 559,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 378,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+    ],
   };
   return (
-    <div
-      style={{
-        height: "85vh",
-      }}
-      className="landing_page_colored_container"
-    >
+    <div className="landing_page_colored_container">
       <div
         style={{
           background:
@@ -34,7 +85,7 @@ function AllAgencies() {
         }}
         className="colored_container"
       >
-        <div className={classes.content_container}>
+        <div className="cards_content_container">
           <div className="heading_container">
             <p className="landing_page_heading">All Agencies</p>
             <div

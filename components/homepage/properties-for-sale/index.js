@@ -9,7 +9,13 @@ import "slick-carousel/slick/slick.css";
 import Next from "../../reactSlickButtons/next";
 import Prev from "../../reactSlickButtons/prev";
 
-function PropertiesForSale({ color, title }) {
+function PropertiesForSale({
+  otherDivRef,
+  textColor,
+  color,
+  title,
+  hideBtnContainer,
+}) {
   const settings = {
     dots: false,
     infinite: true,
@@ -20,37 +26,71 @@ function PropertiesForSale({ color, title }) {
     // centerMode: true,
     nextArrow: <Next />,
     prevArrow: <Prev />,
+    responsive: [
+      {
+        breakpoint: 1270,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 1035,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 690,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+    ],
   };
 
   return (
-    <div className="listed_properties_container">
+    <div ref={otherDivRef} className="listed_properties_container">
       <div className="properties_and_filter_container">
         <div className="cities_container">
-          <p style={{ color: color }} className="listed_properties_heading">
+          <p
+            style={{ color: textColor ? textColor : color }}
+            className="listed_properties_heading"
+          >
             {title}
           </p>
-          <div className="cities_btns_container">
-            <div className="city_btn">
-              <p>Lahore</p>
+          {!hideBtnContainer && (
+            <div className="cities_btns_container">
+              <div className="city_btn">
+                <p>Lahore</p>
+              </div>
+              <div className="city_btn">
+                <p>Karachi</p>
+              </div>
+              <div className="city_btn">
+                <p>Islamabad</p>
+              </div>
+              <div className="city_btn">
+                <p>Rawalpindi</p>
+              </div>
+              <div style={{ marginLeft: "20px" }} className="btn">
+                <p>Discover More</p>
+              </div>
             </div>
-            <div className="city_btn">
-              <p>Rawalpindi</p>
-            </div>
-            <div className="city_btn">
-              <p>Islamabad</p>
-            </div>
-            <div className="city_btn">
-              <p>Karachi</p>
-            </div>
-            <div style={{ marginLeft: "20px" }} className="btn">
-              <p>Discover More</p>
-            </div>
-          </div>
+          )}
         </div>
 
         <div className="properties_container">
           <Slider arrows={true} {...settings}>
-            <PropertyCard />
+            <PropertyCard isAd={true} />
             <PropertyCard />
             <PropertyCard />
             <PropertyCard />

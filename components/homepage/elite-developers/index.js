@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import Next from "../../reactSlickButtons/next";
 import Prev from "../../reactSlickButtons/prev";
 
-function EliteDevelopers() {
+function EliteDevelopers({ passedRef }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -19,10 +19,39 @@ function EliteDevelopers() {
     // centerMode: true,
     nextArrow: <Next />,
     prevArrow: <Prev />,
+    responsive: [
+      {
+        breakpoint: 1431,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 667,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          centerMode: false,
+        },
+      },
+    ],
   };
 
   return (
-    <div style={{ height: "60vh" }} className="landing_page_colored_container">
+    <div ref={passedRef} className="landing_page_colored_container">
       <div
         style={{
           background:
@@ -30,7 +59,7 @@ function EliteDevelopers() {
         }}
         className="colored_container"
       >
-        <div className={classes.content_container}>
+        <div className="cards_content_container">
           <div className="heading_container">
             <p className="landing_page_heading">Elite Builders & Developers</p>
             <div className="btn">

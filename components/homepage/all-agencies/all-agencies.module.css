@@ -16,7 +16,7 @@
 .cards_col {
   display: flex !important;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 7px;
   width: fit-content;
   height: fit-content;
 }

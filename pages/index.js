@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import React, { useState, useEffect, useRef } from "react";
 import AllAgencies from "../components/homepage/all-agencies";
 import Banner from "../components/homepage/banner";
 import Blogs from "../components/homepage/blogs";
@@ -12,15 +12,209 @@ import Map from "../components/homepage/map";
 import ListedProperties from "../components/homepage/properties-for-sale";
 import TrendingLinks from "../components/trending-links";
 import styles from "../styles/Home.module.css";
+import { useInView } from "react-intersection-observer";
+import Navbar from "../components/navbar";
+import back_top from "../public/assets/icons/back_top.svg";
+import chat_bot from "../public/assets/icons/chat_bot.svg";
+
+import video_placeholder from "../public/assets/icons/video_placeholder.png";
+import pause_icon from "../public/assets/icons/pause_icon.svg";
 
 export default function Home() {
+  const [isDropdownEnabled, setIsDropdownEnabled] = useState(false);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [enlargeTrailer, setEnlargeTrailer] = useState(false);
+  const videoContainerRef = useRef(null);
+
+  const [
+    hasContentAboveEliteBuilderPassed,
+    setHasContentAboveEliteBuilderPassed,
+  ] = useState(false);
+  const [hideTVC, setHideTVC] = useState(false);
+  const { ref: microBuyRef, inView: microBuyInView } = useInView({
+    threshold: 0,
+  });
+  const { ref: eliteBuildersRef, inView: eliteBuildersInView } = useInView({
+    threshold: 0,
+  });
+  const { ref: bannerRef, inView: bannerInView } = useInView({
+    threshold: 0,
+  });
+  const [showNavbar, setShowNavbar] = useState();
+
+  const contactFormRef = useRef(null);
+
+  useEffect(() => {
+    if (microBuyInView === false && bannerInView === false) {
+      setShowNavbar(true);
+    } else {
+      setHasContentAboveEliteBuilderPassed(true);
+      setShowNavbar(false);
+    }
+  }, [microBuyInView, bannerInView]);
+
+  let listener;
+
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      if (document !== null) {
+        let scrolled = document.scrollingElement.scrollTop;
+
+        if (scrolled > 130) {
+          setHideTVC(true);
+        } else if (scrolled <= 130) {
+          setHideTVC(false);
+        }
+
+        if (scrolled > 2500) {
+          setShowScrollToTop(true);
+        } else if (scrolled <= 2500) {
+          setShowScrollToTop(false);
+        }
+      }
+    });
+    return () => {
+      document.removeEventListener("scroll", listener);
+    };
+  }, []);
+
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleOpenContactForm = () => {
+    setShowContactForm(!showContactForm);
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        contactFormRef.current &&
+        !contactFormRef.current.contains(event.target)
+      ) {
+        setShowContactForm(false);
+      }
+    }
+
+    // Bind the event listener
+    window.addEventListener("click", handleClickOutside);
+
+    // Unbind the event listener on cleanup
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, [contactFormRef]);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        videoContainerRef.current &&
+        !videoContainerRef.current.contains(event.target)
+      ) {
+        setEnlargeTrailer(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [videoContainerRef]);
+
   return (
-    <div className={styles.container}>
+    <div
+      style={{
+        height: isDropdownEnabled ? "100vh" : "fit-content",
+        overflowY: isDropdownEnabled && "hidden",
+      }}
+      className={styles.container}
+    >
+      <div
+        style={{ opacity: isDropdownEnabled ? "1" : "0" }}
+        className={styles.overlay}
+      ></div>
+
+      <div
+        style={{ right: hideTVC ? "-24%" : "-10px" }}
+        className={
+          enlargeTrailer
+            ? styles.large_trailer_container
+            : styles.trailer_container
+        }
+        ref={videoContainerRef}
+      >
+        <div
+          onClick={() => {
+            setEnlargeTrailer(!enlargeTrailer);
+          }}
+          className={styles.video_placeholder_container}
+        >
+          <iframe onClick={()=>{
+            setEnlargeTrailer(!enlargeTrailer);
+          }} width="100%" height="100%" src="https://www.youtube.com/embed/CHVy5h-uALw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <p>
+          Zilaay.com <span>New</span> Ad
+        </p>
+      </div>
+
+      <img
+        style={{
+          right: showScrollToTop ? "2%" : "-5%",
+          pointerEvents: showScrollToTop ? "all" : "none",
+        }}
+        onClick={() => {
+          if (showScrollToTop) {
+            handleClick();
+          }
+        }}
+        src={back_top.src}
+        className={styles.top_icon}
+      />
+
+      <div className={styles.chat_icon}>
+        <div className={styles.contact_form_container}>
+          <div
+            className={
+              showContactForm ? styles.contact_form : styles.contact_form_hidden
+            }
+          >
+            <div className={styles.contact_form_content}>
+              <h2>Contact Us</h2>
+              <p className={styles.form_text}>
+                Use the form below to contact us
+              </p>
+              <input placeholder="Your Name" className={styles.input_field} />
+              <input placeholder="Your Email" className={styles.input_field} />
+              <input placeholder="Your Phone" className={styles.input_field} />
+              <input placeholder="Your Name" className={styles.input_field} />
+              <textarea
+                placeholder="Type your message"
+                className={styles.input_field_textarea}
+              />
+              <div className={styles.btn_filled}>
+                <p>Send</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img
+          onClick={() => {
+            handleOpenContactForm();
+          }}
+          src={chat_bot.src}
+        />
+      </div>
+
       <Head>
-        <title>Zilaay | Real Estate Portal</title>
+        <title>Zilaay | Pakistan's One-Stop Real Estate Marketplace</title>
       </Head>
-      <Banner />
-      <Map />
+      <Navbar showNavbar={showNavbar} isTransparent={true} />
+
+      <Banner setIsDropdown={setIsDropdownEnabled} refInstance={bannerRef} />
+
+      <Map refInstance={microBuyRef} />
       <div className={styles.ad_container}>
         <div className={styles.ad_placehodler}>
           <h1>928 x 250 AD HERE</h1>
@@ -28,7 +222,7 @@ export default function Home() {
         </div>
       </div>
       <HotProjects />
-      <EliteDevelopers />
+      <EliteDevelopers passedRef={eliteBuildersRef} />
       <FeaturedDevelopers />
       <div className={styles.ad_container}>
         <div className={styles.ad_placehodler}>
@@ -53,3 +247,7 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+useState, useEffect

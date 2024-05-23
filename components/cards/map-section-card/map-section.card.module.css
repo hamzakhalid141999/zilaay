@@ -1,9 +1,9 @@
 .card_body {
-  width: 270px;
-  height: 360px;
+  width: 100%;
+  min-width: 240px;
+  height: fit-content;
   background: #ffffff;
   border: 1px solid #dddbdb;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -11,21 +11,53 @@
   transition: ease-in-out 200ms;
   animation: shake 1.2s ease-out infinite;
 }
-
-@keyframes shake {
-  0% {
-    border: 1px solid #dddbdb;
-  }
-  50% {
-    border: 1px solid #ff0404;
-  }
-  100% {
-    border: 1px solid #dddbdb;
-  }
-}
 .card_body:hover {
   transform: translate3d(0px, -3px, 0px);
-  box-shadow: 0 5px 30px 10px rgba(8, 72, 146, 0.24);
+}
+.heart {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  width: 22px;
+}
+.share {
+  position: absolute;
+  top: 15px;
+  right: 45px;
+  z-index: 10;
+  width: 22px;
+}
+.icons_container {
+  width: fit-content;
+  padding: 4px;
+  background-color: rgba(0, 0, 0, 0.72);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  column-gap: 10px;
+  bottom: 15px;
+  left: 15px;
+  z-index: 10;
+}
+.video {
+  z-index: 10;
+  width: 14px;
+}
+.camera {
+  z-index: 10;
+  width: 14px;
+}
+.single_tab {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 4px;
+}
+.single_tab p {
+  font-size: 11px;
+  color: white;
 }
 .tag {
   position: absolute;
@@ -103,7 +135,7 @@
   margin-bottom: 10px;
 }
 .non_primary_btns {
-  width: 85%;
+  width: 100%;
   height: fit-content;
   display: flex;
   flex-direction: row;

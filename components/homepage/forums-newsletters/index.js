@@ -66,8 +66,7 @@ function ForumsAndNewsletters() {
             <div className={classes.newsletter_content}>
               <p className={classes.newsletter_title}>Newsletter</p>
               <p className={classes.newsletter_description}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                rhoncus.
+                Subscribe to our newsleter and stay updated with Zilaay.com.
               </p>
               <input placeholder="Enter your email" />
               <div

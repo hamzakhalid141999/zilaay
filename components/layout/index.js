@@ -18,12 +18,19 @@ function Layout({ children }) {
     }
   }, [router.pathname]);
 
-  console.log(currentPage);
-
   return (
     <div className={classes.container}>
       <>
-        {currentPage === "buy" ? (
+        {currentPage === "" ? (
+          <>
+            <div className={classes.main}>{children}</div>
+            <Footer />
+          </>
+        ) : currentPage === "dashboard" ? (
+          <>
+            <div className={classes.main}>{children}</div>
+          </>
+        ) : currentPage === "buy" || currentPage === "login" ? (
           <>
             <Navbar />
             <div className={classes.main}>
@@ -37,9 +44,9 @@ function Layout({ children }) {
           <>
             <Navbar />
             <div className={classes.main}>
-              <div className={classes.coming_soon_overlay}>
+              {/* <div className={classes.coming_soon_overlay}>
                 <h2>Coming Soon</h2>
-              </div>
+              </div> */}
               {children}
             </div>
             <Footer />

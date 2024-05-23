@@ -22,6 +22,7 @@
   flex-direction: column;
   row-gap: 20px;
   width: 100%;
+  max-width: 1500px;
 }
 .cards_container {
   width: 100%;
@@ -37,6 +38,7 @@
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   column-gap: 20px;
+  max-width: 1500px;
 }
 .register_panel {
   width: 100%;
